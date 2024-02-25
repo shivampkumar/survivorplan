@@ -28,3 +28,5 @@ const PatientSelector = () => {
     </div>
   );
 };
+
+export default PatientSelector;
