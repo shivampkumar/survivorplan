@@ -21,6 +21,11 @@ client = MongoClient(uri)
 db = client.patient_care_db
 users = db.users
 
+@app.route('/api/hello', methods=['GET'])
+def get_users():
+    # Create a dummy result just to test if the API is working
+    return jsonify({'message': 'API is working'}), 200
+
 @app.route('/api/register', methods=['POST','OPTIONS'])
 def register():
     user_data = request.json
