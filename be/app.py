@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 from flask_bcrypt import Bcrypt
 from pymongo import MongoClient
 from urllib.parse import quote_plus
@@ -7,6 +7,7 @@ import os
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 bcrypt = Bcrypt(app)
 
 username = 'shivampkumar'
@@ -21,12 +22,19 @@ client = MongoClient(uri)
 db = client.patient_care_db
 users = db.users
 
+# def _corsify_actual_response(response):
+#     response.headers.add("Access-Control-Allow-Origin", "*")
+#     return response
+
 @app.route('/api/hello', methods=['GET'])
+@cross_origin()
 def get_users():
     # Create a dummy result just to test if the API is working
+    
     return jsonify({'message': 'API is working'}), 200
 
 @app.route('/api/register', methods=['POST','OPTIONS'])
+@cross_origin()
 def register():
     user_data = request.json
     user_data['password'] = bcrypt.generate_password_hash(user_data['password']).decode('utf-8')
@@ -39,6 +47,7 @@ def register():
     return jsonify({'message': 'User registered successfully'}), 201
 
 @app.route('/api/login', methods=['POST', 'OPTIONS'])
+@cross_origin()
 def login():
     user_data = request.json
     user = users.find_one({'email': user_data['email']})

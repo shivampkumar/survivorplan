@@ -1,30 +1,33 @@
 import React, { useState } from 'react';
 import Login from './components/Login';
 import Register from './components/Register';
+import DoctorView from './components/DoctorView';
+import PatientView from './components/PatientView';
 import axios from 'axios';
+import Header from './components/Header';
 import { Button } from '@mui/material';
 
 function App() {
   const [isLoginView, setIsLoginView] = useState(true);
+  const [userRole, setUserRole] = useState('');
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   const handleLogin = async (email, password) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/login', { 
-        email, 
-        password 
-      });
+      const response = await axios.post('http://20.168.8.23:8080/api/login', { email, password });
       console.log(response.data);
       alert('Login successful');
-      // Further actions on successful login (e.g., redirect, save token)
+      setUserRole(response.data.role); // Assuming the role is returned in the login response
+      setIsLoggedIn(true);
     } catch (error) {
-      console.error(error.response ? error.response.data : error);
+      console.error(error);
       alert('Login failed');
     }
   };
 
   const handleRegister = async (email, password, role) => {
     try {
-      const response = await axios.post('http://localhost:8080/api/register', {
+      const response = await axios.post('http://20.168.8.23:8080/api/register', {
         email,
         password,
         role,
@@ -37,19 +40,39 @@ function App() {
     }
   };
 
+  const renderUserView = () => {
+    if (!isLoggedIn) {
+      return (
+        <>
+          {isLoginView ? (
+            <>
+              <Login onLogin={handleLogin} />
+              <Button onClick={() => setIsLoginView(false)}>Go to Register</Button>
+            </>
+          ) : (
+            <>
+              <Register onRegister={handleRegister} />
+              <Button onClick={() => setIsLoginView(true)}>Go to Login</Button>
+            </>
+          )}
+        </>
+      );
+    } else {
+      switch (userRole) {
+        case 'doctor':
+          return <DoctorView />;
+        case 'patient':
+          return <PatientView />;
+        default:
+          return <div>Role not recognized</div>;
+      }
+    }
+  };
+
   return (
     <div>
-      {isLoginView ? (
-        <>
-          <Login onLogin={handleLogin} />
-          <Button onClick={() => setIsLoginView(false)}>Go to Register</Button>
-        </>
-      ) : (
-        <>
-          <Register onRegister={handleRegister} />
-          <Button onClick={() => setIsLoginView(true)}>Go to Login</Button>
-        </>
-      )}
+      <Header />
+      {renderUserView()}
     </div>
   );
 }
