@@ -1,0 +1,41 @@
+Patient with ALK+ resected stage II NSCLC sp cisplatin or pemetrexed on alectinib
+Clinical Note:
+
+**General Information**
+- Patient Name: Emily Tanaka
+- Patient Date of Birth (DOB): 09/15/1954
+- Patient Phone Number: (555) 789-0123
+- Patient Email: emily.tanaka@email.com
+- Primary Care Provider: Dr. Susan Choi
+- Surgeon: Dr. Michael Navarro
+- Radiation Oncologist: Dr. Anita Desai
+- Medical Oncologist: Dr. Rajiv Patel
+- Other Providers: Nurse Practitioner Sarah Jenkins, Respiratory Therapist Alex Ramirez, Dietitian Grace Lee
+
+**Diagnosis**
+- Cancer Type/Location/Histology Subtype: Non-Small Cell Lung Cancer (NSCLC), left upper lobe, adenocarcinoma, ALK-positive
+- Diagnosis Date: 04/12/2022
+- Stage: II
+
+**Treatment Completed**
+- Surgery: Yes
+- Surgery Date(s): 05/30/2022
+- Surgical Procedure/Location/Findings: Left upper lobectomy via video-assisted thoracoscopic surgery (VATS), clear margins achieved, no visible metastases in the sampled lymph nodes.
+- Radiation Therapy: No
+- Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes
+- Names of Agents Used: Cisplatin, Pemetrexed
+- End dates (year) of the used agents: Cisplatin (07/2022), Pemetrexed (07/2022)
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, mild neuropathy in hands and feet, occasional fatigue.
+
+**Treatment Ongoing**
+- Need for Ongoing (Adjuvant) Treatment: Yes
+- Additional Treatments: Alectinib, planned duration of 2 years as adjuvant therapy post-surgery to reduce the risk of recurrence. Possible side effects include fatigue, edema, myalgia, and potential liver enzyme elevations.
+
+**Additional Information**
+Patient Emily Tanaka was diagnosed with stage II ALK-positive NSCLC following a workup for persistent cough and incidental finding on chest X-ray. She underwent successful surgical resection with no complications. Post-operative recovery was smooth, and she was discharged with a comprehensive care plan. Given the ALK-positive status, Emily was started on alectinib as adjuvant therapy after completing a course of cisplatin and pemetrexed, which she tolerated reasonably well aside from some expected side effects.
+
+Emily is currently enrolled in a survivorship program and is being closely monitored for any signs of recurrence. She has been proactive about her health, attending all follow-up appointments and adhering to her treatment regimen. Her recent scans have shown no evidence of disease, and her overall prognosis is favorable. She has been supported throughout her treatment by a multidisciplinary team, including her dedicated medical oncologist, Dr. Rajiv Patel, who has been instrumental in coordinating her care and providing ongoing support.
+
+As part of her survivorship care plan, Emily has been referred to a pulmonary rehabilitation program to improve her lung function and quality of life. She has also been provided with resources for smoking cessation, nutrition counseling, and psychosocial support to address the emotional and mental health aspects of her cancer journey.
+
+Emily's case will continue to be discussed at our multidisciplinary tumor board meetings to ensure she receives the most current and comprehensive care as recommended by the latest clinical guidelines and research in lung cancer treatment.

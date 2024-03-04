@@ -1,0 +1,37 @@
+Patient with stage IVC squamous NSCLC, PDL1 70% on monotherapy pembrolizumab for 1 year
+Clinical Note:
+
+General Information:
+- Patient Name: Michael Thompson
+- Patient Date of Birth (DOB): 03/14/1957
+- Patient Phone Number: (555) 987-6543
+- Patient Email: michael.thompson@email.com
+- Primary Care Provider: Dr. Susan Clark, MD
+- Surgeon: Dr. Lisa Kim, MD
+- Radiation Oncologist: Dr. Alan Grant, MD
+- Medical Oncologist: Dr. Omar Farooq, MD
+- Other Providers: Jane Doe, RN (Oncology Nurse Navigator)
+
+Diagnosis:
+- Cancer Type/Location/Histology Subtype: Squamous Non-Small Cell Lung Cancer (NSCLC), located in the right lower lobe of the lung, squamous cell carcinoma
+- Diagnosis Date: 01/15/2022
+- Stage: Stage IVC
+
+Treatment Completed:
+- Surgery: No
+  - Surgery Date(s): N/A
+  - Surgical Procedure/Location/Findings: N/A
+- Radiation Therapy: No
+  - Body Area Treated (Radiation): N/A
+  - Radiation End Date: N/A
+- Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes
+  - Names of Agents Used: Pembrolizumab
+  - End dates (year) of the used agents: Ongoing since 02/2022
+  - Persistent Symptoms or Side Effects at Completion of Treatment: Yes, mild fatigue and shortness of breath
+
+Treatment Ongoing:
+- Need for Ongoing (Adjuvant) Treatment: Yes
+- Additional Treatments: Pembrolizumab monotherapy is ongoing with a planned duration of at least one year from the start date. Possible side effects include immune-related adverse effects such as pneumonitis, colitis, hepatitis, endocrinopathies, and infusion reactions.
+
+Additional Information:
+Michael Thompson was diagnosed with advanced-stage IVC squamous NSCLC after presenting with persistent cough and unintentional weight loss. Imaging studies and a subsequent biopsy confirmed the diagnosis and revealed a PDL1 expression of 70%. Given the high PDL1 expression and the absence of actionable mutations, Michael was deemed an appropriate candidate for immunotherapy with pembrolizumab as the first-line treatment. He has tolerated the treatment well with manageable side effects and is currently under close surveillance with routine imaging to monitor for disease progression. He is a former smoker and has a family history of various cancers, which has been discussed with his medical oncologist regarding potential genetic counseling. His care team remains optimistic about the response to treatment and continues to support him through his journey with cancer. Michael is also involved in a lung cancer support group and has expressed interest in participating in clinical trials that his medical oncologist may recommend.

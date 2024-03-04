@@ -1,0 +1,35 @@
+Patient with resected stage IB NSCLC, KRAS G12C+
+Clinical Note:
+
+**General Information**
+- Patient Name: Maria A. Gomez
+- Patient DOB: 01/15/1955
+- Patient Phone Number: (555) 987-6543
+- Patient Email: maria.gomez@email.com
+- Primary Care Provider: Dr. Lisa Chang, MD
+- Surgeon: Dr. Aarav Patel, MD, Thoracic Surgery
+- Radiation Oncologist: Dr. Emily White, MD
+- Medical Oncologist: Dr. John Kim, MD
+- Other Providers: Dr. Susan Lee, PT (Physical Therapist), Dr. Robert Smith, PhD (Clinical Psychologist)
+
+**Diagnosis**
+- Cancer Type/Location/Histology Subtype: Non-Small Cell Lung Cancer (NSCLC), Right Lower Lobe, Adenocarcinoma, KRAS G12C mutation positive
+- Diagnosis Date: 08/20/2022
+- Stage: IB
+
+**Treatment Completed**
+- Surgery: Yes
+- Surgery Date(s): 09/15/2022
+- Surgical Procedure/Location/Findings: Right lower lobectomy performed at St. Mary's Medical Center. Pathology confirmed a 3.2 cm adenocarcinoma with clear margins and no lymphovascular invasion.
+- Radiation Therapy: No
+- Systemic Therapy: No
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, Maria reports mild to moderate pain at the incision site and occasional shortness of breath with exertion.
+
+**Treatment Ongoing**
+- Need for Ongoing (Adjuvant) Treatment: No, given the resected stage IB NSCLC and the absence of lymph node involvement, adjuvant chemotherapy is not routinely recommended. The presence of the KRAS G12C mutation will be considered for targeted therapy should there be a recurrence.
+- Additional Treatments: Maria is currently undergoing physical therapy to improve her lung function and mobility post-surgery. She is also receiving psychological support to address the emotional impact of her cancer diagnosis and treatment.
+
+**Additional Information**
+Maria is a retired school teacher with a history of smoking, which she quit 10 years ago. She lives with her husband and has a strong family support system. Her recovery from surgery has been steady, and she is actively engaged in her follow-up care. Maria is scheduled for regular imaging studies, including CT scans every six months for the next two years to monitor for recurrence. Her KRAS G12C mutation status has been documented, and she has been informed about the potential for targeted therapy options in the future. She is also up to date with her vaccinations, including pneumococcal and annual influenza vaccines, as recommended for lung cancer survivors.
+
+Maria's prognosis is cautiously optimistic, and her care team is focused on maintaining her quality of life while keeping vigilant for any signs of cancer recurrence. Her next follow-up appointment with her medical oncologist is set for 04/15/2023.

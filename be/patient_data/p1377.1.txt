@@ -1,0 +1,37 @@
+Patient with stage IVB NS-NSCLC (PDL1 30%) treated with KEYNOTE189
+Clinical Note:
+
+General Information:
+- Patient Name: Maria Sanchez
+- Patient Date of Birth (DOB): July 15, 1957
+- Patient Phone Number: (555) 123-9876
+- Patient Email: maria.sanchez@email.com
+- Primary Care Provider: Dr. Lisa Chang, MD
+- Surgeon: Dr. Aarav Patel, MD
+- Radiation Oncologist: Dr. Emily White, MD
+- Medical Oncologist: Dr. John Rivera, MD
+- Other Providers: Jane Smith, RN (Oncology Nurse Navigator); Dr. Alan Kim, PhD (Clinical Psychologist)
+
+Diagnosis:
+- Cancer Type/Location/Histology Subtype: Non-Small Cell Lung Cancer (NSCLC), Adenocarcinoma, located in the right lower lobe
+- Diagnosis Date: March 12, 2022
+- Stage: IVB
+
+Treatment Completed:
+- Surgery: No (deemed inoperable due to extensive metastasis)
+- Radiation Therapy: No (patient was not a candidate due to widespread disease)
+- Systemic Therapy: Yes
+- Names of Agents Used: Pembrolizumab (Keytruda), Carboplatin, Pemetrexed
+- End dates: Pembrolizumab (ongoing), Carboplatin (December 2022), Pemetrexed (December 2022)
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, neuropathy, fatigue
+
+Treatment Ongoing:
+- Need for Ongoing (Adjuvant) Treatment: Yes
+- Additional Treatments: Pembrolizumab (Keytruda) as part of KEYNOTE-189, ongoing maintenance therapy with a planned duration of 2 years or until disease progression, possible side effects include immune-related adverse events such as colitis, pneumonitis, and thyroiditis.
+
+Additional Information:
+Maria Sanchez is a 65-year-old female with a history of light smoking in her twenties. She presented with persistent cough and unintentional weight loss, which led to the diagnosis of advanced NSCLC. Given the extent of disease and PDL1 expression of 30%, she was enrolled in the KEYNOTE-189 trial and started on a combination of immunotherapy and chemotherapy. She showed partial response to treatment, with a reduction in tumor size and stabilization of metastatic lesions.
+
+Maria experiences ongoing fatigue and neuropathy, which are being managed with gabapentin and supportive care. She is also receiving psychological support to cope with her diagnosis and treatment side effects. Maria is an active participant in her care, attending all scheduled appointments and maintaining open communication with her healthcare team. Her performance status remains at ECOG 1, allowing her to enjoy activities of daily living with minimal assistance.
+
+Maria's case is discussed in a multidisciplinary tumor board meeting monthly, to tailor her treatment plan based on the latest evidence and her response to therapy. Her family, including two adult children, are involved in her care and provide a strong support system. She has expressed her wish to spend quality time with her family and to manage symptoms effectively to maintain a good quality of life.

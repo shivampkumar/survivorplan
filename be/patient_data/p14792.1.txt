@@ -1,0 +1,51 @@
+Patient with locally-advanced NSCLC (Stage IIIB) treated with chemoradiation and durvalumab
+**Clinical Note: Locally-Advanced Non-Small Cell Lung Cancer (NSCLC) Patient Summary**
+
+**General Information**
+- Patient Name: Michael Thompson
+- Patient Date of Birth (DOB): 07/14/1957
+- Patient Phone Number: (555) 623-7482
+- Patient Email: michael.thompson@email.com
+- Primary Care Provider: Dr. Angela Bennett, MD
+- Surgeon: Dr. Lisa Wu, Thoracic Surgery
+- Radiation Oncologist: Dr. Omar Farooqi, MD
+- Medical Oncologist: Dr. Neil Shah, MD
+- Other Providers: Nurse Coordinator: Jenny Adams, RN; Pulmonologist: Dr. Rajiv Patel, MD; Palliative Care Specialist: Dr. Emily Green, MD
+
+**Diagnosis**
+- Cancer Type/Location/Histology Subtype: NSCLC, Right Upper Lobe, Adenocarcinoma
+- Diagnosis Date: 03/22/2022
+- Stage: IIIB
+
+**Treatment Completed**
+- Surgery: No (deemed inoperable due to tumor location and patient comorbidities)
+- Radiation Therapy: Yes
+- Body Area Treated (Radiation): Right Upper Lobe of Lung
+- Radiation End Date: 07/30/2022
+- Systemic Therapy: Yes
+- Names of Agents Used: Concurrent chemoradiation with Carboplatin and Paclitaxel
+- End dates (year) of the used agents: Chemotherapy completed on 07/30/2022
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, patient reports fatigue and mild esophagitis, which are currently managed with dietary modifications and proton pump inhibitors.
+
+**Treatment Ongoing**
+- Need for Ongoing (Adjuvant) Treatment: Yes
+- Additional Treatments: Patient is currently receiving adjuvant immunotherapy with durvalumab. The planned duration is for 12 months post-chemoradiation, with close monitoring for potential side effects such as pneumonitis, thyroid dysfunction, and adrenal insufficiency. Durvalumab was initiated on 09/10/2022, and the patient is tolerating the treatment well so far, with no significant immune-related adverse events reported.
+
+**Additional Notes**
+- Patient is a former smoker with a 30-pack-year history, quit 5 years ago.
+- Patient has a history of well-controlled hypertension and type 2 diabetes.
+- Patient lives with his spouse, who is the primary caregiver.
+- The patient has completed a course of pulmonary rehabilitation and continues with prescribed exercises at home.
+- The patient has expressed concerns about the financial burden of ongoing treatment, which has been addressed with the help of a hospital social worker to identify resources and support.
+- The patient has an advance directive in place and has discussed end-of-life preferences with his medical oncologist and family.
+- The patient is scheduled for follow-up imaging in 3 months to assess the response to adjuvant durvalumab and for ongoing monitoring of disease status.
+- The patient is enrolled in a smoking cessation support group facilitated by the hospital's respiratory therapy department.
+- The patient reports a good support system, including family and a local cancer support group, which has been beneficial for his mental well-being.
+
+**Plan**
+- Continue adjuvant durvalumab as tolerated, with regular follow-up appointments every 2 weeks to monitor for side effects.
+- Schedule the next CT scan for disease assessment.
+- Continue supportive care for symptom management.
+- Review patient's medications for hypertension and diabetes in collaboration with the primary care provider to ensure optimal control.
+- Provide resources for financial counseling and support as needed.
+- Continue engagement with support groups and mental health resources to address the patient's emotional and psychosocial needs.

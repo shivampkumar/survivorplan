@@ -1,0 +1,41 @@
+Patient with ALK+ NSCLC stage IVB treated with lorlatinib
+Clinical Note:
+
+General Information:
+- Patient Name: Michael Thompson
+- Patient Date of Birth (DOB): 05/22/1958
+- Patient Phone Number: (555) 987-6543
+- Patient Email: michael.thompson@email.com
+- Primary Care Provider: Dr. Jane Smith, MD
+- Surgeon: Dr. Emily Wu, MD
+- Radiation Oncologist: Dr. Aaron Patel, MD
+- Medical Oncologist: Dr. Lisa Chang, MD
+- Other Providers: Nurse Practitioner Sarah Kelley, RN; Dietician Karen Gomez, RD; Social Worker James Lee, LCSW
+
+Diagnosis:
+- Cancer Type/Location/Histology Subtype: Non-Small Cell Lung Cancer (NSCLC), left lung, adenocarcinoma, ALK positive
+- Diagnosis Date: 11/15/2021
+- Stage: IVB
+
+Treatment Completed:
+- Surgery: Yes
+- Surgery Date(s): 12/10/2021
+- Surgical Procedure/Location/Findings: Video-assisted thoracoscopic surgery (VATS), left lower lobectomy, pathology confirmed adenocarcinoma with ALK rearrangement, negative margins
+- Radiation Therapy: Yes
+- Body Area Treated (Radiation): Left thoracic region
+- Radiation End Date: 02/05/2022
+- Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes
+- Names of Agents Used: Pemetrexed, Cisplatin
+- End dates (year) of the used agents: Pemetrexed (06/2022), Cisplatin (06/2022)
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, mild neuropathy, fatigue
+
+Treatment Ongoing:
+- Need for Ongoing (Adjuvant) Treatment: Yes
+- Additional Treatments: Targeted therapy with Lorlatinib, planned for a minimum duration of 2 years or until disease progression or unacceptable toxicity. Possible side effects include hypercholesterolemia, peripheral neuropathy, cognitive effects, and weight gain.
+
+Additional Notes:
+Michael Thompson was diagnosed with advanced-stage ALK-positive NSCLC following persistent cough and incidental findings on imaging. He underwent successful surgery with clear margins and completed a course of adjuvant chemoradiation. He is currently on Lorlatinib as part of his targeted therapy regimen and is tolerating treatment well with manageable side effects. His most recent scans showed no evidence of disease progression.
+
+His care team includes a multidisciplinary group of healthcare professionals to support his treatment and address the physical, nutritional, and psychosocial aspects of his care. Michael is a retired engineer, non-smoker, and enjoys spending time with his grandchildren. He is actively involved in a lung cancer support group and has expressed a positive outlook on his treatment journey. Regular follow-ups are scheduled with his medical oncologist, Dr. Lisa Chang, to monitor his response to Lorlatinib and adjust his treatment plan as necessary. Michael's family is highly supportive and participates in his care decisions.
+
+His current medications include Lorlatinib, atorvastatin for hypercholesterolemia, and gabapentin for neuropathy. He is advised to maintain a balanced diet, engage in light physical activity as tolerated, and report any new symptoms to his care team immediately. His next evaluation is scheduled in three months, or sooner if needed.

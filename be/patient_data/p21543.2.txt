@@ -1,0 +1,39 @@
+Patient with stage IVB squamous NSCLC sp carbo or paclitaxel or pembrolizumab and now on docetaxel
+Clinical Note: Patient Summary
+
+**General Information**
+- Patient Name: Michael Thompson
+- Patient Date of Birth (DOB): 09/15/1956
+- Patient Phone Number: (555) 623-8473
+- Patient Email: michael.thompson@email.com
+- Primary Care Provider: Dr. Lisa Park, MD
+- Surgeon: Dr. Neil Gupta, MD
+- Radiation Oncologist: Dr. Angela Rivera, MD
+- Medical Oncologist: Dr. Susan O'Neil, MD
+- Other Providers: Jane Fisher, RN (Oncology Nurse Navigator); Sarah Kim, LCSW (Oncology Social Worker)
+
+**Diagnosis**
+- Cancer Type/Location/Histology Subtype: Stage IVB Squamous Non-Small Cell Lung Cancer (NSCLC), located in the right lower lobe
+- Diagnosis Date: 03/22/2021
+- Stage: IVB
+
+**Treatment Completed**
+- Surgery: No
+  - Surgery Date(s): N/A
+  - Surgical Procedure/Location/Findings: N/A
+- Radiation Therapy: Yes
+  - Body Area Treated (Radiation): Right lower lobe of lung and mediastinal lymph nodes
+  - Radiation End Date: 11/15/2021
+- Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes
+  - Names of Agents Used: Carboplatin, Paclitaxel, Pembrolizumab
+  - End dates (year) of the used agents: Carboplatin (2021), Paclitaxel (2021), Pembrolizumab (2022)
+  - Persistent Symptoms or Side Effects at Completion of Treatment: Yes, neuropathy and fatigue
+
+**Treatment Ongoing**
+- Need for Ongoing (Adjuvant) Treatment: Yes
+- Additional Treatments: Currently receiving Docetaxel with a planned duration of 6 cycles. Possible side effects include myelosuppression, alopecia, fluid retention, and potential hypersensitivity reactions.
+
+**Additional Details**
+Michael Thompson was initially treated with a combination of chemotherapy and immunotherapy, which was well-tolerated initially, but he developed progressive disease after 8 months of treatment. Due to the progression and after thorough discussions regarding treatment options and potential side effects, it was decided to proceed with second-line therapy using Docetaxel. Michael has been experiencing increased fatigue and has been referred to a dietician to manage weight loss and nutritional intake. He is also receiving supportive care for his neuropathy, which includes medication management and physical therapy.
+
+Michael has been enrolled in a palliative care program to address symptom management and improve his quality of life. He has regular follow-ups with his medical oncologist to monitor his response to the ongoing treatment and adjust the care plan as needed. Michael's family is actively involved in his care, and they have been provided with resources to support them during this challenging time. Michael has expressed interest in exploring clinical trials and has been referred to a research coordinator for evaluation of eligibility for potential enrollment in upcoming trials.

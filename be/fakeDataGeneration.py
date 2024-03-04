@@ -6,8 +6,8 @@ from urllib.parse import quote_plus
 fake = Faker()
 
 # MongoDB connection
-username = 'shivampkumar'
-password = 'Need@4speed'
+username = os.environ.get('MONGO_USERNAME')
+password = os.environ.get('MONGO_PASSWORD')
 cluster_address = 'your_cluster_address.mongodb.net'
 uri = f"mongodb+srv://{username}:{password}@survivellm.jkaa8ma.mongodb.net/?retryWrites=true&w=majority&appName=survivellm"
 client = MongoClient(uri)

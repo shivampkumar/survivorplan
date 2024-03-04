@@ -1,0 +1,35 @@
+Patient with new diagnosis of stage IVB NSCLC with del 19 EGFR + NSCLC
+Clinical Note:
+
+General Information:
+- Patient Name: Michael Thompson
+- Patient Date of Birth (DOB): 07/14/1958
+- Patient Phone Number: (617) 555-0198
+- Patient Email: michael.thompson@email.com
+- Primary Care Provider: Dr. Susan O'Neill, MD
+- Surgeon: Dr. Laura Kim, MD (Thoracic Surgery)
+- Radiation Oncologist: Dr. Aarav Patel, MD
+- Medical Oncologist: Dr. Emily Chang, MD
+- Other Providers: Dr. Lisa Rodriguez, PhD (Clinical Psychologist), Jennifer Reed, RD (Registered Dietitian)
+
+Diagnosis:
+- Cancer Type/Location/Histology Subtype: Non-Small Cell Lung Cancer (NSCLC), left lower lobe, adenocarcinoma with deletion 19 EGFR mutation
+- Diagnosis Date: 03/05/2023
+- Stage: IVB
+
+Treatment Completed:
+- Surgery: No (Patient was considered inoperable due to extensive disease spread)
+- Radiation Therapy: Yes
+- Body Area Treated (Radiation): Left lower lobe and mediastinal lymph nodes
+- Radiation End Date: 05/15/2023
+- Systemic Therapy: Yes
+- Names of Agents Used: Carboplatin, Pemetrexed, and an EGFR inhibitor (Erlotinib)
+- End dates (year) of the used agents: Carboplatin (2023), Pemetrexed (2023), Erlotinib (ongoing)
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, neuropathy, fatigue, and mild cognitive impairment
+
+Treatment Ongoing:
+- Need for Ongoing (Adjuvant) Treatment: Yes
+- Additional Treatments: Continuation of EGFR inhibitor (Erlotinib) with a planned duration of treatment as a maintenance therapy. Possible side effects include rash, diarrhea, and liver function abnormalities. Close monitoring of EGFR mutation status and disease progression through periodic CT scans and liquid biopsies.
+
+Additional Notes:
+Michael Thompson is a 65-year-old male with a new diagnosis of stage IVB NSCLC harboring a deletion 19 EGFR mutation. He is a former smoker with a 30-pack-year history and quit smoking 10 years ago. Mr. Thompson has a supportive family, including his wife and two adult children, who accompany him to his appointments. He is currently experiencing a diminished quality of life due to his persistent symptoms, which are being managed by his medical oncologist and palliative care team. His nutritional status is being monitored by a dietitian to manage weight loss associated with cancer and treatment. Psychological support is being provided to help Mr. Thompson and his family cope with the emotional impact of his diagnosis and treatment. His care team is focused on managing his symptoms, slowing disease progression, and maintaining his quality of life.

@@ -1,0 +1,39 @@
+Patient with LS-SCLC sp chemoradiation with cisplatin or etoposide
+Clinical Note:
+
+General Information:
+- Patient Name: Michael Thompson
+- Patient DOB: 02/14/1958
+- Patient Phone Number: (555) 623-8473
+- Patient Email: michael.thompson58@email.com
+- Primary Care Provider: Dr. Susan O'Neil
+- Surgeon: Dr. Aaron Wallace
+- Radiation Oncologist: Dr. Karen Lee
+- Medical Oncologist: Dr. Rajiv Gupta
+- Other Providers: Nurse Practitioner Lisa Monroe, Oncology Social Worker Emily Harris
+
+Diagnosis:
+- Cancer Type/Location/Histology Subtype: Lung Cancer - Left Small Cell Lung Cancer (LS-SCLC)
+- Diagnosis Date: 07/10/2022
+- Stage: Limited Stage (LS-SCLC)
+
+Treatment Completed:
+- Surgery: No (Not typically indicated for LS-SCLC at the time of initial diagnosis)
+- Radiation Therapy: Yes
+- Body Area Treated (Radiation): Left hemithorax including mediastinum
+- Radiation End Date: 12/15/2022
+- Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes
+- Names of Agents Used: Cisplatin, Etoposide
+- End dates (year) of the used agents: Cisplatin (12/2022), Etoposide (12/2022)
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, mild fatigue, and intermittent nausea managed with medication.
+
+Treatment Ongoing:
+- Need for Ongoing (Adjuvant) Treatment: No (Patient will be monitored closely with imaging and follow-up appointments for any signs of recurrence).
+- Additional Treatments: Currently not indicated. The patient will continue to receive supportive care including pain management, nutritional support, and counseling.
+
+Additional Information:
+Michael Thompson has been a model patient, adhering to his treatment regimen and keeping all of his appointments. He has a loving family who has been very involved in his care. Throughout treatment, Michael has experienced a reduction in his initial symptoms, which included a persistent cough and shortness of breath. His latest imaging studies show a good response to chemoradiation, with a significant decrease in the size of his left lung mass. As per our last multidisciplinary team meeting, we are optimistic about his current status but remain vigilant for any signs of disease progression. Michael will continue to have regular follow-up appointments with his medical oncologist, Dr. Gupta, and regular CT scans every three months for the next two years, then every six months thereafter. We have also referred him to a smoking cessation program to address his past history of tobacco use, which is a significant risk factor for SCLC. Mental health support is available through our oncology social worker, Emily Harris, as Michael has expressed feelings of anxiety about the future.
+
+The patient has been informed about the importance of reporting any new symptoms immediately, such as neurological changes that might suggest brain metastases, a common site of disease spread in SCLC. Prophylactic cranial irradiation (PCI) was discussed as a potential treatment option given his limited-stage disease, but the patient has opted to defer this decision pending the next set of follow-up scans.
+
+Please note that all treatments and follow-up care are subject to change based on the patient's ongoing evaluation. The patient's wishes and quality of life considerations will continue to be at the forefront of any treatment decisions.

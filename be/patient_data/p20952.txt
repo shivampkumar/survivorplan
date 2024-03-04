@@ -1,0 +1,39 @@
+Patient with stage IIIA NSCLC treated with carbo or pemetrexed or nivolumab x 3 cycles followed by resection. Achieve pCR
+Clinical Note:
+
+**General Information**
+- Patient Name: Michael Thompson
+- Patient Date of Birth (DOB): 04/23/1957
+- Patient Phone Number: (555) 623-7890
+- Patient Email: michael.thompson@email.com
+- Primary Care Provider: Dr. Emily Stanton
+- Surgeon: Dr. Lisa Cho
+- Radiation Oncologist: Dr. Anil Gupta
+- Medical Oncologist: Dr. Karen Wallace
+- Other Providers: Nurse Practitioner Sarah Jennings, Respiratory Therapist Joe Dunbar
+
+**Diagnosis**
+- Cancer Type/Location/Histology Subtype: Non-Small Cell Lung Cancer (NSCLC), upper lobe of the right lung, adenocarcinoma
+- Diagnosis Date: 01/15/2023
+- Stage: IIIA
+
+**Treatment Completed**
+- Surgery: Yes
+- Surgery Date(s): 06/28/2023
+- Surgical Procedure/Location/Findings: Right upper lobectomy performed at City General Hospital. Pathological examination confirmed complete resection of the tumor with clear margins and no evidence of cancer in the lymph nodes (pCR).
+- Radiation Therapy: No
+- Body Area Treated (Radiation): N/A
+- Radiation End Date: N/A
+- Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes
+- Names of Agents Used: Carboplatin, Pemetrexed, Nivolumab
+- End dates (year) of the used agents: Carboplatin (2023), Pemetrexed (2023), Nivolumab (2023)
+- Persistent Symptoms or Side Effects at Completion of Treatment: Yes, mild neuropathy, and fatigue
+
+**Treatment Ongoing**
+- Need for Ongoing (Adjuvant) Treatment: No, achieved pathological complete response (pCR)
+- Additional Treatments: Currently under surveillance with regular follow-up appointments and imaging to monitor for recurrence. The patient is also receiving supportive care for management of neuropathy and rehabilitation to improve overall strength and lung function.
+
+**Additional Information**
+Michael Thompson has been a model patient, adhering to his treatment regimen and follow-up care. He has a history of smoking but quit immediately upon diagnosis. His family has been a strong source of support throughout his treatment. Michael is currently participating in a smoking cessation support group offered by the hospital to reduce the risk of recurrence and to improve his long-term prognosis. He has expressed a positive outlook on life and is looking forward to returning to his hobbies, which include woodworking and hiking. The healthcare team remains optimistic about his recovery and will continue to monitor his health closely.
+
+Please note, the patient's contact information and providers' names are fictional and for illustrative purposes only.
