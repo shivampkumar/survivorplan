@@ -1,0 +1,57 @@
+.card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    background-color: #fff;
+  }
+  
+  .treatment-summary {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .treatment-summary-title {
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .section-title {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #f7f7f7;
+  }
+  
+  .table {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+  }
+  
+  .label, .value {
+    flex-basis: 50%;
+  }
+  
+  .value input {
+    width: 100%;
+  }
+  
+  .save-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  

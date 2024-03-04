@@ -30,6 +30,25 @@ const DoctorView = ({ patients }) => {
     setEditedDetails(prev => ({ ...prev, [field]: value }));
   };
 
+  const handleSave = async (editedSummary) => {
+    const url = 'YOUR_API_ENDPOINT'; // Replace with your actual endpoint
+    try {
+      const response = await fetch(url, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(editedSummary),
+      });
+      if (!response.ok) throw new Error('Network response was not ok');
+      // Handle response data as needed
+      console.log('Save successful', await response.json());
+    } catch (error) {
+      console.error('Failed to save changes:', error);
+    }
+  };
+  
+
   const onSaveChanges = (editedDetails) => {
     if (selectedPatient) {
       axios.put(`${API_BASE_URL}/patients/${selectedPatient.id}`, editedDetails)
@@ -56,11 +75,6 @@ const DoctorView = ({ patients }) => {
     setEditMode(!editMode);
   };
 
-  const handleSave = () => {
-    onSaveChanges(editedDetails);
-    setEditMode(false);
-  };
-
   const onSelectPatient = (patient) => {
     setSelectedPatient(patient);
   };
@@ -79,9 +93,9 @@ const DoctorView = ({ patients }) => {
             {patientDetails ? (
               <>
                 <PatientInfo patientDetails={patientDetails['General Information']} />
-                <TreatmentSummary summaryDetails={patientDetails['Treatment Summary']} editMode={editMode} onEditChange={handleEditChange} />
+                <TreatmentSummary summaryDetails={patientDetails} patient_text = {patientDetails['Relevant_patient_text']} editMode={editMode} onEditChange={handleEditChange} />
                 <FollowUpCarePlan
-                  followUpCarePlan={patientDetails['Follow Up Care Plan']}
+                  followUpCarePlan={patientDetails}
                   editMode={editMode}
                   onEditChange={handleEditChange}
                 />
