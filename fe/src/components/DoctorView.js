@@ -43,7 +43,7 @@ const DoctorView = ({ patients }) => {
 
   const onGeneratePlan = () => {
     if (selectedPatient) {
-      axios.post(`${API_BASE_URL}/patients/${selectedPatient.id}/generate_plan`)
+      axios.post(`${API_BASE_URL}/generate/${selectedPatient.id}`)
         .then(response => {
           setPatientDetails(response.data); // Assuming the API returns the updated patient details
           alert('Plan generated successfully');

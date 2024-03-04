@@ -97,9 +97,8 @@ def login():
     else:
         return jsonify({'message': 'Invalid credentials'}), 401
     
-@app.route('/api/generate', methods=['POST'])
-def generate_patient_data():
-    patient_id = request.json['patientID']
+@app.route('/api/generate/<patient_id>', methods=['POST'])
+def generate_patient_data(patient_id):
     patient_data = request.json['text']
     general_dict, treatment_sum_dict, follow_up_care_plan, follow_up_care_plan_rect, removed_care_recommendations, time_dict = create_care_plan(patient_data)
     #Combine all the above to create a single json, including patient id
