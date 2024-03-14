@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Card, CardContent, Dialog, DialogActions, DialogContent, DialogTitle, Typography, Grid } from '@mui/material';
 import EditableField from './EditableField'; // Assuming this is the path to your EditableField component
 
-const FollowUpCarePlan = ({ followUpCarePlan, editMode, onEditChange }) => {
+const FollowUpCarePlan2 = ({ followUpCarePlan, editMode, onEditChange }) => {
     const [openDialog, setOpenDialog] = useState(false);
     const [dialogContent, setDialogContent] = useState([]);
 

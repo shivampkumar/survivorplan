@@ -20,8 +20,6 @@ from utils.rag_utils import  create_query_engine,dict_to_text_file
 from utils.rag_utils import treatment_summary_query_engine
 from care_plan_gen.pdf_gen import SurvGPT_PDF_2stage
 
-
-
 app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
@@ -108,7 +106,6 @@ def generate_patient_data(patient_id):
         "General Information": general_dict,
         "Treatment Summary": treatment_sum_dict,
         "Follow Up Care Plan": follow_up_care_plan_rect,
-        "Helpful Resources": removed_care_recommendations
     }
 
     patient_records.insert_one(patient_data_json)
@@ -188,8 +185,6 @@ def create_care_plan(patient_data,llm_type = "gpt-35-turbo-16k",embedding_type =
             api_version=api_version,
             temperature=temperature,
             )
-
-
 
     # #Initialize rectifier
     print(f'Initializing LLM for rectification: {model}, temperature: {rect_temp}')
