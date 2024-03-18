@@ -33,7 +33,6 @@ function App() {
     try {
       const response = await axios.post(`${API_BASE_URL}/login`, { email, password });
       console.log(response.data);
-      alert('Login successful');
       setUserRole(response.data.role); // Set user role from response
   
       // If the role is 'patient', fetch and set patient details
@@ -52,6 +51,7 @@ function App() {
   
   // Function to fetch and set patient details
   const fetchAndSetPatientDetails = (patientID) => {
+    console.log("Fetching patient details for patient ID:", patientID)
     axios.get(`${API_BASE_URL}/patients/${patientID}`)
       .then((response) => {
         setPatientDetails(response.data);

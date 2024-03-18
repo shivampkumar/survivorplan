@@ -91,7 +91,7 @@ def login():
     user = users.find_one({'email': user_data['email']})
 
     if user and bcrypt.check_password_hash(user['password'], user_data['password']):
-        return jsonify({'message': 'Login successful', 'role': user['role']}), 200
+        return jsonify({'message': 'Login successful', 'role': user['role'], 'patientID' : 'p20952'}), 200
     else:
         return jsonify({'message': 'Invalid credentials'}), 401
     
