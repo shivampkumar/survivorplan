@@ -62,10 +62,12 @@ const ReferencesDialog = ({ open, onClose, references }) => {
   };
 
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+    <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
       <DialogTitle>References</DialogTitle>
-      <DialogContent dividers>
-        {currentPdf && renderPdfHighlighter(currentPdf)}
+      <DialogContent dividers style={{ height: "80vh" }}>
+        <div style={{ height: "100%" }}>
+          {currentPdf && renderPdfHighlighter(currentPdf)}
+        </div>
       </DialogContent>
       <DialogActions>
         <Button onClick={onClose}>Close</Button>
