@@ -36,6 +36,16 @@ function Register({ onRegister }) {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <TextField
+            label="Date of Birth"
+            type="date"
+            variant="outlined"
+            fullWidth
+            margin="normal"
+            InputLabelProps={{
+              shrink: true,
+            }}
+          />
           <Typography component="legend" style={{ marginTop: 20 }}>Role</Typography>
           <RadioGroup row value={role} onChange={(e) => setRole(e.target.value)} style={{ justifyContent: 'center' }}>
             <FormControlLabel value="patient" control={<Radio />} label="Patient" />

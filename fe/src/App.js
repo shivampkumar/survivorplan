@@ -6,17 +6,36 @@ import PatientView from './components/PatientView';
 import axios from 'axios';
 import Header from './components/Header';
 import { Button } from '@mui/material';
+import { ThemeProvider } from '@mui/material/styles';
+import { createTheme } from '@mui/material/styles';
+import { Tabs, Tab, Box, Typography } from '@mui/material';
+
+const theme = createTheme({
+  palette: {
+    navyBlue: {
+      main: '#003366', // A common shade for navy blue
+      light: '#3E4E88', // Lighter shade of navy blue
+      dark: '#001D4A', // Darker shade of navy blue
+      contrastText: '#FFFFFF', // White color for contrasting text
+    },
+  },
+});
+
 
 function App() {
   const [isLoginView, setIsLoginView] = useState(true);
   const [userRole, setUserRole] = useState('');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [tabValue, setTabValue] = useState(0);
   const [patientDetails, setPatientDetails] = useState(null); // New state for patient details
   const [patients, setPatients] = useState([]); // State to store patient list
   const [loggedInPatient, setLoggedInPatient] = useState(null); // State to store logged-in patient details
 
   const API_BASE_URL = 'http://20.168.8.23:8080/api';
 
+  const handleTabChange = (event, newValue) => {
+    setTabValue(newValue);
+  };
   // Fetch patient details for the logged-in patient and set patient details state
 
   useEffect(() => {
@@ -34,21 +53,21 @@ function App() {
       const response = await axios.post(`${API_BASE_URL}/login`, { email, password });
       console.log(response.data);
       setUserRole(response.data.role); // Set user role from response
-  
+
       // If the role is 'patient', fetch and set patient details
       if (response.data.role === 'patient') {
         // Assuming the response includes patientID for patients
         const patientID = response.data.patientID;
         fetchAndSetPatientDetails(patientID);
       }
-  
+
       setIsLoggedIn(true);
     } catch (error) {
       console.error(error);
       alert('Login failed');
     }
   };
-  
+
   // Function to fetch and set patient details
   const fetchAndSetPatientDetails = (patientID) => {
     console.log("Fetching patient details for patient ID:", patientID)
@@ -80,19 +99,15 @@ function App() {
   const renderUserView = () => {
     if (!isLoggedIn) {
       return (
-        <>
-          {isLoginView ? (
-            <>
-              <Login onLogin={handleLogin} />
-              <Button onClick={() => setIsLoginView(false)}>Go to Register</Button>
-            </>
-          ) : (
-            <>
-              <Register onRegister={handleRegister} />
-              <Button onClick={() => setIsLoginView(true)}>Go to Login</Button>
-            </>
-          )}
-        </>
+        <Box display="flex" flexDirection="column" alignItems="center" marginTop={8}>
+          <Tabs value={tabValue} onChange={handleTabChange} centered>
+            <Tab label="Login" />
+            <Tab label="Register" />
+          </Tabs>
+          {tabValue === 0 && <Login onLogin={handleLogin} />}
+          {tabValue === 1 && <Register onRegister={handleRegister} />}
+          {/* Add a Link to navigate to the doctor's site */}
+        </Box>
       );
     } else {
       switch (userRole) {

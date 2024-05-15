@@ -1,57 +1,83 @@
 .card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    background-color: #fff;
-  }
-  
-  .treatment-summary {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .treatment-summary-title {
-    margin-bottom: 20px;
-    text-align: center;
-  }
-  
-  .section {
-    margin-bottom: 20px;
-  }
-  
-  .section-title {
-    margin-bottom: 10px;
-    padding: 10px;
-    background-color: #f7f7f7;
-  }
-  
-  .table {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .table-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 5px 0;
-  }
-  
-  .label, .value {
-    flex-basis: 50%;
-  }
-  
-  .value input {
-    width: 100%;
-  }
-  
-  .save-button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+.treatment-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.treatment-summary-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.section-title {
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f7f7f7;
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+}
+
+.table-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 0;
+  background-color: yellow; /* Default background color */
+  transition: background-color 0.3s;
+}
+
+.table-row.verified {
+  background-color: lightgreen; /* Background color when verified */
+}
+
+.label, .value {
+  flex-basis: 40%;
+}
+
+.value input {
+  width: 100%;
+}
+
+.info-button {
+  flex-basis: 5%;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  color: #007bff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.verification-radio {
+  flex-basis: 5%;
+  text-align: center;
+}
+
+.edit-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  align-self: flex-end;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}

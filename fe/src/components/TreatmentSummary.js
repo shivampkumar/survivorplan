@@ -1,15 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import PatientTextDialog from './PatientTextDialog';
 import './TreatmentSummary.css'; // Ensure this file is updated with styles as needed
 
-const TreatmentSummary = ({ summaryDetails, editMode, onEditChange }) => {
+const TreatmentSummary = ({ summaryDetails, patient_text, onEditChange }) => {
+  const [isEditing, setIsEditing] = useState(false);
   const [editedSummary, setEditedSummary] = useState(summaryDetails);
+  const [patientDialogOpen, setPatientDialogOpen] = useState(false);
+  const [verifiedRows, setVerifiedRows] = useState({});
+
+  const hardcodedKeys = {
+    "Treatment Summary": {
+      "Diagnosis": ["Cancer type", "Diagnosis Date", "Cancer stage"],
+      "Treatment Completed": ["Surgery", "Surgery Date(s) (year)", "Surgical Procedure/location/findings", "Radiation", "Body area treated", "End Date (year)", "Systemic Therapy (Chemotherapy, hormonal therapy, other)"],
+      "Names of Agents used in Completed Treatments": ["Agent 1", "Agent 2", "Agent 3"],
+      "Persistent symptoms or side effects at completion of treatment": ["Symptoms of side effects", "Symptom or side effect types"],
+      "Treatment Ongoing and Side Effects": ["Need for ongoing (adjuvant) treatment for cancer", "Ongoing treatment 1"]
+    }
+  };
 
   useEffect(() => {
     setEditedSummary(summaryDetails);
   }, [summaryDetails]);
 
   const handleChange = (path, value) => {
-    // Allows for deep setting of values in the editedSummary state
     const keys = path.split('.');
     const lastKey = keys.pop();
     const lastObj = keys.reduce((obj, key) => obj[key] = obj[key] || {}, editedSummary);
@@ -19,10 +32,28 @@ const TreatmentSummary = ({ summaryDetails, editMode, onEditChange }) => {
 
   const handleSave = () => {
     onEditChange(editedSummary);
+    setIsEditing(false);
+    // TODO: Save changes via API
+  };
+
+  const handleEditClick = () => {
+    setIsEditing(!isEditing);
+  };
+
+  const handleOpenPatientTextDialog = () => {
+    setPatientDialogOpen(true);
+  };
+
+  const handleVerificationChange = (path) => {
+    setVerifiedRows((prevVerifiedRows) => ({
+      ...prevVerifiedRows,
+      [path]: !prevVerifiedRows[path],
+    }));
+    // TODO: Update verification status via API
   };
 
   const renderEditableField = (path, value) => (
-    editMode ? (
+    isEditing ? (
       <input
         type="text"
         value={value}
@@ -33,41 +64,56 @@ const TreatmentSummary = ({ summaryDetails, editMode, onEditChange }) => {
     )
   );
 
-  // Dynamically generate rows for each section
-  const generateSectionRows = (section, sectionPath) => {
-    if (Array.isArray(section)) {
-      return section.map((item, index) => (
-        <React.Fragment key={index}>
-          {Object.entries(item).map(([key, value]) => (
-            <div className="table-row" key={key}>
-              <div className="label">{key}:</div>
-              <div className="value">{renderEditableField(`${sectionPath}.${index}.${key}`, value)}</div>
-            </div>
-          ))}
-        </React.Fragment>
-      ));
-    } else {
-      return Object.entries(section).map(([key, value], index) => {
-        const isObject = typeof value === 'object' && !Array.isArray(value) && value !== null;
-        return (
-          <div className="table-row" key={key}>
-            <div className="label">{key}:</div>
-            <div className="value">
-              {isObject ? renderSection(value, `${sectionPath}.${key}`) : renderEditableField(`${sectionPath}.${key}`, value)}
-            </div>
+  const renderInfoButton = () => (
+    <button onClick={handleOpenPatientTextDialog}>i</button>
+  );
+
+  const renderVerificationRadio = (path) => (
+    <input
+      type="radio"
+      checked={!!verifiedRows[path]}
+      onChange={() => handleVerificationChange(path)}
+    />
+  );
+
+  const generateSectionRows = (section, sectionPath, keys) => {
+    return keys.map((key) => {
+      if (!(key in section)) {
+        return null; // Skip missing keys
+      }
+
+      const value = section[key];
+      const isObject = typeof value === 'object' && !Array.isArray(value) && value !== null;
+      const rowClass = verifiedRows[`${sectionPath}.${key}`] ? 'table-row verified' : 'table-row';
+
+      return (
+        <div
+          className={rowClass}
+          key={`${sectionPath}.${key}`}
+        >
+          <div className="label">{key}:</div>
+          <div className="value">
+            {isObject ? renderSection(value, `${sectionPath}.${key}`, Object.keys(value)) : renderEditableField(`${sectionPath}.${key}`, value)}
           </div>
-        );
-      });
-    }
+          <div className="info-button">{renderInfoButton()}</div>
+          <div className="verification-radio">{renderVerificationRadio(`${sectionPath}.${key}`)}</div>
+          <PatientTextDialog
+            open={patientDialogOpen}
+            onClose={() => setPatientDialogOpen(false)}
+            patientText={patient_text}
+          />
+        </div>
+      );
+    }).filter(Boolean);
   };
 
-  const renderSection = (sectionData, path) => (
+  const renderSection = (sectionData, path, keys) => (
     <div className="section">
-      {Object.entries(sectionData).map(([sectionTitle, section], index) => (
+      {keys.map((sectionTitle, index) => (
         <React.Fragment key={index}>
           <h3 className="section-title">{sectionTitle}</h3>
           <div className="table">
-            {generateSectionRows(section, `${path}.${sectionTitle}`)}
+            {generateSectionRows(sectionData[sectionTitle], `${path}.${sectionTitle}`, hardcodedKeys["Treatment Summary"][sectionTitle] || Object.keys(sectionData[sectionTitle]))}
           </div>
         </React.Fragment>
       ))}
@@ -78,8 +124,12 @@ const TreatmentSummary = ({ summaryDetails, editMode, onEditChange }) => {
     <div className="card">
       <div className="treatment-summary">
         <h2 className="treatment-summary-title">Treatment Summary</h2>
-        {renderSection(editedSummary['Treatment Summary'], 'Treatment Summary')}
-        {editMode && <button className="save-button" onClick={handleSave}>Save</button>}
+        {renderSection(editedSummary['Treatment Summary'], 'Treatment Summary', Object.keys(hardcodedKeys["Treatment Summary"]))}
+        <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+          <button className="edit-button" onClick={handleEditClick}>
+            {isEditing ? 'Save' : 'Edit'}
+          </button>
+        </div>
       </div>
     </div>
   );

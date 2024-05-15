@@ -3,18 +3,23 @@ import PatientInfo from './PatientInfo';
 import TreatmentSummary from './TreatmentSummary';
 import FollowUpCarePlan from './FollowUpCarePlan';
 import PatientSidebar from './PatientSidebar'; // Import the sidebar
+import {Button, Box, Divider, Tab, Tabs } from '@mui/material';
+import DoctorHome from './DoctorHome';
 import axios from 'axios';
-
-import { Button, Box, Divider } from '@mui/material';
 
 const API_BASE_URL = 'http://20.168.8.23:8080/api';
 
 const DoctorView = ({ patients }) => {
+  const [selectedTab, setSelectedTab] = useState(0);
   const [editMode, setEditMode] = useState(false);
   const [editedDetails, setEditedDetails] = useState({});
   const [selectedPatient, setSelectedPatient] = useState(null); // Track selected patient
   const [patientDetails, setPatientDetails] = useState(null); // New state for patient details
 
+  const handleChangeTab = (event, newValue) => {
+    setSelectedTab(newValue);
+  };
+  
   useEffect(() => {
     if (selectedPatient) {
       console.log(selectedPatient);
@@ -81,38 +86,76 @@ const DoctorView = ({ patients }) => {
 
   // Example layout with sidebar and main content
   return (
-    <Box display="flex" width="100%">
-      {/* Sidebar for selecting patients */}
-      <PatientSidebar patients={patients} onSelectPatient={onSelectPatient} />
-      <Divider orientation="vertical" flexItem />
+    <Box sx={{ flexGrow: 1 }}>
+      {/* Header and Tabs Menu */}
+      <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+        <Tabs value={selectedTab} onChange={handleChangeTab} aria-label="doctor view tabs">
+          <Tab label="Home" />
+          <Tab label="Existing patient directory" />
+          <Tab label="Add new patients" />
+          <Tab label="Clinical Guideline" />
+        </Tabs>
+      </Box>
 
-      {/* Main content area for patient details */}
-      <Box flex={1} padding="20px">
-        {selectedPatient ? (
-          <>
-            {patientDetails ? (
+      {/* Content for each tab */}
+      {selectedTab === 0 && (
+        <Box p={3}>
+          <DoctorHome />
+        </Box>
+      )}
+
+      {selectedTab === 1 && (
+        <Box display="flex" width="100%">
+          {/* Sidebar for selecting patients */}
+          <PatientSidebar patients={patients} onSelectPatient={onSelectPatient} />
+          <Divider orientation="vertical" flexItem />
+
+          {/* Main content area for patient details */}
+          <Box flex={1} padding="20px">
+            {selectedPatient ? (
               <>
-                <PatientInfo patientDetails={patientDetails['General Information']} />
-                <TreatmentSummary summaryDetails={patientDetails} patient_text = {patientDetails['Relevant_patient_text']} editMode={editMode} onEditChange={handleEditChange} />
-                <FollowUpCarePlan
-                  followUpCarePlan={patientDetails}
-                  editMode={editMode}
-                  onEditChange={handleEditChange}
-                />
-                {editMode ? (
-                  <Button onClick={handleSave}>Save Changes</Button>
+                {patientDetails ? (
+                  <>
+                    <PatientInfo patientDetails={patientDetails['General Information']} />
+                    <TreatmentSummary
+                      summaryDetails={patientDetails}
+                      patient_text={patientDetails['Relevant_patient_text']}
+                      editMode={editMode}
+                      onEditChange={handleEditChange}
+                    />
+                    <FollowUpCarePlan
+                      followUpCarePlan={patientDetails}
+                      editMode={editMode}
+                      onEditChange={handleEditChange}
+                    />
+                    {editMode ? (
+                      <Button onClick={() => handleSave(editedDetails)}>Save Changes</Button>
+                    ) : (
+                      <Button onClick={toggleEditMode}>Edit</Button>
+                    )}
+                  </>
                 ) : (
-                  <Button onClick={toggleEditMode}>Edit</Button>
+                  <Button onClick={onGeneratePlan}>Generate Treatment Plan</Button>
                 )}
               </>
             ) : (
-              <Button onClick={onGeneratePlan}>Generate Treatment Plan</Button>
+              <div>Select a patient to view details</div>
             )}
-          </>
-        ) : (
-          <div>Select a patient to view details</div>
-        )}
-      </Box>
+          </Box>
+        </Box>
+      )}
+
+      {selectedTab === 2 && (
+        <Box p={3}>
+          {/* Content for the Add new patients tab */}
+        </Box>
+      )}
+
+      {selectedTab === 3 && (
+        <Box p={3}>
+          {/* Content for the Clinical Guideline tab */}
+        </Box>
+      )}
     </Box>
   );
 };
