@@ -40,7 +40,7 @@ function App() {
 
   useEffect(() => {
     if (isLoggedIn && userRole === 'doctor') {
-      axios.get(`${API_BASE_URL}/patients`)
+      axios.get(`${API_BASE_URL}/patientsFH`)
         .then(response => {
           setPatients(response.data); // Assuming API returns an array of patients
         })
@@ -74,6 +74,7 @@ function App() {
     axios.get(`${API_BASE_URL}/patients/${patientID}`)
       .then((response) => {
         setPatientDetails(response.data);
+        console.log("Fetched patient details:", response.data);
         setLoggedInPatient(response.data); // Store the logged-in patient's details
       })
       .catch((error) => {

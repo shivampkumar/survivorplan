@@ -1,0 +1,53 @@
+[
+    {
+        "resourceType": "Procedure",
+        "id": "procedure1",
+        "status": "completed",
+        "category": {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "108290001",
+                    "display": "Radiation therapy procedure"
+                }
+            ]
+        },
+        "code": {
+            "coding": [
+                {
+                    "system": "http://snomed.info/sct",
+                    "code": "367336001",
+                    "display": "Radiation therapy"
+                }
+            ],
+            "text": "Radiation Therapy"
+        },
+        "subject": {
+            "reference": "Patient/p13491"
+        },
+        "performedPeriod": {
+            "start": "2022-07-10",
+            "end": "2022-12-15"
+        },
+        "bodySite": [
+            {
+                "coding": [
+                    {
+                        "system": "http://snomed.info/sct",
+                        "code": "81745001",
+                        "display": "Entire left lung"
+                    }
+                ],
+                "text": "Left hemithorax including mediastinum"
+            }
+        ],
+        "performer": [
+            {
+                "actor": {
+                    "reference": "Practitioner/Dr.KarenLee"
+                }
+            }
+        ]
+    }
+    
+]

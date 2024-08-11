@@ -5,13 +5,15 @@ from pymongo import MongoClient
 from bson import ObjectId
 from urllib.parse import quote_plus
 import os
+from celery import Celery
+from celery_app import make_celery
 from dotenv import load_dotenv
 load_dotenv()
 import json
 import time
-from llama_index.embeddings import AzureOpenAIEmbedding
-from llama_index.llms import AzureOpenAI
-from llama_index import ServiceContext
+from llama_index.embeddings.azure_openai import AzureOpenAIEmbedding
+from llama_index.llms.azure_openai import AzureOpenAI
+from llama_index.core.service_context import ServiceContext
 from init.init_api import init_api
 from care_plan_gen.care_plan_gen import extract_json_text_from_response,get_care_recommendation_2stage_patient_query,get_relevant_patient_text,load_knowledge_base
 from care_plan_gen.rectifier import rectifier
@@ -19,10 +21,25 @@ from care_plan_gen.prompts import get_care_prompts,get_treatment_summarizer_prom
 from utils.rag_utils import  create_query_engine,dict_to_text_file
 from utils.rag_utils import treatment_summary_query_engine
 from care_plan_gen.pdf_gen import SurvGPT_PDF_2stage
+from aidbox.resource.patient import Patient
+from aidbox.resource.condition import Condition
+from aidbox.resource.procedure import Procedure
+from aidbox.resource.medicationstatement import MedicationStatement
+from aidbox.resource.observation import Observation
+from aidbox.resource.practitioner import Practitioner
+from aidbox.base import Reference
+from aidbox.base import Page, Count, Sort, Where
 
 app = Flask(__name__)
+print("Name",__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
+app.config.update(
+    CELERY_BROKER_URL='redis://localhost:6379/0',
+    CELERY_RESULT_BACKEND='redis://localhost:6379/0'
+)
+
+celery = make_celery(app)
 bcrypt = Bcrypt(app)
 
 username = os.environ.get('MONGO_USERNAME')
@@ -64,6 +81,7 @@ def register():
     return jsonify({'message': 'User registered successfully'}), 201
 
 @app.route('/api/patients', methods=['GET'])
+@cross_origin()
 def get_patients():
     patients = patient_records.find({}, {"patientID": 1, "General Information.Patient Name": 1})
 
@@ -75,13 +93,44 @@ def get_patients():
 
     return jsonify(patients_list)
 
-@app.route('/api/patients/<patientID>', methods=['GET'])
-def get_patient_details(patientID):
-    patient_details = patient_records.find_one({"patientID": patientID}, {"_id": 0})
-    if patient_details:
-        return jsonify(patient_details)
-    else:
-        return jsonify({"error": "Patient not found"}), 404
+@app.route('/api/patientsFH', methods=['GET'])
+@cross_origin()
+def get_patientsFH():
+    patients = Patient.get()
+    patients_list = []
+    for patient in patients:
+        pat = {}
+        pat['_id'] =  patient.id
+        pat['patientID'] = patient.id
+        if patient.name:
+            for name in patient.name:
+                if name.given and name.family:
+                    given_names = ' '.join(name.given)
+                    full_name = f"{given_names} {name.family}"
+                    pat['General Information.Patient Name'] = full_name
+                    pat['name'] = full_name
+                    pat['Patient Name'] = full_name
+                else:
+                    pat['General Information.Patient Name'] = "Unknown"
+                    pat['name'] = "Unknown"
+                    pat['Patient Name'] = "Unknown"
+        else:
+            pat['General Information.Patient Name'] = "Unknown"
+            pat['name'] = "Unknown"
+            pat['Patient Name'] = "Unknown"
+        
+        patients_list.append(pat)
+    print(patients_list)
+    return jsonify(patients_list)
+
+# @app.route('/api/patients/<patientID>', methods=['GET'])
+# @cross_origin()
+# def get_patient_details(patientID):
+#     patient_details = patient_records.find_one({"patientID": patientID}, {"_id": 0})
+#     if patient_details:
+#         return jsonify(patient_details)
+#     else:
+#         return jsonify({"error": "Patient not found"}), 404
 
 
 @app.route('/api/login', methods=['POST', 'OPTIONS'])
@@ -95,24 +144,122 @@ def login():
     else:
         return jsonify({'message': 'Invalid credentials'}), 401
     
-@app.route('/api/generate/<patient_id>', methods=['POST'])
-def generate_patient_data(patient_id):
-    patient_data = request.json['text']
-    general_dict, treatment_sum_dict, follow_up_care_plan, follow_up_care_plan_rect, removed_care_recommendations, time_dict = create_care_plan(patient_data)
-    #Combine all the above to create a single json, including patient id
+@celery.task(name="app.generate_patient_data_task")
+def generate_patient_data_task(patient_id):
+    patient_data = get_patient_data(patient_id)
+    general_dict, treatment_sum_dict, follow_up_care_plan, follow_up_care_plan_rect, removed_care_recommendations, time_dict = create_care_plan(str(patient_data))
 
     patient_data_json = {
         "patientID": patient_id,
-        "General Information": general_dict,
-        "Treatment Summary": treatment_sum_dict,
+        "General Information": general_dict['General Information'],
+        "Treatment Summary": treatment_sum_dict['Treatment Summary'],
         "Follow Up Care Plan": follow_up_care_plan_rect,
     }
 
-    patient_records.insert_one(patient_data_json)
-    return jsonify({'message': 'Patient data inserted successfully'}), 201
+    patient_records.update_one(
+        {"patientID": patient_id},
+        {"$set": patient_data_json, "$unset": {"task_id": ""}}
+    )
+    return {'message': 'Patient data inserted successfully'}
+
+@app.route('/api/patients/<patientID>', methods=['GET'])
+@cross_origin()
+def get_patient_details(patientID):
+    patient_details = patient_records.find_one({"patientID": patientID}, {"_id": 0})
+    print("Received patient details", patient_details)
+    if patient_details:
+        if "task_id" in patient_details:
+            task = generate_patient_data_task.AsyncResult(patient_details["task_id"])
+            if task.state in ["PENDING", "STARTED", "RETRY"]:
+                return jsonify({'task_id': task.id, 'status': task.state}), 202
+            elif task.state == "SUCCESS":
+                return jsonify(patient_details)
+            else:
+                # Task failed, remove task_id and proceed to create a new task
+                patient_records.update_one({"patientID": patientID}, {"$unset": {"task_id": ""}})
+                task = generate_patient_data_task.delay(patientID)
+                patient_records.update_one({"patientID": patientID}, {"$set": {"task_id": task.id}})
+                return jsonify({'task_id': task.id}), 202
+        else:
+            return jsonify(patient_details)
+    else:
+        # Patient details not found, create a new task
+        task = generate_patient_data_task.delay(patientID)
+        patient_records.insert_one({"patientID": patientID, "task_id": task.id})
+        return jsonify({'task_id': task.id}), 202
+
+@app.route('/api/status/<task_id>', methods=['GET'])
+@cross_origin()
+def task_status(task_id):
+    task = generate_patient_data_task.AsyncResult(task_id)
+    if task.state == 'PENDING':
+        response = {
+            'state': task.state,
+            'current': 0,
+            'total': 1,
+            'status': 'Pending...'
+        }
+    elif task.state != 'FAILURE':
+        response = {
+            'state': task.state,
+            'current': task.info.get('current', 0),
+            'total': task.info.get('total', 1),
+            'status': task.info.get('status', '')
+        }
+        if 'result' in task.info:
+            response['result'] = task.info['result']
+    else:
+        response = {
+            'state': task.state,
+            'current': 1,
+            'total': 1,
+            'status': str(task.info),  # this is the exception raised
+        }
+    return jsonify(response)
+
+def fetch_related_resources(patient_id):
+    related_resources = {}
+    #import ipdb; ipdb.set_trace()
+    # Fetch conditions
+    conditions = Condition.get(Where('subject', f"Patient/{patient_id}"))
+    related_resources['conditions'] = [condition.model_dump_json(exclude_unset=True) for condition in conditions]
+
+    # Fetch procedures
+    procedures = Procedure.get(Where('subject', f"Patient/{patient_id}"))
+    related_resources['procedures'] = [procedure.model_dump_json(exclude_unset=True) for procedure in procedures]
+
+    # Fetch medication statements
+    medication_statements = MedicationStatement.get(Where('subject', f"Patient/{patient_id}"))
+    related_resources['medication_statements'] = [medication_statement.model_dump_json(exclude_unset=True) for medication_statement in medication_statements]
+
+    # Fetch observations
+    observations = Observation.get(Where('subject', f"Patient/{patient_id}"))
+    related_resources['observations'] = [observation.model_dump_json(exclude_unset=True) for observation in observations]
+
+    return related_resources
+
+def fetch_practitioners():
+    practitioners = Practitioner.get()
+    return [practitioner.model_dump_json(exclude_unset=True) for practitioner in practitioners]
 
 
-def create_care_plan(patient_data,llm_type = "gpt-35-turbo-16k",embedding_type = 'text-embedding-ada-002'):
+def get_patient_data(patient_id):
+    #import ipdb; ipdb.set_trace()
+    patient = Patient.from_id(patient_id)
+    related_resources = fetch_related_resources(patient_id)
+    practitioners = fetch_practitioners()
+
+    combined_data = {
+        'patient': patient.model_dump_json(exclude_unset=True),
+        'related_resources': related_resources,
+        'practitioners': practitioners
+    }
+    print(combined_data)
+    return combined_data
+
+
+
+def create_care_plan(patient_data,llm_type = "gpt-35-turbo-16k",embedding_type = 'text-embedding-3-large'):
     '''
     Takes in patient data and generates the care plan
     Args:
@@ -134,6 +281,7 @@ def create_care_plan(patient_data,llm_type = "gpt-35-turbo-16k",embedding_type =
     '''
     ############################################
     # Azure API parameters
+    #import ipdb; ipdb.set_trace()
     api_key = os.getenv('AZURE_API_KEY')
     azure_endpoint = os.getenv('AZURE_ENDPOINT')
     api_version = os.getenv('AZURE_API_VERSION')
@@ -199,19 +347,18 @@ def create_care_plan(patient_data,llm_type = "gpt-35-turbo-16k",embedding_type =
 
     # Initialize the text embedder
 
-    if embedding_model == 'text-embedding-ada-002':
-        # To use text ada embedding
-        print(f'Initializing Embedding Model: {embedding_model}')
-        text_embedder = AzureOpenAIEmbedding(
-            model="text-embedding-ada-002",
-            deployment_name="text-embedding-ada-002",
-            api_key=api_key,
-            azure_endpoint=azure_endpoint,
-            api_version=api_version,
-        )
-    else:
-        from llama_index.embeddings import HuggingFaceEmbedding
-        text_embedder = HuggingFaceEmbedding(model_name="BAAI/bge-large-en-v1.5")
+    # To use text ada embedding
+    print(f'Initializing Embedding Model: {embedding_model}')
+    text_embedder = AzureOpenAIEmbedding(
+        model="text-embedding-ada-002",
+        deployment_name="text-embedding-ada-002",
+        api_key=api_key,
+        azure_endpoint=azure_endpoint,
+        api_version=api_version,
+    )
+    # else:
+    #     from llama_index.embeddings import HuggingFaceEmbedding
+    #     text_embedder = HuggingFaceEmbedding(model_name="BAAI/bge-large-en-v1.5")
     
     # Service Context for smaller LLM
     service_context_small = ServiceContext.from_defaults(
@@ -408,4 +555,4 @@ def create_care_plan(patient_data,llm_type = "gpt-35-turbo-16k",embedding_type =
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port= 8080)
+    app.run(host='0.0.0.0', port= 8080, debug=True)

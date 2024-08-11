@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PatientInfo from './PatientInfo';
 import TreatmentSummary from './TreatmentSummary';
 import FollowUpCarePlan from './FollowUpCarePlan';
 import PatientSidebar from './PatientSidebar'; // Import the sidebar
-import {Button, Box, Divider, Tab, Tabs } from '@mui/material';
+import { Box, Divider, Tab, Tabs } from '@mui/material';
 import DoctorHome from './DoctorHome';
 import axios from 'axios';
 
@@ -11,84 +11,76 @@ const API_BASE_URL = 'http://20.168.8.23:8080/api';
 
 const DoctorView = ({ patients }) => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [editMode, setEditMode] = useState(false);
-  const [editedDetails, setEditedDetails] = useState({});
   const [selectedPatient, setSelectedPatient] = useState(null); // Track selected patient
   const [patientDetails, setPatientDetails] = useState(null); // New state for patient details
+  const [taskId, setTaskId] = useState(null); // State to track task ID
+  const [taskStatus, setTaskStatus] = useState(null); // State to track task status
+  const pollingRef = useRef(null); // To store the polling interval
 
   const handleChangeTab = (event, newValue) => {
     setSelectedTab(newValue);
   };
-  
+
   useEffect(() => {
     if (selectedPatient) {
-      console.log(selectedPatient);
       axios.get(`${API_BASE_URL}/patients/${selectedPatient.patientID}`)
         .then(response => {
-          setPatientDetails(response.data); // Set patient details for the selected patient
+          if (response.status === 202) {
+            const taskId = response.data.task_id;
+            setTaskId(taskId);
+            pollTaskStatus(taskId);
+          } else {
+            setPatientDetails(response.data); // Set patient details for the selected patient
+          }
         })
         .catch(error => console.error("Failed to fetch patient details", error));
     }
   }, [selectedPatient]);
 
-  const handleEditChange = (field, value) => {
-    setEditedDetails(prev => ({ ...prev, [field]: value }));
-  };
+  const pollTaskStatus = (taskId) => {
+    const pollInterval = 2000; // Poll every 2 seconds
 
-  const handleSave = async (editedSummary) => {
-    const url = 'YOUR_API_ENDPOINT'; // Replace with your actual endpoint
-    try {
-      const response = await fetch(url, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(editedSummary),
-      });
-      if (!response.ok) throw new Error('Network response was not ok');
-      // Handle response data as needed
-      console.log('Save successful', await response.json());
-    } catch (error) {
-      console.error('Failed to save changes:', error);
-    }
-  };
-  
-
-  const onSaveChanges = (editedDetails) => {
-    if (selectedPatient) {
-      axios.put(`${API_BASE_URL}/patients/${selectedPatient.id}`, editedDetails)
-        .then(() => {
-          alert('Changes saved successfully');
-          // Optionally refresh patient details here
-        })
-        .catch(error => console.error("Failed to save changes", error));
-    }
-  };
-
-  const onGeneratePlan = () => {
-    if (selectedPatient) {
-      axios.post(`${API_BASE_URL}/generate/${selectedPatient.id}`)
+    const checkStatus = () => {
+      axios.get(`${API_BASE_URL}/status/${taskId}`)
         .then(response => {
-          setPatientDetails(response.data); // Assuming the API returns the updated patient details
-          alert('Plan generated successfully');
-        })
-        .catch(error => console.error("Failed to generate plan", error));
-    }
-  };
+          const taskState = response.data.state;
 
-  const toggleEditMode = () => {
-    setEditMode(!editMode);
+          if (taskState === 'SUCCESS') {
+            setPatientDetails(response.data.result); // Assuming the task result contains the updated patient details
+            alert('Plan generated successfully');
+            clearInterval(pollingRef.current); // Stop polling
+          } else if (taskState === 'FAILURE') {
+            alert('Failed to generate plan');
+            clearInterval(pollingRef.current); // Stop polling
+          } else {
+            setTaskStatus(taskState);
+          }
+        })
+        .catch(error => {
+          console.error("Failed to check task status", error);
+        });
+    };
+
+    // Start the first status check
+    if (pollingRef.current) {
+      clearInterval(pollingRef.current); // Clear any existing interval
+    }
+    pollingRef.current = setInterval(checkStatus, pollInterval);
   };
 
   const onSelectPatient = (patient) => {
     setSelectedPatient(patient);
+    setPatientDetails(null); // Reset patient details when a new patient is selected
+    setTaskId(null); // Reset task ID
+    setTaskStatus(null); // Reset task status
+    if (pollingRef.current) {
+      clearInterval(pollingRef.current); // Stop any ongoing polling
+    }
   };
 
-  // Example layout with sidebar and main content
   return (
     <Box sx={{ flexGrow: 1 }}>
-      {/* Header and Tabs Menu */}
-      <Box sx={{ borderBottom: 1, borderColor: 'divider'}}>
+      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={selectedTab} onChange={handleChangeTab} aria-label="doctor view tabs">
           <Tab label="Home" />
           <Tab label="Existing patient directory" />
@@ -97,7 +89,6 @@ const DoctorView = ({ patients }) => {
         </Tabs>
       </Box>
 
-      {/* Content for each tab */}
       {selectedTab === 0 && (
         <Box p={3}>
           <DoctorHome />
@@ -106,11 +97,9 @@ const DoctorView = ({ patients }) => {
 
       {selectedTab === 1 && (
         <Box display="flex" width="100%">
-          {/* Sidebar for selecting patients */}
           <PatientSidebar patients={patients} onSelectPatient={onSelectPatient} />
           <Divider orientation="vertical" flexItem />
 
-          {/* Main content area for patient details */}
           <Box flex={1} padding="20px">
             {selectedPatient ? (
               <>
@@ -120,22 +109,13 @@ const DoctorView = ({ patients }) => {
                     <TreatmentSummary
                       summaryDetails={patientDetails}
                       patient_text={patientDetails['Relevant_patient_text']}
-                      editMode={editMode}
-                      onEditChange={handleEditChange}
                     />
                     <FollowUpCarePlan
                       followUpCarePlan={patientDetails}
-                      editMode={editMode}
-                      onEditChange={handleEditChange}
                     />
-                    {editMode ? (
-                      <Button onClick={() => handleSave(editedDetails)}>Save Changes</Button>
-                    ) : (
-                      <Button onClick={toggleEditMode}>Edit</Button>
-                    )}
                   </>
                 ) : (
-                  <Button onClick={onGeneratePlan}>Generate Treatment Plan</Button>
+                  <div>Loading patient details...</div>
                 )}
               </>
             ) : (

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import PatientTextDialog from './PatientTextDialog';
 import './TreatmentSummary.css'; // Ensure this file is updated with styles as needed
 
-const TreatmentSummary = ({ summaryDetails, patient_text, onEditChange }) => {
+const TreatmentSummary = ({ summaryDetails, patient_text }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [editedSummary, setEditedSummary] = useState(summaryDetails);
   const [patientDialogOpen, setPatientDialogOpen] = useState(false);
@@ -28,12 +28,6 @@ const TreatmentSummary = ({ summaryDetails, patient_text, onEditChange }) => {
     const lastObj = keys.reduce((obj, key) => obj[key] = obj[key] || {}, editedSummary);
     lastObj[lastKey] = value;
     setEditedSummary({ ...editedSummary });
-  };
-
-  const handleSave = () => {
-    onEditChange(editedSummary);
-    setIsEditing(false);
-    // TODO: Save changes via API
   };
 
   const handleEditClick = () => {

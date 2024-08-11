@@ -1,7 +1,7 @@
-from llama_index import Document, ServiceContext, VectorStoreIndex
-from llama_index  import get_response_synthesizer
-from llama_index.retrievers import VectorIndexRetriever
-from llama_index.query_engine import RetrieverQueryEngine
+from llama_index.core import Document, ServiceContext, VectorStoreIndex
+from llama_index.core  import get_response_synthesizer
+from llama_index.core.retrievers import VectorIndexRetriever
+from llama_index.core.query_engine import RetrieverQueryEngine
 
 
 def create_vector_index(documents,service_context):

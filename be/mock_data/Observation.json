@@ -1,0 +1,126 @@
+[
+    {
+        "resourceType": "Observation",
+        "id": "observation1",
+        "status": "final",
+        "category": [
+            {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                        "code": "symptom",
+                        "display": "Symptom"
+                    }
+                ]
+            }
+        ],
+        "code": {
+            "coding": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "75325-1",
+                    "display": "Symptoms"
+                }
+            ],
+            "text": "Persistent symptoms or side effects at completion of treatment"
+        },
+        "subject": {
+            "reference": "Patient/p13491"
+        },
+        "effectiveDateTime": "2022-12-31",
+        "valueString": "Mild fatigue, intermittent nausea"
+    },
+    {
+        "resourceType": "Observation",
+        "id": "clinical-note1",
+        "status": "final",
+        "category": [
+            {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                        "code": "clinical-note",
+                        "display": "Clinical Note"
+                    }
+                ]
+            }
+        ],
+        "code": {
+            "coding": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "11506-3",
+                    "display": "Clinical note"
+                }
+            ],
+            "text": "Relevant clinical information"
+        },
+        "subject": {
+            "reference": "Patient/p13491"
+        },
+        "effectiveDateTime": "2022-12-31",
+        "valueString": "Diagnosis: || - Diagnosis Date: 07/10/2022 || Clinical Note: || Treatment Completed: || Treatment Ongoing: || General Information: || - Surgery: No (Not typically indicated for LS-SCLC at the time of initial diagnosis) || Additional Information: || - Patient Name: Michael Thompson || - Radiation Therapy: Yes || - Patient DOB: 02/14/1958 || Please note that all treatments and follow-up care are subject to change based on the patient's ongoing evaluation. The patient's wishes and quality of life considerations will continue to be at the forefront of any treatment decisions. || - Need for Ongoing (Adjuvant) Treatment: No (Patient will be monitored closely with imaging and follow-up appointments for any signs of recurrence). || Patient with LS-SCLC sp chemoradiation with cisplatin or etoposide || The patient has been informed about the importance of reporting any new symptoms immediately, such as neurological changes that might suggest brain metastases, a common site of disease spread in SCLC. Prophylactic cranial irradiation (PCI) was discussed as a potential treatment option given his limited-stage disease, but the patient has opted to defer this decision pending the next set of follow-up scans. || - Additional Treatments: Currently not indicated. The patient will continue to receive supportive care including pain management, nutritional support, and counseling. || - Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes || - Cancer Type/Location/Histology Subtype: Lung Cancer - Left Small Cell Lung Cancer (LS-SCLC) || - Persistent Symptoms or Side Effects at Completion of Treatment: Yes, mild fatigue, and intermittent nausea managed with medication. || - Stage: Limited Stage (LS-SCLC) || - Surgeon: Dr. Aaron Wallace || - Radiation Oncologist: Dr. Karen Lee || - Patient Email: michael.thompson58@email.com || Michael Thompson has been a model patient, adhering to his treatment regimen and keeping all of his appointments. He has a loving family who has been very involved in his care. Throughout treatment, Michael has experienced a reduction in his initial symptoms, which included a persistent cough and shortness of breath. His latest imaging studies show a good response to chemoradiation, with a significant decrease in the size of his left lung mass. As per our last multidisciplinary team meeting, we are optimistic about his current status but remain vigilant for any signs of disease progression. Michael will continue to have regular follow-up appointments with his medical oncologist, Dr. Gupta, and regular CT scans every three months for the next two years, then every six months thereafter. We have also referred him to a smoking cessation program to address his past history of tobacco use, which is a significant risk factor for SCLC. Mental health support is available through our oncology social worker, Emily Harris, as Michael has expressed feelings of anxiety about the future. || - Medical Oncologist: Dr. Rajiv Gupta || - Primary Care Provider: Dr. Susan O'Neil || - Other Providers: Nurse Practitioner Lisa Monroe, Oncology Social Worker Emily Harris || - Names of Agents Used: Cisplatin, Etoposide || - Body Area Treated (Radiation): Left hemithorax including mediastinum || - Radiation End Date: 12/15/2022 || - Patient Phone Number: (555) 623-8473 || - End dates (year) of the used agents: Cisplatin (12/2022), Etoposide (12/2022) ||"
+    },
+    {
+        "resourceType": "Observation",
+        "id": "observation2",
+        "status": "final",
+        "category": [
+            {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                        "code": "symptom",
+                        "display": "Symptom"
+                    }
+                ]
+            }
+        ],
+        "code": {
+            "coding": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "75325-1",
+                    "display": "Symptoms"
+                }
+            ],
+            "text": "Persistent symptoms or side effects at completion of treatment"
+        },
+        "subject": {
+            "reference": "Patient/p6269"
+        },
+        "effectiveDateTime": "2023-01-31",
+        "valueString": "Mild fatigue, shortness of breath"
+    },
+    {
+        "resourceType": "Observation",
+        "id": "clinical-note2",
+        "status": "final",
+        "category": [
+            {
+                "coding": [
+                    {
+                        "system": "http://terminology.hl7.org/CodeSystem/observation-category",
+                        "code": "clinical-note",
+                        "display": "Clinical Note"
+                    }
+                ]
+            }
+        ],
+        "code": {
+            "coding": [
+                {
+                    "system": "http://loinc.org",
+                    "code": "11506-3",
+                    "display": "Clinical note"
+                }
+            ],
+            "text": "Relevant clinical information"
+        },
+        "subject": {
+            "reference": "Patient/p6269"
+        },
+        "effectiveDateTime": "2023-01-31",
+        "valueString": "Diagnosis: || - Diagnosis Date: 01/15/2022 || Clinical Note: || Treatment Completed: || Treatment Ongoing: || - Surgery: No || General Information: || - Surgical Procedure/Location/Findings: N/A || Additional Information: || - Patient Name: Michael Thompson || - Surgeon: Dr. Lisa Kim, MD || - Stage: Stage IVC || - Need for Ongoing (Adjuvant) Treatment: Yes || - Surgery Date(s): N/A || - Radiation Therapy: No || - Primary Care Provider: Dr. Susan Clark, MD || - Systemic Therapy (Chemotherapy, hormonal therapy, other): Yes || Michael Thompson was diagnosed with advanced-stage IVC squamous NSCLC after presenting with persistent cough and unintentional weight loss. Imaging studies and a subsequent biopsy confirmed the diagnosis and revealed a PDL1 expression of 70%. Given the high PDL1 expression and the absence of actionable mutations, Michael was deemed an appropriate candidate for immunotherapy with pembrolizumab as the first-line treatment. He has tolerated the treatment well with manageable side effects and is currently under close surveillance with routine imaging to monitor for disease progression. He is a former smoker and has a family history of various cancers, which has been discussed with his medical oncologist regarding potential genetic counseling. His care team remains optimistic about the response to treatment and continues to support him through his journey with cancer. Michael is also involved in a lung cancer support group and has expressed interest in participating in clinical trials that his medical oncologist may recommend. || - Cancer Type/Location/Histology Subtype: Squamous Non-Small Cell Lung Cancer (NSCLC), located in the right lower lobe of the lung, squamous cell carcinoma || - Persistent Symptoms or Side Effects at Completion of Treatment: Yes, mild fatigue and shortness of breath || - Medical Oncologist: Dr. Omar Farooq, MD || - Patient Date of Birth (DOB): 03/14/1957 || - Patient Email: michael.thompson@email.com || - Radiation End Date: N/A || - Body Area Treated (Radiation): N/A || - Radiation Oncologist: Dr. Alan Grant, MD || - Names of Agents Used: Pembrolizumab || Patient with stage IVC squamous NSCLC, PDL1 70% on monotherapy pembrolizumab for 1 year || - Other Providers: Jane Doe, RN (Oncology Nurse Navigator) || - Patient Phone Number: (555) 987-6543 || - Additional Treatments: Pembrolizumab monotherapy is ongoing with a planned duration of at least one year from the start date. Possible side effects include immune-related adverse effects such as pneumonitis, colitis, hepatitis, endocrinopathies, and infusion reactions. || - End dates (year) of the used agents: Ongoing since 02/2022 ||"
+    }       
+]

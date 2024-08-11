@@ -1,6 +1,6 @@
 import json
-from llama_index import Document
-from llama_index import StorageContext, load_index_from_storage
+from llama_index.core import Document
+from llama_index.core import StorageContext, load_index_from_storage
 
 from utils.rag_utils import create_vector_index, create_query_engine
 from utils.rag_utils import patient_care_query_engine, create_task_context_dict

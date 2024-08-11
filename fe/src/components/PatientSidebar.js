@@ -3,6 +3,7 @@ import { Box, List, ListItem } from '@mui/material';
 
 const PatientSidebar = ({ patients, onSelectPatient }) => {
   // Function to get a random color
+  console.log("Sidebar patients: ", patients);
   const getRandomColor = () => {
     const colors = ['#00C853', '#2196F3', '#F44336']; // Green, Blue, Red
     return colors[Math.floor(Math.random() * colors.length)];
@@ -21,7 +22,7 @@ const PatientSidebar = ({ patients, onSelectPatient }) => {
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
               {/* Patient name */}
               <Box component="span" sx={{ mr: 1 }}>
-                {patient["General Information"]["Patient Name"]}
+                {patient["Patient Name"]}
               </Box>
               
               {/* Dot */}

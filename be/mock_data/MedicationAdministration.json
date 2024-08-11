@@ -1,0 +1,96 @@
+
+[
+    {
+        "resourceType": "MedicationAdministration",
+        "id": "medadmin1",
+        "status": "completed",
+        "medicationCodeableConcept": {
+            "coding": [
+                {
+                    "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                    "code": "2555",
+                    "display": "Cisplatin"
+                }
+            ]
+        },
+        "subject": {
+            "reference": "Patient/p13491"
+        },
+        "effectivePeriod": {
+            "start": "2022-07-10",
+            "end": "2022-12-31"
+        },
+        "performer": [
+            {
+                "actor": {
+                    "reference": "Practitioner/Dr.RajivGupta"
+                }
+            }
+        ],
+        "dosage": {
+            "text": "As per chemotherapy protocol"
+        }
+    },
+    {
+        "resourceType": "MedicationAdministration",
+        "id": "medadmin2",
+        "status": "completed",
+        "medicationCodeableConcept": {
+            "coding": [
+                {
+                    "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                    "code": "2556",
+                    "display": "Etoposide"
+                }
+            ]
+        },
+        "subject": {
+            "reference": "Patient/p13491"
+        },
+        "effectivePeriod": {
+            "start": "2022-07-10",
+            "end": "2022-12-31"
+        },
+        "performer": [
+            {
+                "actor": {
+                    "reference": "Practitioner/Dr.RajivGupta"
+                }
+            }
+        ],
+        "dosage": {
+            "text": "As per chemotherapy protocol"
+        }
+    },
+    {
+        "resourceType": "MedicationAdministration",
+        "id": "medadmin3",
+        "status": "in-progress",
+        "medicationCodeableConcept": {
+            "coding": [
+                {
+                    "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
+                    "code": "123456",
+                    "display": "Pembrolizumab"
+                }
+            ]
+        },
+        "subject": {
+            "reference": "Patient/p6269"
+        },
+        "effectivePeriod": {
+            "start": "2022-02-01",
+            "end": "2023-02-01"
+        },
+        "performer": [
+            {
+                "actor": {
+                    "reference": "Practitioner/Dr.OmarFarooq"
+                }
+            }
+        ],
+        "dosage": {
+            "text": "As per immunotherapy protocol"
+        }
+    }        
+]    

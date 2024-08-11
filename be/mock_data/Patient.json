@@ -1,0 +1,125 @@
+[
+    {
+        "resourceType": "Patient",
+        "id": "p13491",
+        "identifier": [
+            {
+                "system": "http://hospital.smarthealthit.org",
+                "value": "p13491"
+            }
+        ],
+        "name": [
+            {
+                "use": "official",
+                "family": "Thompson",
+                "given": [
+                    "Michael"
+                ]
+            }
+        ],
+        "telecom": [
+            {
+                "system": "phone",
+                "value": "(555) 623-8473",
+                "use": "home"
+            },
+            {
+                "system": "email",
+                "value": "michael.thompson58@email.com",
+                "use": "home"
+            }
+        ],
+        "gender": "male",
+        "birthDate": "1958-02-14",
+        "generalPractitioner": [
+            {
+                "reference": "Practitioner/Dr.SusanONeil"
+            }
+        ],
+        "careProvider": [
+            {
+                "reference": "Practitioner/Dr.SusanONeil"
+            }
+        ],
+        "contact": [
+            {
+                "name": {
+                    "text": "Nurse Practitioner Lisa Monroe"
+                },
+                "telecom": [],
+                "address": [],
+                "gender": "female",
+                "organization": {
+                    "reference": "Organization/OncologyDepartment"
+                }
+            },
+            {
+                "name": {
+                    "text": "Oncology Social Worker Emily Harris"
+                },
+                "telecom": [],
+                "address": [],
+                "gender": "female",
+                "organization": {
+                    "reference": "Organization/OncologyDepartment"
+                }
+            }
+        ]
+    },
+    {
+        "resourceType": "Patient",
+        "id": "p6269",
+        "identifier": [
+            {
+                "system": "http://hospital.smarthealthit.org",
+                "value": "p6269"
+            }
+        ],
+        "name": [
+            {
+                "use": "official",
+                "family": "Thompson",
+                "given": [
+                    "Michael"
+                ]
+            }
+        ],
+        "telecom": [
+            {
+                "system": "phone",
+                "value": "(555) 987-6543",
+                "use": "home"
+            },
+            {
+                "system": "email",
+                "value": "michael.thompson@email.com",
+                "use": "home"
+            }
+        ],
+        "gender": "male",
+        "birthDate": "1957-03-14",
+        "generalPractitioner": [
+            {
+                "reference": "Practitioner/Dr.SusanClark"
+            }
+        ],
+        "careProvider": [
+            {
+                "reference": "Practitioner/Dr.SusanClark"
+            }
+        ],
+        "contact": [
+            {
+                "name": {
+                    "text": "Jane Doe, RN (Oncology Nurse Navigator)"
+                },
+                "telecom": [],
+                "address": [],
+                "gender": "female",
+                "organization": {
+                    "reference": "Organization/OncologyDepartment"
+                }
+            }
+        ]
+    }  
+]

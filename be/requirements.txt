@@ -5,3 +5,7 @@ torchaudio==0.12.0
 cudatoolkit==11.6 
 fpdf2
 python-dotenv
+flask
+flask-cors
+flask-bcrypt
+pymongo

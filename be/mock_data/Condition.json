@@ -1,0 +1,113 @@
+[{
+    "resourceType": "Condition",
+    "id": "condition1",
+    "clinicalStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "active"
+            }
+        ]
+    },
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "confirmed"
+            }
+        ]
+    },
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                    "code": "encounter-diagnosis",
+                    "display": "Encounter Diagnosis"
+                }
+            ]
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "254637007",
+                "display": "Small cell carcinoma of lung"
+            }
+        ],
+        "text": "Left Small Cell Lung Cancer (LS-SCLC)"
+    },
+    "subject": {
+        "reference": "Patient/p13491"
+    },
+    "onsetDateTime": "2022-07-10",
+    "stage": {
+        "summary": {
+            "coding": [
+                {
+                    "system": "http://staging.org/cancer",
+                    "code": "limited",
+                    "display": "Limited Stage"
+                }
+            ]
+        }
+    }
+},
+{
+    "resourceType": "Condition",
+    "id": "condition2",
+    "clinicalStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+                "code": "active"
+            }
+        ]
+    },
+    "verificationStatus": {
+        "coding": [
+            {
+                "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+                "code": "confirmed"
+            }
+        ]
+    },
+    "category": [
+        {
+            "coding": [
+                {
+                    "system": "http://terminology.hl7.org/CodeSystem/condition-category",
+                    "code": "encounter-diagnosis",
+                    "display": "Encounter Diagnosis"
+                }
+            ]
+        }
+    ],
+    "code": {
+        "coding": [
+            {
+                "system": "http://snomed.info/sct",
+                "code": "254632001",
+                "display": "Squamous cell carcinoma of lung"
+            }
+        ],
+        "text": "Squamous Non-Small Cell Lung Cancer (NSCLC)"
+    },
+    "subject": {
+        "reference": "Patient/p6269"
+    },
+    "onsetDateTime": "2022-01-15",
+    "stage": {
+        "summary": {
+            "coding": [
+                {
+                    "system": "http://staging.org/cancer",
+                    "code": "IVC",
+                    "display": "Stage IVC"
+                }
+            ]
+        }
+    }
+}
+]
