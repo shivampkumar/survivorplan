@@ -1,76 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { Dialog, DialogActions, DialogContent, DialogTitle, Button } from '@mui/material';
-import { PdfHighlighter, Tip, Highlight, Popup, PdfLoader } from 'react-pdf-highlighter';
-
-// Adjust this base URL according to where your component is located relative to the resources folder
-const baseURL = '/resources/';
+import React from 'react';
+import { Dialog, DialogActions, DialogContent, DialogTitle, Button, Typography, Card, CardContent } from '@mui/material';
+import './ReferenceDialog.css';
+import { Worker, Viewer, SpecialZoomLevel } from '@react-pdf-viewer/core';
+import '@react-pdf-viewer/core/lib/styles/index.css';
 
 const ReferencesDialog = ({ open, onClose, references }) => {
-  const [currentPdf, setCurrentPdf] = useState(null);
-
-  useEffect(() => {
-    // Assuming the first reference is selected by default
-    if (references.length > 0) {
-      const firstRef = references[0];
-      const pdfUrl = `${baseURL}${firstRef.metadata.file_name}`;
-      setCurrentPdf({
-        url: pdfUrl,
-        highlights: [] // You would populate this with actual highlight data if available
-      });
-    }
-  }, [references]);
-
-  const addHighlight = (highlight) => {
-    // Logic to add a new highlight
-    console.log("Adding highlight:", highlight);
-  };
-
-  const renderPdfHighlighter = (pdfData) => {
-    if (!pdfData) return <div>Loading...</div>;
-
-    return (
-      <PdfLoader url={pdfData.url} beforeLoad={<div>Loading...</div>}>
-        {(pdfDocument) => (
-          <PdfHighlighter
-            pdfDocument={pdfDocument}
-            enableAreaSelection={(event) => event.altKey}
-            onSelectionFinished={(position, content, hideTipAndSelection, transformSelection) => (
-              <Tip
-                onOpen={transformSelection}
-                onConfirm={(comment) => {
-                  addHighlight({ content, position, comment });
-                  hideTipAndSelection();
-                }}
-              />
-            )}
-            highlightTransform={(highlight, index, setTip, hideTip, viewportToScaled, screenshot, isScrolledTo) => {
-              return (
-                <Popup
-                  popupContent={<div>Highlight Popup</div>}
-                  onMouseOver={(popupContent) => setTip(highlight, () => popupContent)}
-                  onMouseOut={hideTip}
-                  key={index}
-                  children={<Highlight isScrolledTo={isScrolledTo} position={highlight.position} />}
-                />
-              );
-            }}
-            highlights={pdfData.highlights}
-          />
-        )}
-      </PdfLoader>
-    );
-  };
-
   return (
-    <Dialog open={open} onClose={onClose} maxWidth="lg" fullWidth>
-      <DialogTitle>References</DialogTitle>
-      <DialogContent dividers style={{ height: "80vh" }}>
-        <div style={{ height: "100%" }}>
-          {currentPdf && renderPdfHighlighter(currentPdf)}
-        </div>
+    <Dialog open={open} onClose={onClose} maxWidth="md" fullWidth>
+      <DialogTitle className="dialog-title">References</DialogTitle>
+      <DialogContent dividers className="dialog-content">
+        {references.map((reference, index) => (
+          <Card key={index} className="reference-card">
+            <CardContent>
+              <Typography variant="h6" className="reference-title">File: {reference.metadata.file_name}</Typography>
+              <Typography variant="body1" className="reference-page">Page: {reference.metadata.page_label}</Typography>
+              <Typography variant="body2" className="reference-text" style={{ marginTop: '10px' }}>
+                {reference.text}
+              </Typography>
+              {/* Uncomment to render PDFs */}
+              {/* {renderPDF(`/resources/${reference.metadata.file_name}`)} */}
+            </CardContent>
+          </Card>
+        ))}
       </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose}>Close</Button>
+      <DialogActions className="dialog-actions">
+        <Button onClick={onClose} className="close-button">Close</Button>
       </DialogActions>
     </Dialog>
   );

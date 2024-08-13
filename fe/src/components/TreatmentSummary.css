@@ -1,10 +1,12 @@
 .card {
-  border: 1px solid #ccc;
+  border: 1px solid #282828;
   border-radius: 8px;
   padding: 20px;
-  margin: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  background-color: #fff;
+  margin: 20px 0; /* Ensure consistency in margins */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #1E1E1E !important; /* Ensure the card background is dark */
+  color: #FFFFFF;
+  width: 100%; /* Ensure consistent width */
 }
 
 .treatment-summary {
@@ -15,6 +17,7 @@
 .treatment-summary-title {
   margin-bottom: 20px;
   text-align: center;
+  color: #FFC107;
 }
 
 .section {
@@ -24,7 +27,8 @@
 .section-title {
   margin-bottom: 10px;
   padding: 10px;
-  background-color: #f7f7f7;
+  background-color: #282828;
+  color: #FFFFFF;
 }
 
 .table {
@@ -36,21 +40,33 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0;
-  background-color: yellow; /* Default background color */
+  padding: 10px; /* Added padding for better spacing */
+  background-color: #2C2C2C;
   transition: background-color 0.3s;
 }
 
+.table-row:nth-child(even) {
+  background-color: #333333; /* Alternate row color */
+}
+
 .table-row.verified {
-  background-color: lightgreen; /* Background color when verified */
+  background-color: #004d40; /* Dark teal for verified rows */
+}
+
+.table-row.unverified {
+  background-color: #800000; /* Dark red for unverified rows */
 }
 
 .label, .value {
   flex-basis: 40%;
+  color: #FFFFFF; /* Ensure text is visible */
 }
 
 .value input {
   width: 100%;
+  color: #FFFFFF;
+  background-color: #1E1E1E;
+  border: 1px solid #FFFFFF;
 }
 
 .info-button {
@@ -58,7 +74,7 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
-  color: #007bff;
+  color: #007BFF;
   font-size: 16px;
   text-align: center;
 }
@@ -70,8 +86,8 @@
 
 .edit-button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
+  background-color: #007BFF;
+  color: #FFFFFF;
   border: none;
   border-radius: 5px;
   cursor: pointer;

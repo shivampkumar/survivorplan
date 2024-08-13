@@ -1,0 +1,12 @@
+.MuiTableContainer-root {
+  background-color: #1E1E1E; /* Dark background */
+  color: #FFFFFF; /* White text */
+  width: 100%; /* Consistent width */
+  padding: 0;
+}
+
+.MuiPaper-root {
+  background-color: #1E1E1E; /* Dark background */
+  color: #FFFFFF; /* White text */
+  padding: 0;
+}

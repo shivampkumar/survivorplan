@@ -1,0 +1,56 @@
+/* General Dialog Styling */
+.MuiDialog-container {
+    background-color: #1E1E1E; /* Dark background */
+}
+
+.MuiDialogContent-root {
+    background-color: #333333; /* Slightly lighter dark background */
+    color: #ffffff; /* White text */
+}
+
+/* Title Styling */
+.dialog-title {
+    background-color: #1E1E1E; /* Dark background */
+    color: #ffffff; /* White text */
+    border-bottom: 1px solid #444444; /* Subtle border */
+}
+
+/* Content Styling */
+.dialog-content {
+    background-color: #333333; /* Dark background */
+    color: #ffffff; /* White text */
+}
+
+/* Card Styling for each reference */
+.reference-card {
+    background-color: #282828; /* Dark card background */
+    color: #ffffff; /* White text */
+    border: 1px solid #444444; /* Dark border */
+    border-radius: 8px; /* Slightly rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+    margin-bottom: 20px; /* Space between cards */
+}
+
+.reference-title {
+    color: #FFC107; /* Consistent yellow accent */
+}
+
+.reference-page, .reference-text {
+    color: #ffffff; /* Ensure text is visible */
+}
+
+/* Dialog Actions Styling */
+.dialog-actions {
+    background-color: #1E1E1E; /* Dark background */
+    border-top: 1px solid #444444; /* Subtle border */
+}
+
+/* Button Styling */
+.close-button {
+    background-color: #007BFF; /* Blue background */
+    color: #ffffff; /* White text */
+}
+
+.close-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

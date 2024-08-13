@@ -1,31 +1,33 @@
 import React from 'react';
-import { Box, List, ListItem } from '@mui/material';
+import { Box, List, ListItem, Typography } from '@mui/material';
 
 const PatientSidebar = ({ patients, onSelectPatient }) => {
-  // Function to get a random color
-  console.log("Sidebar patients: ", patients);
   const getRandomColor = () => {
-    const colors = ['#00C853', '#2196F3', '#F44336']; // Green, Blue, Red
+    const colors = ['#00C853', '#2196F3', '#F44336'];
     return colors[Math.floor(Math.random() * colors.length)];
   };
 
   return (
-    <div style={{ width: '250px', borderRight: '1px solid #ccc' }}>
+    <div style={{ width: '250px', borderRight: '1px solid #282828', backgroundColor: '#1E1E1E', color: '#FFFFFF' }}>
       <List>
         {patients.map((patient) => (
-          <ListItem 
-            button 
-            key={patient.patientID} 
-            onClick={() => onSelectPatient(patient)} 
-            sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}
+          <ListItem
+            button
+            key={patient.patientID}
+            onClick={() => onSelectPatient(patient)}
+            sx={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              '&:hover': {
+                backgroundColor: '#282828',
+              }
+            }}
           >
             <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center' }}>
-              {/* Patient name */}
-              <Box component="span" sx={{ mr: 1 }}>
+              <Typography variant="body1" component="span" sx={{ mr: 1, color: '#FFFFFF' }}>
                 {patient["Patient Name"]}
-              </Box>
-              
-              {/* Dot */}
+              </Typography>
               <Box
                 component="span"
                 sx={{

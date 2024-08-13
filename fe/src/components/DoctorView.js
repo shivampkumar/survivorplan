@@ -2,20 +2,21 @@ import React, { useState, useEffect, useRef } from 'react';
 import PatientInfo from './PatientInfo';
 import TreatmentSummary from './TreatmentSummary';
 import FollowUpCarePlan from './FollowUpCarePlan';
-import PatientSidebar from './PatientSidebar'; // Import the sidebar
-import { Box, Divider, Tab, Tabs } from '@mui/material';
+import PatientSidebar from './PatientSidebar';
+import { Box, Divider, Tab, Tabs, Typography } from '@mui/material';
 import DoctorHome from './DoctorHome';
 import axios from 'axios';
+import './LoadingAnimation.css'; // Import the CSS for the loading animation
 
 const API_BASE_URL = 'http://20.168.8.23:8080/api';
 
 const DoctorView = ({ patients }) => {
   const [selectedTab, setSelectedTab] = useState(0);
-  const [selectedPatient, setSelectedPatient] = useState(null); // Track selected patient
-  const [patientDetails, setPatientDetails] = useState(null); // New state for patient details
-  const [taskId, setTaskId] = useState(null); // State to track task ID
-  const [taskStatus, setTaskStatus] = useState(null); // State to track task status
-  const pollingRef = useRef(null); // To store the polling interval
+  const [selectedPatient, setSelectedPatient] = useState(null);
+  const [patientDetails, setPatientDetails] = useState(null);
+  const [taskId, setTaskId] = useState(null);
+  const [taskStatus, setTaskStatus] = useState(null);
+  const pollingRef = useRef(null);
 
   const handleChangeTab = (event, newValue) => {
     setSelectedTab(newValue);
@@ -30,7 +31,7 @@ const DoctorView = ({ patients }) => {
             setTaskId(taskId);
             pollTaskStatus(taskId);
           } else {
-            setPatientDetails(response.data); // Set patient details for the selected patient
+            setPatientDetails(response.data);
           }
         })
         .catch(error => console.error("Failed to fetch patient details", error));
@@ -38,7 +39,7 @@ const DoctorView = ({ patients }) => {
   }, [selectedPatient]);
 
   const pollTaskStatus = (taskId) => {
-    const pollInterval = 2000; // Poll every 2 seconds
+    const pollInterval = 2000;
 
     const checkStatus = () => {
       axios.get(`${API_BASE_URL}/status/${taskId}`)
@@ -46,12 +47,12 @@ const DoctorView = ({ patients }) => {
           const taskState = response.data.state;
 
           if (taskState === 'SUCCESS') {
-            setPatientDetails(response.data.result); // Assuming the task result contains the updated patient details
+            setPatientDetails(response.data.result);
             alert('Plan generated successfully');
-            clearInterval(pollingRef.current); // Stop polling
+            clearInterval(pollingRef.current);
           } else if (taskState === 'FAILURE') {
             alert('Failed to generate plan');
-            clearInterval(pollingRef.current); // Stop polling
+            clearInterval(pollingRef.current);
           } else {
             setTaskStatus(taskState);
           }
@@ -61,27 +62,26 @@ const DoctorView = ({ patients }) => {
         });
     };
 
-    // Start the first status check
     if (pollingRef.current) {
-      clearInterval(pollingRef.current); // Clear any existing interval
+      clearInterval(pollingRef.current);
     }
     pollingRef.current = setInterval(checkStatus, pollInterval);
   };
 
   const onSelectPatient = (patient) => {
     setSelectedPatient(patient);
-    setPatientDetails(null); // Reset patient details when a new patient is selected
-    setTaskId(null); // Reset task ID
-    setTaskStatus(null); // Reset task status
+    setPatientDetails(null);
+    setTaskId(null);
+    setTaskStatus(null);
     if (pollingRef.current) {
-      clearInterval(pollingRef.current); // Stop any ongoing polling
+      clearInterval(pollingRef.current);
     }
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Tabs value={selectedTab} onChange={handleChangeTab} aria-label="doctor view tabs">
+    <Box sx={{ flexGrow: 1, backgroundColor: '#1E1E1E', color: '#FFFFFF', minHeight: '100vh' }}>
+      <Box sx={{ borderBottom: 1, borderColor: '#282828' }}>
+        <Tabs value={selectedTab} onChange={handleChangeTab} aria-label="doctor view tabs" textColor="inherit">
           <Tab label="Home" />
           <Tab label="Existing patient directory" />
           <Tab label="Add new patients" />
@@ -98,28 +98,39 @@ const DoctorView = ({ patients }) => {
       {selectedTab === 1 && (
         <Box display="flex" width="100%">
           <PatientSidebar patients={patients} onSelectPatient={onSelectPatient} />
-          <Divider orientation="vertical" flexItem />
-
-          <Box flex={1} padding="20px">
+          <Divider orientation="vertical" flexItem sx={{ backgroundColor: '#282828' }} />
+          <Box flex={1} padding="20px" backgroundColor="#282828">
             {selectedPatient ? (
               <>
                 {patientDetails ? (
                   <>
-                    <PatientInfo patientDetails={patientDetails['General Information']} />
-                    <TreatmentSummary
-                      summaryDetails={patientDetails}
-                      patient_text={patientDetails['Relevant_patient_text']}
-                    />
-                    <FollowUpCarePlan
-                      followUpCarePlan={patientDetails}
-                    />
+                    <Box mb={3}>
+                      <PatientInfo patientDetails={patientDetails['General Information']} />
+                    </Box>
+                    <Box mb={3}>
+                      <TreatmentSummary
+                        summaryDetails={patientDetails}
+                        patient_text={patientDetails['Relevant_patient_text']}
+                      />
+                    </Box>
+                    <Box mb={3}>
+                      <FollowUpCarePlan followUpCarePlan={patientDetails} />
+                    </Box>
                   </>
                 ) : (
-                  <div>Loading patient details...</div>
+                  <Box className="loading-container" sx={{ textAlign: 'center', mt: 5 }}>
+                    <Typography variant="h6" className="loading-text">
+                      Loading patient details
+                      <span className="loading-dots">...</span>
+                    </Typography>
+                    <Typography variant="body2" className="loading-text-secondary">
+                      Please wait while we retrieve the information.
+                    </Typography>
+                  </Box>
                 )}
               </>
             ) : (
-              <div>Select a patient to view details</div>
+              <Typography>Select a patient to view details</Typography>
             )}
           </Box>
         </Box>

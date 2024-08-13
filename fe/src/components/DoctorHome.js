@@ -1,8 +1,8 @@
 import React from 'react';
+import './DoctorHome.css';
 import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, Button } from '@mui/material';
 
 const DoctorHome = () => {
-    // Dummy data for table rows
     const upcomingAppointments = [
         { patientName: 'Maria Sanchez', appointmentType: 'Chest Imaging', date: '2024-04-25' },
         { patientName: 'Michael Thompson', appointmentType: 'Blood Test', date: '2024-04-27' },
@@ -17,54 +17,57 @@ const DoctorHome = () => {
 
     const tableCellStyle = {
         fontWeight: 'bold',
-        color: '#fff',
-        backgroundColor: '#3d34eb' // Dark blue shade
+        color: '#FFC107', // Consistent yellow text for headings
+        backgroundColor: '#282828', // Dark background for table headings
+        border: '1px solid #444', // Border for table cells
     };
 
     const listItemStyle = {
-        backgroundColor: '#e3f2fd', // Lighter shade of blue
+        backgroundColor: '#333333', // Darker shade of grey for list items
         padding: '8px',
-        margin: '4px 0', // Add some margin between items
-        borderRadius: '4px', // Optional: if you want rounded corners
-        // edit font color
-        color: '#000',
+        margin: '4px 0',
+        borderRadius: '4px',
+        color: '#FFFFFF', // White text
     };
 
     const tableRowStyle = {
         '&:nth-of-type(odd)': {
-            backgroundColor: '#000080', // Light blue shade for odd rows
+            backgroundColor: '#2C2C2C', // Dark grey shade for odd rows
         },
         '&:nth-of-type(even)': {
-            backgroundColor: '#000080', // Even lighter blue shade for even rows
+            backgroundColor: '#333333', // Even darker shade for even rows
         },
-        color: '#fff',
+        color: '#FFFFFF', // White text
+        border: '1px solid #444', // Border for table rows
     };
 
     const notifyButtonStyle = {
         backgroundColor: '#d32f2f', // Red shade for Notify button
-        color: '#fff',
+        color: '#FFFFFF', // White text
         '&:hover': {
             backgroundColor: '#c62828',
         },
     };
 
     const paperStyle = {
-        backgroundColor: '#000080', // Darker blue shade for Paper component
-        color: '#fff',
+        backgroundColor: '#2B2B2B', // Slightly lighter dark background for Paper component
+        color: '#FFFFFF', // White text
         padding: '16px',
         marginTop: '8px',
+        border: '1px solid #444', // Border for paper
+        borderRadius: '8px', // Rounded corners for paper
+        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)', // Subtle shadow for depth
     };
 
-    // Render table rows
     const renderAppointmentRows = (appointments, includeNotify = false) => (
         appointments.map((appointment, index) => (
-            <TableRow key={index}>
-                <TableCell sx={tableRowStyle}>{appointment.patientName}</TableCell>
-                <TableCell sx={tableRowStyle}>{appointment.appointmentType}</TableCell>
-                <TableCell sx={tableRowStyle}>{appointment.date}</TableCell>
+            <TableRow key={index} sx={tableRowStyle}>
+                <TableCell>{appointment.patientName}</TableCell>
+                <TableCell>{appointment.appointmentType}</TableCell>
+                <TableCell>{appointment.date}</TableCell>
                 {includeNotify && (
-                    <TableCell sx={tableRowStyle}>
-                        {appointment.notified ? 'Notified' : <Button sx={2} variant="outlined" color="primary">Notify</Button>}
+                    <TableCell>
+                        {appointment.notified ? 'Notified' : <Button sx={notifyButtonStyle} variant="outlined">Notify</Button>}
                     </TableCell>
                 )}
             </TableRow>
@@ -72,13 +75,13 @@ const DoctorHome = () => {
     );
 
     return (
-        <Box sx={{ backgroundColor: 'aliceblue', padding: 2 }} display="flex" flexDirection="column" justifyContent="center" alignItems="center" p={2}>
-            <Box display="flex" justifyContent="center" alignItems="flex-start" width="100%">
+        <Box sx={{ backgroundColor: '#1A1A1A', padding: 2, minHeight: '100vh', border: '1px solid #444', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} display="flex" flexDirection="column" alignItems="center">
+            <Box display="flex" justifyContent="center" alignItems="flex-start" width="100%" sx={{ backgroundColor: '#1E1E1E', padding: 2, borderRadius: '8px' }}>
                 <Box width="50%" p={1}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom sx={{ color: '#FFC107' }}>
                         Upcoming Appointments Summary
                     </Typography>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} sx={paperStyle}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -95,15 +98,15 @@ const DoctorHome = () => {
                 </Box>
 
                 <Box width="50%" p={1}>
-                    <Typography variant="h6" gutterBottom>
+                    <Typography variant="h6" gutterBottom sx={{ color: '#FFC107' }}>
                         Missed Appointments Summary
                     </Typography>
-                    <TableContainer component={Paper}>
+                    <TableContainer component={Paper} sx={paperStyle}>
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell sx={tableCellStyle} l>Patient Name</TableCell>
-                                    <TableCell sx={tableCellStyle}>Appointment type</TableCell>
+                                    <TableCell sx={tableCellStyle}>Patient Name</TableCell>
+                                    <TableCell sx={tableCellStyle}>Appointment Type</TableCell>
                                     <TableCell sx={tableCellStyle}>Date</TableCell>
                                     <TableCell sx={tableCellStyle}>Notified or Not</TableCell>
                                 </TableRow>
@@ -117,17 +120,17 @@ const DoctorHome = () => {
             </Box>
 
             <Box width="100%" p={1}>
-                <Typography variant="h6" gutterBottom>
+                <Typography variant="h6" gutterBottom sx={{ color: '#FFC107' }}>
                     SCP Summary
                 </Typography>
-                <Paper elevation={3} sx={{ ...paperStyle, width: '100%', padding: 2 }}>
+                <Paper elevation={3} sx={paperStyle}>
                     <Typography>Statistics show the following:</Typography>
                     <ul style={{ listStyle: 'none', padding: 0 }}>
                         <Box sx={listItemStyle}><li>Number of generated SCPs</li></Box>
                         <Box sx={listItemStyle}><li>Number of SCPs to be generated</li></Box>
-                        <Box sx={listItemStyle}><li>Number of the SCPs were confirmed or validated by clinicians.</li></Box>
+                        <Box sx={listItemStyle}><li>Number of SCPs were confirmed or validated by clinicians.</li></Box>
                         <Box sx={listItemStyle}><li>Number of patients without SCP</li></Box>
-                        <Box sx={listItemStyle}><li>Number of SCPs that needs validation</li></Box>
+                        <Box sx={listItemStyle}><li>Number of SCPs that need validation</li></Box>
                     </ul>
                 </Paper>
             </Box>

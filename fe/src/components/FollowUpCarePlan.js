@@ -97,7 +97,7 @@ const FollowUpCarePlan = ({ followUpCarePlan }) => {
   return (
     <div className="follow-up-care-plan-container">
       <Typography variant="h4" className="follow-up-care-plan-title">Follow-up Care Plan</Typography>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} backgroundColor="#282828">
         {Object.keys(followUpCarePlan).filter(key => ['Schedule of Clinical Visits'].includes(key)).map((sectionKey) => (
           <Grid item xs={12} key={sectionKey}>
             <Card>

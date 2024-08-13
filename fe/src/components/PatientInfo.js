@@ -10,11 +10,9 @@ const PatientInfo = ({ patientDetails }) => {
   const [isEditing, setIsEditing] = useState(false);
   const [details, setDetails] = useState(patientDetails);
 
-  // Define the keys and their display order
   const personalInfoKeys = ['Patient Name', 'Patient DOB', 'Patient Email', 'Patient Phone Number'];
   const providerKeys = ['Primary Care Provider', 'Surgeon', 'Radiation Oncologist', 'Medical Oncologist', 'Other Providers'];
 
-  // Function to return the appropriate icon for each key
   const IconByKey = (key) => {
     switch (key) {
       case 'Patient Phone Number':
@@ -31,7 +29,6 @@ const PatientInfo = ({ patientDetails }) => {
   const handleEditClick = () => {
     setIsEditing(!isEditing);
     if (isEditing) {
-      // TODO: Save changes via API
       console.log("Changes saved", details);
     }
   };
@@ -44,15 +41,15 @@ const PatientInfo = ({ patientDetails }) => {
   };
 
   return (
-    <Card variant="outlined" sx={{ marginBottom: '20px' }}>
+    <Card variant="outlined" sx={{ marginBottom: '20px', backgroundColor: '#282828', color: '#FFFFFF', width: '100%' }}>
       <CardContent>
-      <Typography variant="h5" gutterBottom align="center"><strong>General Information</strong></Typography>
+        <Typography variant="h5" gutterBottom align="center" sx={{ color: '#FFC107' }}><strong>General Information</strong></Typography>
         <Box sx={{ marginBottom: '16px' }}>
           <Typography variant="h6" gutterBottom>Personal Information</Typography>
           {personalInfoKeys.map((key) => (
             <Grid container alignItems="center" key={key} sx={{ marginBottom: '8px' }}>
               <Grid item sx={{ marginRight: '8px' }}>{IconByKey(key)}</Grid>
-              <Grid item>
+              <Grid item sx={{ flexGrow: 1 }}>
                 {isEditing ? (
                   <TextField
                     value={details[key]}
@@ -60,6 +57,8 @@ const PatientInfo = ({ patientDetails }) => {
                     label={key.replace('Patient ', '')}
                     variant="outlined"
                     size="small"
+                    fullWidth
+                    sx={{ input: { color: '#FFFFFF' } }}
                   />
                 ) : (
                   <Typography variant="body1"><strong>{key.replace('Patient ', '')}:</strong> {details[key]}</Typography>
@@ -73,7 +72,7 @@ const PatientInfo = ({ patientDetails }) => {
           {providerKeys.map((key) => (
             <Grid container alignItems="center" key={key} sx={{ marginBottom: '8px' }}>
               <Grid item sx={{ marginRight: '8px' }}><LocalHospitalIcon /></Grid>
-              <Grid item>
+              <Grid item sx={{ flexGrow: 1 }}>
                 {isEditing ? (
                   <TextField
                     value={details[key]}
@@ -81,6 +80,8 @@ const PatientInfo = ({ patientDetails }) => {
                     label={key}
                     variant="outlined"
                     size="small"
+                    fullWidth
+                    sx={{ input: { color: '#FFFFFF' } }}
                   />
                 ) : (
                   <Typography variant="body1"><strong>{key}:</strong> {details[key]}</Typography>
@@ -90,7 +91,7 @@ const PatientInfo = ({ patientDetails }) => {
           ))}
         </Box>
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-          <Button variant="contained" color="primary" onClick={handleEditClick}>
+          <Button variant="contained" sx={{ backgroundColor: '#007BFF', color: '#FFFFFF' }} onClick={handleEditClick}>
             {isEditing ? 'Save' : 'Edit'}
           </Button>
         </Box>

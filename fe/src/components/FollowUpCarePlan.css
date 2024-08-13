@@ -1,71 +1,88 @@
 .card {
-  border: 1px solid #ccc;
+  border: 1px solid #282828;
   border-radius: 8px;
   padding: 20px;
-  margin: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  background-color: #fff;
+  margin: 20px 0; /* Consistent margin with other cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  background-color: #1E1E1E; /* Dark background */
+  color: #FFFFFF; /* White text */
+  width: 100%; /* Consistent width */
 }
 
-.treatment-summary {
-  display: flex;
-  flex-direction: column;
+.MuiCardContent-root {
+  background-color: #1E1E1E; /* Dark background */
+  color: #ffffff; /* White text */
 }
 
-.treatment-summary-title {
+.table-header {
+  color: white !important; /* White text */
+}
+
+
+.follow-up-care-plan-container {
+  padding: 20px;
+  background-color: #1E1E1E; /* Dark background */
+  color: #FFFFFF; /* White text */
+}
+
+.follow-up-care-plan-title {
   margin-bottom: 20px;
   text-align: center;
-}
-
-.section {
-  margin-bottom: 20px;
-}
-
-.section-title {
-  margin-bottom: 10px;
-  padding: 10px;
-  background-color: #f7f7f7;
+  color: #FFC107; /* Consistent with TreatmentSummary */
+  font-size: 1.5em !important; /* Larger font size */
+  padding : 10px; /* Padding for better spacing */
 }
 
 .table {
   width: 100%; /* Ensure the table takes full width */
   border-collapse: collapse; /* Ensure borders collapse properly */
+  background-color: #1E1E1E; /* Dark background */
 }
 
+.MuiTableCell-root {
+  color: #ffffff !important; /* White text */
+}
+
+
 .table-row {
+  color: #ffffff; /* White text */
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 5px 0;
-  background-color: yellow; /* Default background color */
+  padding: 10px; /* Padding for better spacing */
+  background-color: #2C2C2C;
   transition: background-color 0.3s;
 }
 
+.table-row:nth-child(even) {
+  background-color: #333333; /* Alternate row color */
+}
+
 .table-row.verified {
-  background-color: lightgreen; /* Background color when verified */
+  background-color: #004d40; /* Dark teal for verified rows */
+}
+
+.table-row.unverified {
+  background-color: #800000; /* Dark red for unverified rows */
 }
 
 .table-cell {
   padding: 10px;
-  border: 1px solid #ddd;
+  border: 1px solid #444; /* Darker border for cells */
   flex: 1;
+  color: #FFFFFF;
 }
 
 .label, .value {
   flex-basis: 50%;
+  color: #FFFFFF; /* Ensure text is visible */
 }
 
 .value input {
   width: 100%;
-}
-
-.save-button {
-  padding: 10px 20px;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  color: #FFFFFF;
+  background-color: #1E1E1E;
+  border: 1px solid #FFFFFF;
 }
 
 .info-button {
@@ -73,7 +90,7 @@
   cursor: pointer;
   background-color: transparent;
   border: none;
-  color: #007bff;
+  color: #007BFF;
   font-size: 16px;
   text-align: center;
 }
@@ -83,11 +100,15 @@
   text-align: center;
 }
 
-.follow-up-care-plan-container {
-  padding: 20px;
+.save-button {
+  padding: 10px 20px;
+  background-color: #007BFF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.follow-up-care-plan-title {
-  margin-bottom: 20px;
-  text-align: center;
+.save-button:hover {
+  background-color: #0056b3;
 }
