@@ -1,3 +1,4 @@
+/* TreatmentSummary.css */
 .card {
   border: 1px solid #282828;
   border-radius: 8px;
@@ -7,6 +8,7 @@
   background-color: #1E1E1E !important; /* Ensure the card background is dark */
   color: #FFFFFF;
   width: 100%; /* Ensure consistent width */
+  box-sizing: border-box; /* Ensure padding is included in the width calculation */
 }
 
 .treatment-summary {
@@ -34,6 +36,7 @@
 .table {
   display: flex;
   flex-direction: column;
+  width: 100%; /* Ensure table takes full width */
 }
 
 .table-row {
@@ -43,6 +46,8 @@
   padding: 10px; /* Added padding for better spacing */
   background-color: #2C2C2C;
   transition: background-color 0.3s;
+  width: 100%; /* Ensure table rows take full width */
+  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .table-row:nth-child(even) {

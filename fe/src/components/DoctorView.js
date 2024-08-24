@@ -3,7 +3,7 @@ import PatientInfo from './PatientInfo';
 import TreatmentSummary from './TreatmentSummary';
 import FollowUpCarePlan from './FollowUpCarePlan';
 import PatientSidebar from './PatientSidebar';
-import { Box, Divider, Tab, Tabs, Typography } from '@mui/material';
+import { Box, Divider, Tab, Tabs, Typography, Button, Menu, MenuItem } from '@mui/material'; // Import necessary MUI components
 import DoctorHome from './DoctorHome';
 import axios from 'axios';
 import './LoadingAnimation.css'; // Import the CSS for the loading animation
@@ -17,6 +17,8 @@ const DoctorView = ({ patients }) => {
   const [taskId, setTaskId] = useState(null);
   const [taskStatus, setTaskStatus] = useState(null);
   const pollingRef = useRef(null);
+
+  const [anchorEl, setAnchorEl] = useState(null);
 
   const handleChangeTab = (event, newValue) => {
     setSelectedTab(newValue);
@@ -78,6 +80,48 @@ const DoctorView = ({ patients }) => {
     }
   };
 
+  const handleExportClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const downloadPdf = () => {
+    if (!selectedPatient) return;
+
+    axios.get(`${API_BASE_URL}/generate_pdf/${selectedPatient.patientID}`, { responseType: 'blob' })
+      .then(response => {
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement('a');
+        link.href = url;
+        link.setAttribute('download', `CarePlan_${selectedPatient.patientID}.pdf`);
+        document.body.appendChild(link);
+        link.click();
+      })
+      .catch(error => {
+        console.error("Failed to generate PDF", error);
+      });
+
+    handleMenuClose();
+  };
+
+  const exportToEpic = () => {
+    if (!selectedPatient) return;
+
+    axios.post(`${API_BASE_URL}/export_to_epic`, { patientID: selectedPatient.patientID })
+      .then(response => {
+        alert('Patient data exported to EPIC successfully');
+      })
+      .catch(error => {
+        console.error("Failed to export patient data to EPIC", error);
+        alert('Failed to export data to EPIC');
+      });
+
+    handleMenuClose();
+  };
+
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: '#1E1E1E', color: '#FFFFFF', minHeight: '100vh' }}>
       <Box sx={{ borderBottom: 1, borderColor: '#282828' }}>
@@ -115,6 +159,23 @@ const DoctorView = ({ patients }) => {
                     </Box>
                     <Box mb={3}>
                       <FollowUpCarePlan followUpCarePlan={patientDetails} />
+                    </Box>
+                    <Box display="flex" justifyContent="flex-end">
+                      <Button
+                        variant="contained"
+                        color="primary"
+                        onClick={handleExportClick}
+                      >
+                        Export Care Plan
+                      </Button>
+                      <Menu
+                        anchorEl={anchorEl}
+                        open={Boolean(anchorEl)}
+                        onClose={handleMenuClose}
+                      >
+                        <MenuItem onClick={downloadPdf}>Download as PDF</MenuItem>
+                        <MenuItem onClick={exportToEpic}>Save to EPIC</MenuItem>
+                      </Menu>
                     </Box>
                   </>
                 ) : (

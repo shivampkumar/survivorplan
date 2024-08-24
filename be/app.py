@@ -203,13 +203,53 @@ def generate_pdf(patientID):
     # Create a PDF in memory
     pdf_buffer = io.BytesIO()
     c = canvas.Canvas(pdf_buffer, pagesize=letter)
-    c.drawString(100, 750, f"Care Plan for Patient: {patient_details['General Information']['Patient Name']}")
+    width, height = letter
     
-    # Add more details from the care plan
-    c.drawString(100, 730, f"Cancer Type: {patient_details['Treatment Summary']['Diagnosis']['Cancer type']}")
-    # Add more lines as needed
-    # Example: c.drawString(100, y_position, f"Some Detail: {patient_details['some_detail']}")
-    
+    # Title
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(100, height - 50, f"Care Plan for Patient: {patient_details['General Information']['Patient Name']}")
+
+    # Start adding details
+    y_position = height - 80
+    line_height = 14
+    c.setFont("Helvetica", 12)
+
+    def draw_text(text, y_position):
+        if y_position < 40:  # If near the bottom of the page, create a new page
+            c.showPage()
+            y_position = height - 40
+        c.drawString(100, y_position, text)
+        return y_position - line_height
+
+    # General Information
+    y_position = draw_text("General Information:", y_position)
+    for key, value in patient_details['General Information'].items():
+        y_position = draw_text(f"{key}: {value}", y_position)
+
+    # Treatment Summary
+    y_position -= line_height  # Add a small gap
+    y_position = draw_text("Treatment Summary:", y_position)
+    for section, details in patient_details['Treatment Summary'].items():
+        y_position = draw_text(f"{section}:", y_position)
+        if isinstance(details, dict):
+            for key, value in details.items():
+                y_position = draw_text(f"  {key}: {value}", y_position)
+        else:
+            y_position = draw_text(f"  {details}", y_position)
+
+    # Follow-Up Care Plan
+    y_position -= line_height  # Add a small gap
+    y_position = draw_text("Follow-Up Care Plan:", y_position)
+    for section, recommendations in patient_details['Follow Up Care Plan'].items():
+        y_position = draw_text(f"{section}:", y_position)
+        if 'recommendation' in recommendations and isinstance(recommendations['recommendation'], dict):
+            for key, value in recommendations['recommendation'].items():
+                if isinstance(value, list):
+                    for item in value:
+                        y_position = draw_text(f"  {item}", y_position)
+                else:
+                    y_position = draw_text(f"  {key}: {value}", y_position)
+
     c.save()
 
     # Rewind the buffer to the beginning so Flask can read it correctly
