@@ -1,7 +1,7 @@
 .MuiTableContainer-root {
   background-color: #1E1E1E; /* Dark background */
   color: #FFFFFF; /* White text */
-  width: 100%; /* Consistent width */
+  /* width: 100%; Consistent width */
   padding: 0;
 }
 
@@ -9,4 +9,13 @@
   background-color: #1E1E1E; /* Dark background */
   color: #FFFFFF; /* White text */
   padding: 0;
+} 
+
+.missed-appointments {
+  padding:0 !important;
+  margin-left : 10px !important; 
+}
+
+.muiboxinternal{
+  margin: 30px !important;
 }

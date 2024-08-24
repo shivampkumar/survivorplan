@@ -6,6 +6,10 @@ from bson import ObjectId
 from urllib.parse import quote_plus
 import os
 from celery import Celery
+from reportlab.lib.pagesizes import letter
+from reportlab.pdfgen import canvas
+import io
+from flask import send_file
 from celery_app import make_celery
 from dotenv import load_dotenv
 load_dotenv()
@@ -187,6 +191,31 @@ def get_patient_details(patientID):
         task = generate_patient_data_task.delay(patientID)
         patient_records.insert_one({"patientID": patientID, "task_id": task.id})
         return jsonify({'task_id': task.id}), 202
+
+@app.route('/api/generate_pdf/<patientID>', methods=['GET'])
+@cross_origin()
+def generate_pdf(patientID):
+    patient_details = patient_records.find_one({"patientID": patientID})
+    
+    if not patient_details:
+        return jsonify({'message': 'Patient not found'}), 404
+    
+    # Create a PDF in memory
+    pdf_buffer = io.BytesIO()
+    c = canvas.Canvas(pdf_buffer, pagesize=letter)
+    c.drawString(100, 750, f"Care Plan for Patient: {patient_details['General Information']['Patient Name']}")
+    
+    # Add more details from the care plan
+    c.drawString(100, 730, f"Cancer Type: {patient_details['Treatment Summary']['Diagnosis']['Cancer type']}")
+    # Add more lines as needed
+    # Example: c.drawString(100, y_position, f"Some Detail: {patient_details['some_detail']}")
+    
+    c.save()
+
+    # Rewind the buffer to the beginning so Flask can read it correctly
+    pdf_buffer.seek(0)
+    
+    return send_file(pdf_buffer, as_attachment=True, download_name=f"CarePlan_{patientID}.pdf", mimetype='application/pdf')
 
 @app.route('/api/status/<task_id>', methods=['GET'])
 @cross_origin()

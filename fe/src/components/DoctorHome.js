@@ -75,9 +75,9 @@ const DoctorHome = () => {
     );
 
     return (
-        <Box sx={{ backgroundColor: '#1A1A1A', padding: 2, minHeight: '100vh', border: '1px solid #444', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} display="flex" flexDirection="column" alignItems="center">
+        <Box sx={{ backgroundColor: '#1A1A1A', padding: 0, minHeight: '100vh', border: '1px solid #444', borderRadius: '8px', boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)' }} display="flex" flexDirection="column" alignItems="center">
             <Box display="flex" justifyContent="center" alignItems="flex-start" width="100%" sx={{ backgroundColor: '#1E1E1E', padding: 2, borderRadius: '8px' }}>
-                <Box width="50%" p={1}>
+                <Box width="50%" p={1} className="muiboxinternal">
                     <Typography variant="h6" gutterBottom sx={{ color: '#FFC107' }}>
                         Upcoming Appointments Summary
                     </Typography>
@@ -97,7 +97,7 @@ const DoctorHome = () => {
                     </TableContainer>
                 </Box>
 
-                <Box width="50%" p={1}>
+                <Box width="50%" p={1} className="muiboxinternal">
                     <Typography variant="h6" gutterBottom sx={{ color: '#FFC107' }}>
                         Missed Appointments Summary
                     </Typography>

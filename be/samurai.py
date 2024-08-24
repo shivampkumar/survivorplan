@@ -59,7 +59,12 @@ def get_patient_data(patient_id):
     print(combined_data)
     return combined_data
 
-print(get_patient_data("p6269"))
+patient = get_patient_by_id("p13491")
+patient.name[0].given[0] = "Sarah"
+patient.name[0].family = "Williams"
+patient.save()
+
+# print(get_patient_data("p6269"))
 
 # patient_id = "p6269"  # Replace with actual patient ID
 # re = Reference(reference=f"Patient/{patient_id}")

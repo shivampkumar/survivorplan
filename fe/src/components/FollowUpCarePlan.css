@@ -26,11 +26,12 @@
 }
 
 .follow-up-care-plan-title {
+  padding-bottom: 2em;
+  font-weight: bold !important; /* Bold font */
   margin-bottom: 20px;
   text-align: center;
   color: #FFC107; /* Consistent with TreatmentSummary */
   font-size: 1.5em !important; /* Larger font size */
-  padding : 10px; /* Padding for better spacing */
 }
 
 .table {
