@@ -41,6 +41,23 @@ const FollowUpCarePlan = ({ followUpCarePlan }) => {
     setIsEditing(!isEditing);
   };
 
+  const getRandomDate = (start, end) => {
+    const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+    return date;
+  };
+  
+  const getRandomLastVisitDate = () => {
+    const startDate = new Date('2023-01-01');
+    const endDate = new Date('2024-07-31');
+    return getRandomDate(startDate, endDate);
+  };
+  
+  const getRandomNextVisitDate = () => {
+    const startDate = new Date('2024-08-31');
+    const endDate = new Date('2025-12-31');
+    return getRandomDate(startDate, endDate);
+  };
+
   const handleChange = (path, value) => {
     const keys = path.split('.');
     const lastKey = keys.pop();
@@ -72,6 +89,8 @@ const FollowUpCarePlan = ({ followUpCarePlan }) => {
     <Button onClick={() => handleOpenDialog(item["File names"], item["Page labels"], sectionKey)}>i</Button>
   );
 
+
+
   const renderVerificationRadio = (path) => (
     <input
       type="radio"
@@ -85,7 +104,7 @@ const FollowUpCarePlan = ({ followUpCarePlan }) => {
       const rowClass = verifiedRows[`${sectionKey}.${index}`] ? 'table-row verified' : 'table-row';
       const lastVisitDate = '2024-01-15'; // Example last visit date
       const nextVisitDatePath = `visit.${index}.nextVisitDate`;
-      const nextVisitDateStatic = '2024-06-15'; // Example next visit date
+      const nextVisitDateStatic = '2025-06-15'; // Example next visit date
   
       return (
         <TableRow key={index} className={rowClass}>
@@ -94,26 +113,53 @@ const FollowUpCarePlan = ({ followUpCarePlan }) => {
             <TableCell>{renderEditableField(`${sectionKey}.${index}.Coordinating provider`, item["Coordinating provider"])}</TableCell>
           )}
           {"When / how often" in item && (
-            <TableCell>
-              <div>
-                <Typography variant="body2">
-                  Last Visit Date: {new Date(lastVisitDate).toLocaleDateString()}
-                </Typography>
-                <LocalizationProvider dateAdapter={AdapterDateFns}>
-                  <DatePicker
-                    label="Next Visit Date"
-                    value={dateValues[nextVisitDatePath] || new Date(nextVisitDateStatic)}
-                    onChange={(newValue) => handleDateChange(nextVisitDatePath, newValue)}
-                    renderInput={(params) => <TextField {...params} variant="outlined" size="small" fullWidth />}
-                  />
-                </LocalizationProvider>
-                <Tooltip title={item["When / how often"] || "No data available"} arrow>
-                  <IconButton>
-                    <InfoIcon />
-                  </IconButton>
-                </Tooltip>
-              </div>
-            </TableCell>
+           <TableCell>
+           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
+             <div style={{ marginBottom: '8px' }}>
+               <Typography variant="body2" style={{ color: 'white' }}>
+                 Last Visit Date: {new Date(getRandomLastVisitDate()).toLocaleDateString()}
+               </Typography>
+             </div>
+             <Typography variant="body2" style={{ color: 'white' }}>
+                Suggested Next Visit Date:
+              </Typography>
+             <LocalizationProvider dateAdapter={AdapterDateFns}>
+               <DatePicker
+                 value={dateValues[nextVisitDatePath] || new Date(getRandomNextVisitDate())}
+                 onChange={(newValue) => handleDateChange(nextVisitDatePath, newValue)}
+                 renderInput={(params) => (
+                   <TextField 
+                     {...params} 
+                     variant="outlined" 
+                     size="small" 
+                     fullWidth 
+                     style={{ 
+                       minWidth: '200px', 
+                       backgroundColor: '#333', // Dark background for input field
+                       color: 'white' // White text for input field
+                     }} 
+                     InputLabelProps={{ style: { color: 'white' } }} // White label text
+                     InputProps={{ 
+                       style: { 
+                         color: 'white' // White input text
+                       }, 
+                       endAdornment: (
+                         <IconButton>
+                           {params.InputProps.endAdornment}
+                         </IconButton>
+                       ),
+                     }} 
+                   />
+                 )}
+               />
+             </LocalizationProvider>
+           </div>
+           <Tooltip title={item["When / how often"] || "No data available"} arrow>
+             <IconButton>
+               <InfoIcon style={{ color: 'white' }} /> {/* White icon color */}
+             </IconButton>
+           </Tooltip>
+         </TableCell>    
           )}
           <TableCell>{renderEditableField(`${sectionKey}.${index}.Explanation`, item["Explanation"])}</TableCell>
           <TableCell>{renderInfoButton(item, sectionKey)}</TableCell>
