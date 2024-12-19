@@ -1,0 +1,36 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Fear of recurrence (FOR)",
+    "Explanation":"The patient has metastatic pancreatic cancer, which is associated with a high risk of recurrence. Fear of recurrence is a common issue among cancer survivors, as highlighted in the retrieved context.",
+    "Retrieved context id":0},
+    
+    {"Issue":"Depression and anxiety",
+    "Explanation":"The patient has been undergoing extensive treatment for metastatic pancreatic cancer, which can lead to significant psychological distress, including depression and anxiety. The retrieved context emphasizes the need to assess and manage these psychosocial issues.",
+    "Retrieved context id":3},
+    
+    {"Issue":"Financial challenges",
+    "Explanation":"The patient has been receiving multiple chemotherapy regimens and supportive care interventions, which can lead to financial toxicity. The retrieved context mentions that financial challenges are common among cancer survivors, especially those with advanced or metastatic cancer.",
+    "Retrieved context id":13},
+    
+    {"Issue":"Cognitive impairment",
+    "Explanation":"The patient has undergone several chemotherapy treatments, which can contribute to cognitive dysfunction. The retrieved context highlights that cancer survivors may face cognitive impairment as a psychosocial issue.",
+    "Retrieved context id":5},
+    
+    {"Issue":"Employment concerns",
+    "Explanation":"Given the patient's ongoing treatment and side effects, returning to work or maintaining employment may be challenging. The retrieved context indicates that employment concerns are a significant issue for cancer survivors.",
+    "Retrieved context id":20},
+    
+    {"Issue":"Relationship changes",
+    "Explanation":"The patient's extensive treatment and ongoing health issues can impact personal relationships. The retrieved context mentions that cancer survivors often face relationship changes and social role difficulties.",
+    "Retrieved context id":1},
+    
+    {"Issue":"Physical impairments",
+    "Explanation":"The patient has experienced symptoms such as progressive anorexia, fatigue, and pain, which can lead to functional changes and physical impairments. The retrieved context emphasizes the importance of addressing these physical challenges in survivorship care.",
+    "Retrieved context id":2},
+    
+    {"Issue":"Body image issues",
+    "Explanation":"The patient has undergone multiple treatments and interventions, which can affect body image. The retrieved context highlights that body image issues are common among cancer survivors.",
+    "Retrieved context id":6}
+    ]
+}
+```

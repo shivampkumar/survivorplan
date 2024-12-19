@@ -1,0 +1,24 @@
+```json
+{"Lifestyle and behavior recommendations for cancer survivors":[
+    {"Lifestyle":"Engage in regular physical activity",
+    "Explanation":"Regular physical activity can help reduce fatigue, improve physical and emotional well-being, and aid in coping with cancer-related symptoms. This is particularly important given the patient's chronic back pain and occasional aches in her knees and ankles. The guidelines recommend at least 150 minutes of moderate or 75 minutes of vigorous aerobic exercise per week, along with strength training exercises at least 2 days per week.",
+    "Retrieved context id":"6"},
+    
+    {"Lifestyle":"Maintain a healthy diet high in vegetables, fruits, whole grains, and legumes",
+    "Explanation":"A diet rich in vegetables, fruits, whole grains, and legumes can improve prognosis and reduce the risk of cancer recurrence. This dietary pattern is recommended to help manage weight and improve overall health, which is important for the patient who has a sweet tooth and needs to manage her weight.",
+    "Retrieved context id":"22"},
+    
+    {"Lifestyle":"Limit alcohol intake to no more than one drink per day",
+    "Explanation":"Limiting alcohol intake is advised to reduce the risk of cancer recurrence and improve survival rates. This is particularly relevant for breast cancer survivors.",
+    "Retrieved context id":"21"},
+    
+    {"Lifestyle":"Consider supplementation with calcium and vitamin D3",
+    "Explanation":"To reduce the morbidity associated with bone loss, it is recommended that cancer survivors maintain a healthy lifestyle, including supplementation with calcium (1200 mg/d) and vitamin D3 (600-1000 IU/d). This is important for the patient given her chronic pain and the potential for bone health issues.",
+    "Retrieved context id":"1"},
+    
+    {"Lifestyle":"Avoid smoking and seek smoking cessation resources if necessary",
+    "Explanation":"Smoking cessation is crucial for reducing the risk of lung cancer and other health issues. Although the patient's smoking status is not mentioned, it is important to avoid smoking to improve overall health and reduce cancer recurrence risk.",
+    "Retrieved context id":"4"}
+    ]
+}
+```

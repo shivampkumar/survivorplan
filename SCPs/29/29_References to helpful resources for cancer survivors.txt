@@ -1,0 +1,39 @@
+{
+    "References to helpful resources for cancer survivors": [
+        {
+            "Resource": "ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+            "Explanation": "This resource provides comprehensive information and support services for cancer survivors, which can help the patient understand her condition and manage her health post-treatment. Given her recent diagnosis and the need for ongoing support, this resource is highly relevant.",
+            "Retrieved context id": 2
+        },
+        {
+            "Resource": "ASCO survivor and caregiver site (cancer.net)",
+            "Explanation": "This site offers valuable information for both survivors and caregivers, which can help the patient and her family navigate the challenges of breast cancer treatment and survivorship. The patient has a good support system through her family, making this resource particularly useful.",
+            "Retrieved context id": 2
+        },
+        {
+            "Resource": "NCCN patient and caregiver resources (nccn.org/patients)",
+            "Explanation": "The NCCN provides guidelines and resources specifically tailored for patients and caregivers, which can help the patient understand her treatment options and manage side effects. This is important as the patient is undergoing egg harvesting and has questions about her ability to continue exercise activities.",
+            "Retrieved context id": 2
+        },
+        {
+            "Resource": "Journey Forward (journeyforward.org)",
+            "Explanation": "Journey Forward offers tools to help cancer survivors create a survivorship care plan, which can be beneficial for the patient to manage her health and follow-up care effectively. This aligns with the need for structured follow-up care and support.",
+            "Retrieved context id": 8
+        },
+        {
+            "Resource": "CA Patient Page (onlinelibrary.wiley.com/doi/10.3322/caac.21319/pdf)",
+            "Explanation": "This resource helps patients understand how to use guidelines to talk to their doctor about surveillance, screening, symptom management, healthy behaviors, and care coordination. This is particularly useful for the patient as she has expressed a desire to improve her diet and maintain an active lifestyle.",
+            "Retrieved context id": 12
+        },
+        {
+            "Resource": "The GW Cancer Institute’s Cancer Survivorship E-Learning Series for Primary Care Providers",
+            "Explanation": "This free online continuing education program can help primary care providers better support the patient by providing them with the latest information and guidelines on cancer survivorship care. This ensures the patient receives well-informed follow-up care.",
+            "Retrieved context id": 11
+        },
+        {
+            "Resource": "Local support groups and professionally led groups",
+            "Explanation": "Connecting with local support groups and professionally led groups can provide the patient with emotional support and practical advice from others who have experienced similar challenges. This is important as the patient has a good support system and can benefit from additional community support.",
+            "Retrieved context id": 18
+        }
+    ]
+}

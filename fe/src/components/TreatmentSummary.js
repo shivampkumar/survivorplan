@@ -1,26 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import PatientTextDialog from './PatientTextDialog';
 import './TreatmentSummary.css'; // Ensure this file is updated with styles as needed
+import { StaticDataService } from '../services/StaticDataService';
+import { Typography } from '@mui/material';
 
-const TreatmentSummary = ({ summaryDetails, patient_text }) => {
+const TreatmentSummary = ({ patientId }) => {
+  const [treatmentData, setTreatmentData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedSummary, setEditedSummary] = useState(summaryDetails);
+  const [editedSummary, setEditedSummary] = useState(null);
   const [patientDialogOpen, setPatientDialogOpen] = useState(false);
   const [verifiedRows, setVerifiedRows] = useState({});
 
-  const hardcodedKeys = {
-    "Treatment Summary": {
-      "Diagnosis": ["Cancer type", "Diagnosis Date", "Cancer stage"],
-      "Treatment Completed": ["Surgery", "Surgery Date(s) (year)", "Surgical Procedure/location/findings", "Radiation", "Body area treated", "End Date (year)", "Systemic Therapy (Chemotherapy, hormonal therapy, other)"],
-      "Names of Agents used in Completed Treatments": ["Agent 1", "Agent 2", "Agent 3"],
-      "Persistent symptoms or side effects at completion of treatment": ["Symptoms of side effects", "Symptom or side effect types"],
-      "Treatment Ongoing and Side Effects": ["Need for ongoing (adjuvant) treatment for cancer", "Ongoing treatment 1"]
-    }
-  };
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await StaticDataService.getPatientData(patientId);
+      setTreatmentData(data.treatmentSummary);
+    };
+    loadData();
+  }, [patientId]);
 
   useEffect(() => {
-    setEditedSummary(summaryDetails);
-  }, [summaryDetails]);
+    setEditedSummary(treatmentData);
+  }, [treatmentData]);
 
   const handleChange = (path, value) => {
     const keys = path.split('.');
@@ -94,7 +95,7 @@ const TreatmentSummary = ({ summaryDetails, patient_text }) => {
           <PatientTextDialog
             open={patientDialogOpen}
             onClose={() => setPatientDialogOpen(false)}
-            patientText={patient_text}
+            patientText={treatmentData.patient_text}
           />
         </div>
       );
@@ -107,18 +108,87 @@ const TreatmentSummary = ({ summaryDetails, patient_text }) => {
         <React.Fragment key={index}>
           <h3 className="section-title">{sectionTitle}</h3>
           <div className="table">
-            {generateSectionRows(sectionData[sectionTitle], `${path}.${sectionTitle}`, hardcodedKeys["Treatment Summary"][sectionTitle] || Object.keys(sectionData[sectionTitle]))}
+            {generateSectionRows(sectionData[sectionTitle], `${path}.${sectionTitle}`, Object.keys(sectionData[sectionTitle]))}
           </div>
         </React.Fragment>
       ))}
     </div>
   );
 
+  if (!treatmentData) return <div>Loading...</div>;
+
   return (
     <div className="card">
       <div className="treatment-summary">
-        <h2 className="treatment-summary-title">Treatment Summary</h2>
-        {renderSection(editedSummary['Treatment Summary'], 'Treatment Summary', Object.keys(hardcodedKeys["Treatment Summary"]))}
+        <Typography variant="h4" className="treatment-summary-title">
+          Treatment Summary
+        </Typography>
+
+        <div className="section">
+          <Typography variant="h6" className="section-title">Diagnosis</Typography>
+          <div className="table">
+            {Object.entries(treatmentData.Diagnosis).map(([key, value]) => (
+              <div className="table-row" key={key}>
+                <div className="label">{key}</div>
+                <div className="value">{value || 'N/A'}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="section">
+          <Typography variant="h6" className="section-title">Treatment Details</Typography>
+          <div className="table">
+            <div className="table-row">
+              <div className="label">Surgery Conducted</div>
+              <div className="value">{treatmentData.Surgery.conducted}</div>
+            </div>
+            {treatmentData.Surgery.conducted === 'Yes' && (
+              <>
+                <div className="table-row">
+                  <div className="label">Surgery Procedure</div>
+                  <div className="value">{treatmentData.Surgery.procedure || 'N/A'}</div>
+                </div>
+                {/* ... other surgery details */}
+              </>
+            )}
+            
+            <div className="table-row">
+              <div className="label">Radiation Treatment</div>
+              <div className="value">{treatmentData.RadiationTreatment.conducted}</div>
+            </div>
+            {/* ... radiation details if conducted */}
+
+            <div className="table-row">
+              <div className="label">Systemic Therapy</div>
+              <div className="value">{treatmentData.SystemicTherapy.conducted}</div>
+            </div>
+            {treatmentData.SystemicTherapy.conducted === 'Yes' && 
+              treatmentData.SystemicTherapy.agents.map((agent, index) => (
+                <div className="table-row" key={index}>
+                  <div className="label">Agent {index + 1}</div>
+                  <div className="value">{agent.name} {agent.endDate ? `(End: ${agent.endDate})` : ''}</div>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+
+        {/* Persistent Symptoms section */}
+        {treatmentData.PersistentSymptoms.present === 'Yes' && (
+          <div className="section">
+            <Typography variant="h6" className="section-title">Persistent Symptoms</Typography>
+            <div className="table">
+              {treatmentData.PersistentSymptoms.symptoms.map((symptom, index) => (
+                <div className="table-row" key={index}>
+                  <div className="label">Symptom {index + 1}</div>
+                  <div className="value">{symptom}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
           <button className="edit-button" onClick={handleEditClick}>
             {isEditing ? 'Save' : 'Edit'}

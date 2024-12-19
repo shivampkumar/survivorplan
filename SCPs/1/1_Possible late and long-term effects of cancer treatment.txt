@@ -1,0 +1,46 @@
+```json
+{
+    "Possible late and long-term effects of cancer treatment": [
+        {
+            "Treatment effect": "Peripheral neuropathy",
+            "Explanation": "The patient has been treated with FOLFIRINOX and is currently on Gemcitabine + Abraxane. Chemotherapy, particularly with agents like oxaliplatin (part of FOLFIRINOX) and taxanes (Abraxane), is known to cause peripheral neuropathy. The patient already experiences numbness in his hands and feet, indicating existing neuropathy.",
+            "Retrieved context id": 9
+        },
+        {
+            "Treatment effect": "Fatigue",
+            "Explanation": "Fatigue is a common long-term effect of chemotherapy. The patient has been treated with FOLFIRINOX and is currently on Gemcitabine + Abraxane, both of which can contribute to persistent fatigue.",
+            "Retrieved context id": 10
+        },
+        {
+            "Treatment effect": "Increased risk of cardiovascular disease",
+            "Explanation": "Chemotherapy can increase the risk of cardiovascular disease. The patient has been treated with FOLFIRINOX and is currently on Gemcitabine + Abraxane, which can contribute to this risk.",
+            "Retrieved context id": 10
+        },
+        {
+            "Treatment effect": "Cognitive impairment",
+            "Explanation": "Chemotherapy can lead to cognitive impairment, which may persist after treatment. The patient has been treated with FOLFIRINOX, which includes agents known to cause cognitive issues.",
+            "Retrieved context id": 12
+        },
+        {
+            "Treatment effect": "Increased risk of infection",
+            "Explanation": "The patient has experienced sepsis with Klebsiella and is on chemotherapy, which can suppress the immune system and increase the risk of infections.",
+            "Retrieved context id": 0
+        },
+        {
+            "Treatment effect": "Osteoporosis/osteopenia",
+            "Explanation": "Chemotherapy can lead to osteoporosis or osteopenia. The patient has been treated with FOLFIRINOX and is currently on Gemcitabine + Abraxane, which can contribute to bone density loss.",
+            "Retrieved context id": 10
+        },
+        {
+            "Treatment effect": "Infertility",
+            "Explanation": "Chemotherapy can cause infertility. The patient has been treated with FOLFIRINOX, which includes agents that can affect fertility.",
+            "Retrieved context id": 23
+        },
+        {
+            "Treatment effect": "Weight gain/obesity",
+            "Explanation": "Chemotherapy can lead to weight gain and obesity. The patient has been treated with FOLFIRINOX and is currently on Gemcitabine + Abraxane, which can contribute to weight changes.",
+            "Retrieved context id": 10
+        }
+    ]
+}
+```

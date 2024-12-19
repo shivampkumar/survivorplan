@@ -1,0 +1,28 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Fear of recurrence (FOR)",
+    "Explanation":"Cancer survivors often face fear of recurrence, which can impact their mental health and quality of life. This is relevant for the patient as she is awaiting the results of the Mammaprint test to determine her eligibility for the therapeutic portion of the I-SPY2 clinical trial, which may increase anxiety about her cancer status.",
+    "Retrieved context id":0},
+    
+    {"Issue":"Depression and anxiety",
+    "Explanation":"Cancer survivors may experience depression and anxiety, especially those with a history of psychiatric disease or low socioeconomic status. The patient has a history of elevated creatinine and alkaline phosphatase levels, which may indicate underlying health concerns that could contribute to psychological distress.",
+    "Retrieved context id":1},
+    
+    {"Issue":"Body image issues",
+    "Explanation":"Breast cancer survivors often face body image issues due to factors such as scarring, hair loss, and weight changes. Although the patient has not undergone surgery or radiation, the anticipation of chemotherapy and its potential side effects, such as hair loss, could impact her body image.",
+    "Retrieved context id":18},
+    
+    {"Issue":"Financial challenges",
+    "Explanation":"Cancer survivors may face financial challenges due to the high costs associated with cancer treatments. The patient's participation in the I-SPY2 clinical trial and the potential need for ongoing treatments could lead to financial strain.",
+    "Retrieved context id":17},
+    
+    {"Issue":"Cognitive impairment",
+    "Explanation":"Cancer survivors may experience cognitive impairment, which can affect their quality of life and functional outcomes. The patient has undergone an MRI and echocardiogram, indicating that she may already be experiencing or is at risk for cognitive issues.",
+    "Retrieved context id":11},
+    
+    {"Issue":"Relationship and social role difficulties",
+    "Explanation":"Cancer survivors often face changes in their relationships and social roles. The patient's ongoing health concerns and participation in a clinical trial may impact her interactions with family and friends, leading to social role difficulties.",
+    "Retrieved context id":7}
+    ]
+}
+```

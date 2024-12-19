@@ -1,0 +1,56 @@
+```json
+{
+    "Possible late and long-term effects of cancer treatment": [
+        {
+            "Treatment effect": "Lymphedema",
+            "Explanation": "Surgery, specifically axillary lymph node dissection, can lead to long-term effects such as lymphedema. The patient's treatment plan includes axillary lymph node dissection, which increases the risk of developing lymphedema.",
+            "Retrieved context id": 8
+        },
+        {
+            "Treatment effect": "Body image issues",
+            "Explanation": "Surgery, including partial mastectomy, can lead to long-term effects such as body image issues. The patient is scheduled for a partial mastectomy, which may impact her body image.",
+            "Retrieved context id": 8
+        },
+        {
+            "Treatment effect": "Neuropathy",
+            "Explanation": "Surgery can lead to long-term effects such as neuropathy. The patient is scheduled for axillary lymph node dissection, which can result in neuropathy.",
+            "Retrieved context id": 8
+        },
+        {
+            "Treatment effect": "Fatigue",
+            "Explanation": "Radiation therapy to the breast/chest wall/regional lymph nodes can cause long-term effects such as fatigue. The patient is planning to undergo radiation therapy as part of her treatment plan.",
+            "Retrieved context id": 6
+        },
+        {
+            "Treatment effect": "Skin sensitivity/pain",
+            "Explanation": "Radiation therapy to the breast/chest wall/regional lymph nodes can cause long-term effects such as skin sensitivity and pain. The patient is planning to undergo radiation therapy as part of her treatment plan.",
+            "Retrieved context id": 6
+        },
+        {
+            "Treatment effect": "Increased risk of cardiovascular disease",
+            "Explanation": "Chemotherapy and hormonal/endocrine therapy with aromatase inhibitors are associated with an increased risk of cardiovascular disease. The patient is planning to undergo adjuvant chemotherapy and hormonal therapy, which can increase her risk of cardiovascular disease.",
+            "Retrieved context id": 9
+        },
+        {
+            "Treatment effect": "Cognitive impairment",
+            "Explanation": "Chemotherapy can lead to long-term effects such as cognitive impairment. The patient is planning to undergo adjuvant chemotherapy, which can result in cognitive changes.",
+            "Retrieved context id": 10
+        },
+        {
+            "Treatment effect": "Osteoporosis/osteopenia",
+            "Explanation": "Chemotherapy can lead to long-term effects such as osteoporosis/osteopenia. The patient is planning to undergo adjuvant chemotherapy, which can increase the risk of developing osteoporosis or osteopenia.",
+            "Retrieved context id": 10
+        },
+        {
+            "Treatment effect": "Infertility",
+            "Explanation": "Chemotherapy can be gonadotoxic, leading to reduced fertility or early menopause secondary to premature ovarian failure. The patient is planning to undergo adjuvant chemotherapy, which can affect her fertility.",
+            "Retrieved context id": 28
+        },
+        {
+            "Treatment effect": "Sexual dysfunction",
+            "Explanation": "Chemotherapy can lead to long-term effects such as sexual dysfunction. The patient is planning to undergo adjuvant chemotherapy, which can result in sexual dysfunction.",
+            "Retrieved context id": 10
+        }
+    ]
+}
+```

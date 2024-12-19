@@ -1,0 +1,36 @@
+```json
+{"References to helpful resources for cancer survivors":[
+    {"Resource":"ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+    "Explanation":"This resource provides comprehensive information and support for cancer survivors, which can help the patient manage their condition and improve their quality of life. Given the patient's history of pancreatic cancer and ongoing health issues, accessing a dedicated survivorship center can offer valuable guidance and support.",
+    "Retrieved context id":1},
+    
+    {"Resource":"ASCO survivor and caregiver site (cancer.net)",
+    "Explanation":"This site offers resources specifically for cancer survivors and their caregivers, including information on managing side effects, ongoing care, and support services. This is particularly relevant for the patient who has experienced complications such as ascites and poorly controlled diabetes.",
+    "Retrieved context id":1},
+    
+    {"Resource":"NCCN patient and caregiver resources (nccn.org/patients)",
+    "Explanation":"The NCCN provides guidelines and resources for patients and caregivers, which can help the patient understand their condition, treatment options, and ways to manage side effects. This is important for the patient's ongoing management of pancreatic cancer and related health issues.",
+    "Retrieved context id":1},
+    
+    {"Resource":"Journey Forward (journeyforward.org)",
+    "Explanation":"Journey Forward offers tools and resources to help cancer survivors create a survivorship care plan, which can be beneficial for the patient in managing their long-term health and coordinating care with their healthcare providers.",
+    "Retrieved context id":1},
+    
+    {"Resource":"Patient navigation services",
+    "Explanation":"Patient navigation services can help the patient navigate the complex healthcare system, access necessary resources, and coordinate care. This is particularly useful given the patient's need for ongoing management of diabetes and other health issues.",
+    "Retrieved context id":0},
+    
+    {"Resource":"Support groups",
+    "Explanation":"Peer support groups provide emotional support and empowerment to cancer survivors. Joining a support group can help the patient connect with others who have similar experiences and improve their mental well-being.",
+    "Retrieved context id":0},
+    
+    {"Resource":"Financial navigators or social workers",
+    "Explanation":"Access to financial and legal assistance can help the patient manage the financial burden of cancer treatment and related healthcare costs. This support is crucial for ensuring the patient can continue to access necessary treatments and services.",
+    "Retrieved context id":7},
+    
+    {"Resource":"Palliative care services",
+    "Explanation":"Referral to specialist palliative care can help the patient manage symptoms, improve quality of life, and receive comprehensive care tailored to their needs. This is particularly relevant given the patient's ongoing health issues and need for symptom management.",
+    "Retrieved context id":17}
+    ]
+}
+```

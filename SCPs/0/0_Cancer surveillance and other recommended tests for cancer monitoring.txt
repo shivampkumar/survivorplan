@@ -1,0 +1,27 @@
+```json
+{
+  "Cancer surveillance and other recommended tests for cancer monitoring": [
+    {
+      "Test type": "Imaging (CT scan)",
+      "When / how often": "Every 3 months in Year 1, every 6 months in Year 2, and annually in Years 3-5",
+      "Frequency (in weeks)": 12,
+      "Explanation": "Regular imaging is recommended to facilitate consistent clinical practices across patients, irrespective of reception of durvalumab therapy.",
+      "Retrieved context id": 20
+    },
+    {
+      "Test type": "Physical examination",
+      "When / how often": "Every 3-6 months for the first 3 years, every 6-12 months for the next 2 years, and annually thereafter",
+      "Frequency (in weeks)": 12,
+      "Explanation": "A detailed cancer-related history and physical examination should be conducted every 3 to 6 months for the first 3 years after primary therapy, every 6 to 12 months for the next 2 years, and annually thereafter.",
+      "Retrieved context id": 18
+    },
+    {
+      "Test type": "Blood work",
+      "When / how often": "As needed based on clinical symptoms and side effects",
+      "Frequency (in weeks)": null,
+      "Explanation": "Blood work may be needed to monitor for side effects and overall health status during and after chemotherapy treatment.",
+      "Retrieved context id": 0
+    }
+  ]
+}
+```

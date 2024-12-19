@@ -1,0 +1,32 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Fear of recurrence",
+    "Explanation":"The patient has recurrent disease as indicated by the latest PET CT scan showing growth of the primary lesion. Fear of recurrence is a common issue among cancer survivors, affecting their mental health and quality of life.",
+    "Retrieved context id":14},
+    
+    {"Issue":"Depression and anxiety",
+    "Explanation":"The patient is facing a recurrent breast cancer diagnosis, which can lead to significant psychological distress, including depression and anxiety. This is supported by the context that cancer survivors often face distress, depression, and anxiety.",
+    "Retrieved context id":13},
+    
+    {"Issue":"Body image issues",
+    "Explanation":"Breast cancer survivors often face body image concerns due to factors such as scarring, hair loss, and other physical changes from treatment. Although the patient has not undergone surgery or radiation yet, the potential for these treatments in the future could contribute to body image issues.",
+    "Retrieved context id":18},
+    
+    {"Issue":"Sexual concerns",
+    "Explanation":"The patient may experience sexual concerns due to the impact of breast cancer and its treatments on body image and sexual function. This is a common issue among breast cancer survivors.",
+    "Retrieved context id":26},
+    
+    {"Issue":"Cognitive impairment",
+    "Explanation":"Cancer survivors may face cognitive dysfunction, which can affect their quality of life and functional outcomes. This is important to consider in the survivorship care plan.",
+    "Retrieved context id":11},
+    
+    {"Issue":"Employment concerns",
+    "Explanation":"The patient may face employment concerns due to the need for ongoing treatment and clinic visits, which can impact their ability to work. This is supported by the context that cancer survivors often face employment concerns.",
+    "Retrieved context id":0},
+    
+    {"Issue":"Financial challenges",
+    "Explanation":"The patient may experience financial challenges due to the costs associated with cancer treatment, including chemotherapy and clinic visits. This is a common issue among cancer survivors.",
+    "Retrieved context id":4}
+    ]
+}
+```

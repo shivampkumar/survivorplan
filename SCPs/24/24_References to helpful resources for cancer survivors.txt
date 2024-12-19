@@ -1,0 +1,36 @@
+```json
+{"References to helpful resources for cancer survivors":[
+    {"Resource":"American Cancer Society Survivorship Center",
+    "Explanation":"The American Cancer Society Survivorship Center provides comprehensive resources for cancer survivors, which can help the patient with information on follow-up care, managing side effects, and maintaining a healthy lifestyle. This is particularly relevant given the patient's need for ongoing bone health management and exercise recommendations.",
+    "Retrieved context id":0},
+    
+    {"Resource":"ASCO survivor and caregiver site (cancer.net)",
+    "Explanation":"The ASCO survivor and caregiver site offers detailed information on survivorship care, including managing side effects and maintaining overall health, which is beneficial for the patient who has been advised to take calcium and vitamin D supplements and engage in weight-bearing exercises.",
+    "Retrieved context id":0},
+    
+    {"Resource":"NCCN patient and caregiver resources (nccn.org/patients)",
+    "Explanation":"NCCN provides guidelines and resources for cancer survivors, which can help the patient understand her treatment, manage side effects, and access support services. This is important for her ongoing health and well-being.",
+    "Retrieved context id":0},
+    
+    {"Resource":"Journey Forward (journeyforward.org)",
+    "Explanation":"Journey Forward offers tools to help cancer survivors create a survivorship care plan, which can be useful for the patient to track her follow-up care and manage her health post-treatment.",
+    "Retrieved context id":0},
+    
+    {"Resource":"CA Patient Page",
+    "Explanation":"The CA Patient Page helps patients understand how to use guidelines to talk to their doctor about surveillance, screening, symptom management, and healthy behaviors. This can empower the patient to actively participate in her follow-up care and maintain her health.",
+    "Retrieved context id":12},
+    
+    {"Resource":"The GW Cancer Institute’s Cancer Survivorship E-Learning Series for Primary Care Providers",
+    "Explanation":"This resource offers continuing education for primary care providers on cancer survivorship, which can ensure that the patient's primary care clinician is well-informed about the latest guidelines and best practices for managing her post-treatment care.",
+    "Retrieved context id":12},
+    
+    {"Resource":"Local support groups and professionally led groups",
+    "Explanation":"Local support groups and professionally led groups can provide emotional support and practical advice for the patient, helping her cope with any ongoing side effects and improve her quality of life.",
+    "Retrieved context id":19},
+    
+    {"Resource":"American Cancer Society website (cancer.org)",
+    "Explanation":"The American Cancer Society website offers a wealth of information on cancer survivorship, including managing side effects, maintaining a healthy lifestyle, and accessing support services, which can be beneficial for the patient's overall well-being.",
+    "Retrieved context id":24}
+    ]
+}
+```

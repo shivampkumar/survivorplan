@@ -1,0 +1,41 @@
+```json
+{
+    "Possible late and long-term effects of cancer treatment": [
+        {
+            "Treatment effect": "Cardiac dysfunction",
+            "Explanation": "The patient has HER2+ breast cancer, which is commonly treated with Trastuzumab. Trastuzumab is associated with an increased risk of cardiac dysfunction, especially when used with anthracyclines.",
+            "Retrieved context id": 9
+        },
+        {
+            "Treatment effect": "Cognitive impairment",
+            "Explanation": "Cognitive impairment is a possible late effect of chemotherapy in breast cancer survivors. Although the patient has not yet undergone chemotherapy, it is a potential future treatment option that could lead to cognitive changes.",
+            "Retrieved context id": 22
+        },
+        {
+            "Treatment effect": "Osteoporosis/osteopenia",
+            "Explanation": "Chemotherapy can lead to osteoporosis/osteopenia. If the patient undergoes chemotherapy in the future, this could be a potential long-term effect.",
+            "Retrieved context id": 13
+        },
+        {
+            "Treatment effect": "Neuropathy",
+            "Explanation": "Chemotherapy can result in neuropathy, which includes numbness, tingling, and burning pain. This is a potential long-term effect if the patient receives chemotherapy.",
+            "Retrieved context id": 26
+        },
+        {
+            "Treatment effect": "Increased risk of cardiovascular disease",
+            "Explanation": "Chemotherapy and targeted therapy with Trastuzumab are associated with an increased risk of cardiovascular disease. This is relevant if the patient receives these treatments in the future.",
+            "Retrieved context id": 15
+        },
+        {
+            "Treatment effect": "Fatigue",
+            "Explanation": "Radiation therapy to the breast/chest wall/regional lymph nodes can cause long-term effects such as fatigue. This is a potential effect if the patient undergoes radiation therapy.",
+            "Retrieved context id": 7
+        },
+        {
+            "Treatment effect": "Lymphedema",
+            "Explanation": "Surgery and radiation therapy can lead to long-term effects such as lymphedema. This is relevant if the patient undergoes these treatments in the future.",
+            "Retrieved context id": 8
+        }
+    ]
+}
+```

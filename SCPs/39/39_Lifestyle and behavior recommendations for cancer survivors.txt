@@ -1,0 +1,24 @@
+```json
+{"Lifestyle and behavior recommendations for cancer survivors":[
+    {"Lifestyle":"Engage in regular physical activity",
+    "Explanation":"Regular physical activity can reduce the risk of second cancers, comorbidities, and possibly recurrence, and improve prognosis. The patient should aim for at least 150 minutes of moderate or 75 minutes of vigorous aerobic exercise per week, and include strength training exercises at least 2 days per week. This recommendation is supported by the retrieved context and the patient's need to maintain a healthy lifestyle post-treatment.",
+    "Retrieved context id":2},
+    
+    {"Lifestyle":"Maintain a healthy diet",
+    "Explanation":"A dietary pattern high in vegetables, fruits, whole grains, and legumes, and low in saturated fats is recommended. This can help improve prognosis and reduce the risk of recurrence. The patient should limit alcohol consumption to no more than one drink per day. This recommendation is supported by the retrieved context and the patient's need to focus on diet and exercise as emphasized during the consultation.",
+    "Retrieved context id":6},
+    
+    {"Lifestyle":"Achieve and maintain a healthy weight",
+    "Explanation":"Maintaining a healthy weight can reduce the risk of second cancers, comorbidities, and possibly recurrence, and improve prognosis. The patient should limit consumption of high-calorie foods and beverages and increase physical activity to promote and maintain weight loss. This recommendation is supported by the retrieved context and the patient's need to focus on diet and exercise as emphasized during the consultation.",
+    "Retrieved context id":12},
+    
+    {"Lifestyle":"Smoking cessation",
+    "Explanation":"If the patient smokes, quitting smoking is crucial to reduce the risk of lung cancer and other health issues. Smoking cessation counseling and resources should be provided. This recommendation is supported by the retrieved context and the general health promotion strategies for cancer survivors.",
+    "Retrieved context id":22},
+    
+    {"Lifestyle":"Monitor cardiac health",
+    "Explanation":"Given the ongoing treatment with Pertuzumab and Trastuzumab, which have potential cardiac risks, the patient should be educated on cardiac risk factors and advised to report symptoms such as shortness of breath or fatigue to their healthcare provider. This recommendation is supported by the retrieved context and the specific side effects of the ongoing treatment.",
+    "Retrieved context id":27}
+    ]
+}
+```

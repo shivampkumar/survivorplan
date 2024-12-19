@@ -1,0 +1,29 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Fear of recurrence",
+    "Explanation":"Cancer survivors often experience fear of recurrence, which can impact their mental health and quality of life. This is supported by the context that mentions fear of recurrence as a common issue among cancer survivors.",
+    "Retrieved context id":0},
+    {"Issue":"Body image issues",
+    "Explanation":"The patient has undergone bilateral mastectomies, which can significantly impact body image. The context mentions that body image issues are common among breast cancer survivors, especially those who have undergone surgery.",
+    "Retrieved context id":25},
+    {"Issue":"Sexual concerns",
+    "Explanation":"The patient is experiencing vaginal dryness, which can lead to sexual discomfort. The context mentions that sexual concerns, including vaginal dryness, are common among breast cancer survivors.",
+    "Retrieved context id":20},
+    {"Issue":"Relationship changes",
+    "Explanation":"The patient is experiencing emotional lability and anxiety, which can affect personal relationships. The context mentions that relationship changes are a common issue among cancer survivors.",
+    "Retrieved context id":1},
+    {"Issue":"Employment concerns",
+    "Explanation":"The patient recently graduated from a master's program and may face challenges returning to or finding employment. The context mentions that employment concerns are common among cancer survivors.",
+    "Retrieved context id":1},
+    {"Issue":"Financial challenges",
+    "Explanation":"The patient may face financial challenges due to ongoing treatment and potential employment concerns. The context mentions that financial challenges are a common issue among cancer survivors.",
+    "Retrieved context id":1},
+    {"Issue":"Cognitive impairment",
+    "Explanation":"The patient has experienced anxiety and insomnia, which can contribute to cognitive impairment. The context mentions that cognitive impairment is a common issue among cancer survivors.",
+    "Retrieved context id":2},
+    {"Issue":"Depression",
+    "Explanation":"The patient has a history of anxiety and emotional lability, which can increase the risk of depression. The context mentions that depression is a common issue among cancer survivors, especially those with a history of psychiatric disease.",
+    "Retrieved context id":3}
+    ]
+}
+```

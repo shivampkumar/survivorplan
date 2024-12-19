@@ -1,0 +1,46 @@
+```json
+{
+    "Possible other issues that cancer survivors may experience": [
+        {
+            "Issue": "Fear of recurrence",
+            "Explanation": "The patient is a young breast cancer survivor, and fear of recurrence is a common issue among cancer survivors, particularly younger patients. This is supported by the retrieved context which highlights that survivors often face fear of recurrence.",
+            "Retrieved context id": 0
+        },
+        {
+            "Issue": "Depression and anxiety",
+            "Explanation": "Given the patient's young age and the diagnosis of metastatic breast cancer, she is at higher risk for depression and anxiety. The retrieved context indicates that younger patients and those with a cancer diagnosis are at higher risk for these psychological issues.",
+            "Retrieved context id": 4
+        },
+        {
+            "Issue": "Body image issues",
+            "Explanation": "The patient may face body image issues due to the physical changes associated with breast cancer and its treatment. The retrieved context mentions that body image concerns are significant among breast cancer survivors.",
+            "Retrieved context id": 28
+        },
+        {
+            "Issue": "Sexual concerns",
+            "Explanation": "The patient is a premenopausal woman, and breast cancer survivors often face sexual concerns, including decreased libido and sexual dysfunction. The retrieved context highlights that sexual concerns are common among breast cancer survivors.",
+            "Retrieved context id": 20
+        },
+        {
+            "Issue": "Employment concerns",
+            "Explanation": "The patient may face challenges related to employment due to the intensity of her treatment and the nature of her diagnosis. The retrieved context indicates that cancer survivors often have employment concerns.",
+            "Retrieved context id": 6
+        },
+        {
+            "Issue": "Fertility concerns",
+            "Explanation": "As a young premenopausal woman, the patient may have concerns about her fertility post-treatment. The retrieved context highlights that fertility issues are a significant concern for younger breast cancer survivors.",
+            "Retrieved context id": 22
+        },
+        {
+            "Issue": "Cognitive impairment",
+            "Explanation": "The patient may experience cognitive impairment as a result of her cancer diagnosis and potential treatments. The retrieved context mentions that cognitive impairment is a common issue among cancer survivors.",
+            "Retrieved context id": 3
+        },
+        {
+            "Issue": "Financial challenges",
+            "Explanation": "The patient may face financial challenges due to the costs associated with cancer treatment and follow-up care. The retrieved context indicates that financial challenges are common among cancer survivors.",
+            "Retrieved context id": 6
+        }
+    ]
+}
+```

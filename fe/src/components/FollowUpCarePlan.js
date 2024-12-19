@@ -1,23 +1,31 @@
-import React, { useState } from 'react';
-import { Button, Card, CardContent, Grid, Table, TableBody, IconButton, TableCell, TableHead, TableRow, Typography, TextField, Tooltip } from '@mui/material';
+import React, { useState, useEffect } from 'react';
+import { Button, Card, CardContent, Grid, Table, TableBody, IconButton, TableCell, TableHead, TableRow, Typography, TextField, Tooltip, Checkbox } from '@mui/material';
 import ReferencesDialog from './ReferencesDialog';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import InfoIcon from '@mui/icons-material/Info';
 import './FollowUpCarePlan.css';
+import { StaticDataService } from '../services/StaticDataService';
 
-const FollowUpCarePlan = ({ followUpCarePlan }) => {
+const FollowUpCarePlan = ({ patientId }) => {
+  const [followUpData, setFollowUpData] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
-  const [editedPlan, setEditedPlan] = useState(followUpCarePlan);
+  const [editedPlan, setEditedPlan] = useState(null);
   const [openDialog, setOpenDialog] = useState(false);
   const [currentReferences, setCurrentReferences] = useState([]);
   const [verifiedRows, setVerifiedRows] = useState({});
   const [dateValues, setDateValues] = useState({}); 
 
-  followUpCarePlan = followUpCarePlan['Follow Up Care Plan'];
+  useEffect(() => {
+    const loadData = async () => {
+      const data = await StaticDataService.getPatientData(patientId);
+      setFollowUpData(data.followUpCarePlan);
+    };
+    loadData();
+  }, [patientId]);
 
   const handleOpenDialog = (fileNames, pageLabels, sectionKey) => {
-    const sectionContext = followUpCarePlan[sectionKey]?.context || [];
+    const sectionContext = followUpData[sectionKey]?.context || [];
     const references = sectionContext.filter(contextItem =>
       fileNames.includes(contextItem.metadata.file_name) && 
       pageLabels.map(String).includes(contextItem.metadata.page_label.toString())
@@ -99,162 +107,73 @@ const FollowUpCarePlan = ({ followUpCarePlan }) => {
     />
   );
 
-  const renderSectionRows = (section, sectionKey) => (
-    section.map((item, index) => {
-      const rowClass = verifiedRows[`${sectionKey}.${index}`] ? 'table-row verified' : 'table-row';
-      const lastVisitDate = '2024-01-15'; // Example last visit date
-      const nextVisitDatePath = `visit.${index}.nextVisitDate`;
-      const nextVisitDateStatic = '2025-06-15'; // Example next visit date
-  
-      return (
-        <TableRow key={index} className={rowClass}>
-          <TableCell>{renderEditableField(`${sectionKey}.${index}.Visit type`, item["Visit type"] || item["Test type"] || item["Treatment effect"] || item["Issue"] || item["Lifestyle"] || item["Resource"])}</TableCell>
-          {sectionKey === "Cancer Surveillance or Other Recommended Tests" && (
-            <TableCell>{renderEditableField(`${sectionKey}.${index}.Coordinating provider`, item["Coordinating provider"])}</TableCell>
-          )}
-          {"When / how often" in item && (
-           <TableCell>
-           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', width: '100%' }}>
-             <div style={{ marginBottom: '8px' }}>
-               <Typography variant="body2" style={{ color: 'white' }}>
-                 Last Visit Date: {new Date(getRandomLastVisitDate()).toLocaleDateString()}
-               </Typography>
-             </div>
-             <Typography variant="body2" style={{ color: 'white' }}>
-                Suggested Next Visit Date:
-              </Typography>
-             <LocalizationProvider dateAdapter={AdapterDateFns}>
-               <DatePicker
-                 value={dateValues[nextVisitDatePath] || new Date(getRandomNextVisitDate())}
-                 onChange={(newValue) => handleDateChange(nextVisitDatePath, newValue)}
-                 renderInput={(params) => (
-                   <TextField 
-                     {...params} 
-                     variant="outlined" 
-                     size="small" 
-                     fullWidth 
-                     style={{ 
-                       minWidth: '200px', 
-                       backgroundColor: '#333', // Dark background for input field
-                       color: 'white' // White text for input field
-                     }} 
-                     InputLabelProps={{ style: { color: 'white' } }} // White label text
-                     InputProps={{ 
-                       style: { 
-                         color: 'white' // White input text
-                       }, 
-                       endAdornment: (
-                         <IconButton>
-                           {params.InputProps.endAdornment}
-                         </IconButton>
-                       ),
-                     }} 
-                   />
-                 )}
-               />
-             </LocalizationProvider>
-           </div>
-           <Tooltip title={item["When / how often"] || "No data available"} arrow>
-             <IconButton>
-               <InfoIcon style={{ color: 'white' }} /> {/* White icon color */}
-             </IconButton>
-           </Tooltip>
-         </TableCell>    
-          )}
-          <TableCell>{renderEditableField(`${sectionKey}.${index}.Explanation`, item["Explanation"])}</TableCell>
-          <TableCell>{renderInfoButton(item, sectionKey)}</TableCell>
-          <TableCell>{renderVerificationRadio(`${sectionKey}.${index}`)}</TableCell>
-        </TableRow>
-      );
-    })
-  );
+  const renderSectionRows = (items, sectionKey) => {
+    return items.map((item, index) => (
+      <TableRow key={index}>
+        {sectionKey === 'Cancer Surveillance or Other Recommended Tests' ? (
+          <>
+            <TableCell>{item['Test type']}</TableCell>
+            <TableCell>{item['When / how often']}</TableCell>
+            <TableCell>{item['Explanation']}</TableCell>
+            <TableCell>Context ID: {item['Retrieved context id']}</TableCell>
+            <TableCell>
+              <Checkbox />
+            </TableCell>
+          </>
+        ) : (
+          <>
+            <TableCell>{item['Lifestyle'] || item['Issue'] || item['Resource']}</TableCell>
+            <TableCell>{item['Explanation']}</TableCell>
+            <TableCell>Context ID: {item['Retrieved context id']}</TableCell>
+            <TableCell>
+              <Checkbox />
+            </TableCell>
+          </>
+        )}
+      </TableRow>
+    ));
+  };
+
+  if (!followUpData) return <div>Loading...</div>;
 
   return (
     <div className="follow-up-care-plan-container">
-      <Typography variant="h4" className="follow-up-care-plan-title">Follow-up Care Plan</Typography>
-      <Grid container spacing={2} backgroundColor="#282828">
-        {Object.keys(followUpCarePlan).filter(key => ['Schedule of Clinical Visits'].includes(key)).map((sectionKey) => (
-          <Grid item xs={12} key={sectionKey}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">{sectionKey}</Typography>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Visit Type</TableCell>
-                      <TableCell>When/How Often</TableCell>
-                      <TableCell>Explanation</TableCell>
-                      <TableCell>References</TableCell>
-                      <TableCell>Validate</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {renderSectionRows(followUpCarePlan[sectionKey].recommendation[sectionKey], sectionKey)}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-        {Object.keys(followUpCarePlan).filter(key => ['Cancer Surveillance or Other Recommended Tests'].includes(key)).map((sectionKey) => (
-          <Grid item xs={12} key={sectionKey}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">{sectionKey}</Typography>
-                <Table>
-                  <TableHead>
-                    <TableRow>
+      <Typography variant="h4" className="follow-up-care-plan-title">
+        Follow-up Care Plan
+      </Typography>
+      
+      {Object.entries(followUpData).map(([sectionKey, section]) => (
+        <Card key={sectionKey} className="section-card">
+          <CardContent>
+            <Typography variant="h6">{sectionKey}</Typography>
+            <Table>
+              <TableHead>
+                <TableRow>
+                  {sectionKey === 'Cancer Surveillance or Other Recommended Tests' ? (
+                    <>
                       <TableCell>Test Type</TableCell>
-                      <TableCell>Coordinating Provider</TableCell>
                       <TableCell>When/How Often</TableCell>
                       <TableCell>Explanation</TableCell>
                       <TableCell>References</TableCell>
                       <TableCell>Validate</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {renderSectionRows(followUpCarePlan[sectionKey].recommendation[sectionKey], sectionKey)}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-        {Object.keys(followUpCarePlan).filter(key => ['Possible late and long-term effects of cancer treatment', 'Other issues', 'Lifestyle and behavior', 'Helpful resources'].includes(key)).map((sectionKey) => (
-          <Grid item xs={12} key={sectionKey}>
-            <Card>
-              <CardContent>
-                <Typography variant="h6">{sectionKey}</Typography>
-                <Table>
-                  <TableHead>
-                    <TableRow>
-                      <TableCell>Treatment Effect/Issue/Lifestyle/Resource</TableCell>
+                    </>
+                  ) : (
+                    <>
+                      <TableCell>Description</TableCell>
                       <TableCell>Explanation</TableCell>
                       <TableCell>References</TableCell>
                       <TableCell>Validate</TableCell>
-                    </TableRow>
-                  </TableHead>
-                  <TableBody>
-                    {renderSectionRows(followUpCarePlan[sectionKey].recommendation[sectionKey], sectionKey)}
-                  </TableBody>
-                </Table>
-              </CardContent>
-            </Card>
-          </Grid>
-        ))}
-        <Grid item xs={12}>
-          <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-            <Button variant="contained" color="primary" onClick={handleEditClick}>
-              {isEditing ? 'Save' : 'Edit'}
-            </Button>
-          </div>
-        </Grid>
-      </Grid>
-      <ReferencesDialog
-        open={openDialog}
-        onClose={handleCloseDialog}
-        references={currentReferences}
-      />
+                    </>
+                  )}
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {renderSectionRows(section.recommendation[sectionKey], sectionKey)}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+      ))}
     </div>
   );
 };

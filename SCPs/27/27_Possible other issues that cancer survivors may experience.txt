@@ -1,0 +1,46 @@
+```json
+{
+    "Possible other issues that cancer survivors may experience": [
+        {
+            "Issue": "Fear of recurrence",
+            "Explanation": "Cancer survivors often experience fear of recurrence, which can impact their mental health and quality of life. This is relevant for the patient as she has a strong family history of breast cancer, which may heighten her anxiety about the disease returning.",
+            "Retrieved context id": 0
+        },
+        {
+            "Issue": "Body image issues",
+            "Explanation": "The patient underwent bilateral mastectomies, which can lead to significant body image concerns. This is supported by the context that indicates body image issues are common among breast cancer survivors, especially those who have had mastectomies.",
+            "Retrieved context id": 12
+        },
+        {
+            "Issue": "Depression and anxiety",
+            "Explanation": "Cancer survivors, including breast cancer survivors, are at risk for depression and anxiety. The patient's history of breast cancer and the physical changes from surgery may contribute to these psychological issues.",
+            "Retrieved context id": 6
+        },
+        {
+            "Issue": "Sexual concerns",
+            "Explanation": "Breast cancer survivors may face sexual concerns, including loss of sexual function or desire. This issue is pertinent given the patient's history of extensive surgery and potential body image issues.",
+            "Retrieved context id": 13
+        },
+        {
+            "Issue": "Functional changes and physical impairments",
+            "Explanation": "The patient has reported slight arm stiffness and numbness near her left axilla and elbow post-operatively. These symptoms indicate potential long-term functional changes and physical impairments that need to be addressed.",
+            "Retrieved context id": 0
+        },
+        {
+            "Issue": "Relationship changes",
+            "Explanation": "Cancer survivors often face changes in their relationships due to the emotional and physical impact of their diagnosis and treatment. The patient's extensive family history of breast cancer may also influence her relationships and support system.",
+            "Retrieved context id": 0
+        },
+        {
+            "Issue": "Cognitive impairment",
+            "Explanation": "Cancer survivors may experience cognitive impairments that affect their quality of life. This is relevant for the patient as cognitive issues can arise post-treatment and impact daily functioning.",
+            "Retrieved context id": 3
+        },
+        {
+            "Issue": "Employment concerns",
+            "Explanation": "Cancer survivors may face challenges related to employment, including returning to work and managing work-related stress. This is important for the patient to consider during follow-up care.",
+            "Retrieved context id": 0
+        }
+    ]
+}
+```

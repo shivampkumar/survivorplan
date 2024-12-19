@@ -1,0 +1,46 @@
+```json
+{
+    "Possible other issues that cancer survivors may experience": [
+        {
+            "Issue": "Fear of recurrence",
+            "Explanation": "Given the patient's history of recurrent metastatic pancreatic adenocarcinoma, fear of recurrence is a significant concern. This is supported by the retrieved context which highlights that cancer survivors often experience fear of recurrence.",
+            "Retrieved context id": 0
+        },
+        {
+            "Issue": "Depression and anxiety",
+            "Explanation": "The patient has a history of recurrent metastatic cancer and ongoing treatment, which can contribute to psychological distress, including depression and anxiety. The retrieved context emphasizes that cancer survivors may face depression and anxiety, especially those with a history of psychiatric disease or significant treatment burden.",
+            "Retrieved context id": 1
+        },
+        {
+            "Issue": "Financial challenges",
+            "Explanation": "The patient has undergone multiple surgeries, systemic therapies, and ongoing treatments, which can lead to significant financial burdens. The retrieved context mentions that cancer survivors often face financial challenges due to the high costs associated with cancer treatments.",
+            "Retrieved context id": 18
+        },
+        {
+            "Issue": "Relationship and social role difficulties",
+            "Explanation": "The patient's ongoing treatment and history of metastatic disease can impact their social roles and relationships. The retrieved context indicates that cancer survivors may experience relationship changes and social role difficulties.",
+            "Retrieved context id": 2
+        },
+        {
+            "Issue": "Employment concerns",
+            "Explanation": "Given the patient's extensive treatment history and ongoing therapy, there may be concerns about maintaining employment or returning to work. The retrieved context highlights that cancer survivors often face employment concerns.",
+            "Retrieved context id": 2
+        },
+        {
+            "Issue": "Cognitive impairment",
+            "Explanation": "The patient has undergone multiple systemic therapies, which can contribute to cognitive impairment. The retrieved context mentions that cancer survivors may face cognitive dysfunction as a long-term effect of treatment.",
+            "Retrieved context id": 7
+        },
+        {
+            "Issue": "Body image issues",
+            "Explanation": "The patient has undergone significant surgeries, including a Whipple resection and hernia repair, which can affect body image. The retrieved context indicates that cancer survivors may face challenges with body image and self-image.",
+            "Retrieved context id": 2
+        },
+        {
+            "Issue": "Sexual concerns",
+            "Explanation": "The patient's extensive treatment history and ongoing therapy can impact sexual function and desire. The retrieved context highlights that cancer survivors may experience loss of sexual function and/or desire.",
+            "Retrieved context id": 2
+        }
+    ]
+}
+```
