@@ -152,13 +152,19 @@ const DoctorView = ({ patients }) => {
                       <PatientInfo patientDetails={patientDetails['General Information']} />
                     </Box>
                     <Box mb={3}>
-                      <TreatmentSummary
+                    <TreatmentSummary
                         summaryDetails={patientDetails}
+                        validations={patientDetails['validations']}
+                        patientID={selectedPatient.patientID}
                         patient_text={patientDetails['Relevant_patient_text']}
                       />
                     </Box>
                     <Box mb={3}>
-                      <FollowUpCarePlan followUpCarePlan={patientDetails} />
+                    <FollowUpCarePlan
+                      followUpCarePlan={patientDetails['Follow Up Care Plan']}
+                      validations={patientDetails['validations']}
+                      patientID={selectedPatient.patientID}
+                    />
                     </Box>
                     <Box display="flex" justifyContent="flex-end">
                       <Button

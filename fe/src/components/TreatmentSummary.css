@@ -3,12 +3,11 @@
   border: 1px solid #282828;
   border-radius: 8px;
   padding: 20px;
-  margin: 20px 0; /* Ensure consistency in margins */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  background-color: #1E1E1E !important; /* Ensure the card background is dark */
+  margin: 20px 0;
+  background-color: #1E1E1E;
   color: #FFFFFF;
-  width: 100%; /* Ensure consistent width */
-  box-sizing: border-box; /* Ensure padding is included in the width calculation */
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .treatment-summary {
@@ -20,6 +19,7 @@
   margin-bottom: 20px;
   text-align: center;
   color: #FFC107;
+  font-size: 1.5em;
 }
 
 .section {
@@ -36,63 +36,52 @@
 .table {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Ensure table takes full width */
+  width: 100%;
 }
 
 .table-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px; /* Added padding for better spacing */
+  padding: 10px;
   background-color: #2C2C2C;
   transition: background-color 0.3s;
-  width: 100%; /* Ensure table rows take full width */
-  box-sizing: border-box; /* Ensure padding is included in width */
 }
 
 .table-row:nth-child(even) {
-  background-color: #333333; /* Alternate row color */
+  background-color: #333333;
 }
 
-.table-row.verified {
-  background-color: #004d40; /* Dark teal for verified rows */
-}
-
-.table-row.unverified {
-  background-color: #800000; /* Dark red for unverified rows */
-}
-
-.label, .value {
-  flex-basis: 40%;
-  color: #FFFFFF; /* Ensure text is visible */
-}
-
-.value input {
-  width: 100%;
+.table-row .label {
+  flex: 1;
   color: #FFFFFF;
-  background-color: #1E1E1E;
-  border: 1px solid #FFFFFF;
 }
 
-.info-button {
-  flex-basis: 5%;
-  cursor: pointer;
-  background-color: transparent;
-  border: none;
-  color: #007BFF;
-  font-size: 16px;
-  text-align: center;
+.table-row .value {
+  flex: 2;
+  color: #FFFFFF;
 }
 
-.verification-radio {
-  flex-basis: 5%;
-  text-align: center;
+.table-row .score-field,
+.table-row .comment-field,
+.table-row .verification-checkbox {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.table-row .score-field .MuiInputBase-root,
+.table-row .comment-field .MuiInputBase-root {
+  color: #FFFFFF;
+}
+
+.verification-checkbox {
+  display: flex;
+  justify-content: center;
 }
 
 .edit-button {
   padding: 10px 20px;
-  background-color: #007BFF;
-  color: #FFFFFF;
+  background-color: #007BFF !important;
+  color: #FFFFFF !important;
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -100,5 +89,21 @@
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+  background-color: #0056b3 !important;
+}
+
+.MuiFormControl-root {
+  width: 100%;
+}
+
+.MuiInputBase-root {
+  color: #FFFFFF !important;
+}
+
+.MuiInputLabel-root {
+  color: #FFFFFF !important;
+}
+
+.MuiCheckbox-root {
+  color: #FFFFFF !important;
 }

@@ -97,6 +97,43 @@ def get_patients():
 
     return jsonify(patients_list)
 
+@app.route('/api/patients/<patientID>/validate', methods=['POST'])
+@cross_origin()
+def validate_patient_care_plan(patientID):
+    validation_payload = request.json  # Expecting {'validations': [list of validation data]}
+    validation_list = validation_payload.get('validations', [])
+
+    # Fetch the patient document
+    patient = patient_records.find_one({"patientID": patientID})
+    if not patient:
+        return jsonify({"message": "Patient not found"}), 404
+
+    update_data = {}
+    for validation_data in validation_list:
+        row_id = validation_data.get('row_id')
+        score = validation_data.get('score')
+        comment = validation_data.get('comment')
+        verified = validation_data.get('verified', False)
+
+        if not row_id:
+            continue  # Skip invalid data
+
+        validation_field = f"validations.{row_id}"
+        update_data[validation_field] = {
+            'score': score,
+            'comment': comment,
+            'verified': verified
+        }
+
+    if update_data:
+        patient_records.update_one(
+            {"patientID": patientID},
+            {"$set": update_data}
+        )
+        return jsonify({"message": "Validation data saved successfully"}), 200
+    else:
+        return jsonify({"message": "No valid validation data provided"}), 400
+
 @app.route('/api/patientsFH', methods=['GET'])
 @cross_origin()
 def get_patientsFH():
