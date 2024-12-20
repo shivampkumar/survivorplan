@@ -5,10 +5,8 @@ import FollowUpCarePlan from './FollowUpCarePlan';
 import PatientSidebar from './PatientSidebar';
 import { Box, Divider, Tab, Tabs, Typography, Button, Menu, MenuItem } from '@mui/material'; // Import necessary MUI components
 import DoctorHome from './DoctorHome';
-import axios from 'axios';
+import { StaticDataService } from '../services/StaticDataService';
 import './LoadingAnimation.css'; // Import the CSS for the loading animation
-
-const API_BASE_URL = 'http://20.168.8.23:8080/api';
 
 const DoctorView = ({ patients }) => {
   const [selectedTab, setSelectedTab] = useState(0);
@@ -26,17 +24,11 @@ const DoctorView = ({ patients }) => {
 
   useEffect(() => {
     if (selectedPatient) {
-      axios.get(`${API_BASE_URL}/patients/${selectedPatient.patientID}`)
-        .then(response => {
-          if (response.status === 202) {
-            const taskId = response.data.task_id;
-            setTaskId(taskId);
-            pollTaskStatus(taskId);
-          } else {
-            setPatientDetails(response.data);
-          }
-        })
-        .catch(error => console.error("Failed to fetch patient details", error));
+      const loadPatientData = async () => {
+        const data = await StaticDataService.getPatientData(selectedPatient.patientID);
+        setPatientDetails(data);
+      };
+      loadPatientData();
     }
   }, [selectedPatient]);
 
@@ -73,11 +65,6 @@ const DoctorView = ({ patients }) => {
   const onSelectPatient = (patient) => {
     setSelectedPatient(patient);
     setPatientDetails(null);
-    setTaskId(null);
-    setTaskStatus(null);
-    if (pollingRef.current) {
-      clearInterval(pollingRef.current);
-    }
   };
 
   const handleExportClick = (event) => {
@@ -141,7 +128,13 @@ const DoctorView = ({ patients }) => {
 
       {selectedTab === 1 && (
         <Box display="flex" width="100%">
-          <PatientSidebar patients={patients} onSelectPatient={onSelectPatient} />
+          <PatientSidebar 
+            patients={Array.from({ length: 40 }, (_, i) => ({ 
+              patientID: i, 
+              name: `Patient ${i}` 
+            }))} 
+            onSelectPatient={onSelectPatient} 
+          />
           <Divider orientation="vertical" flexItem sx={{ backgroundColor: '#282828' }} />
           <Box flex={1} padding="20px" backgroundColor="#282828">
             {selectedPatient ? (
@@ -149,16 +142,13 @@ const DoctorView = ({ patients }) => {
                 {patientDetails ? (
                   <>
                     <Box mb={3}>
-                      <PatientInfo patientDetails={patientDetails['General Information']} />
+                      <PatientInfo patientDetails={patientDetails.General_Information} />
                     </Box>
                     <Box mb={3}>
-                      <TreatmentSummary
-                        summaryDetails={patientDetails}
-                        patient_text={patientDetails['Relevant_patient_text']}
-                      />
+                      <TreatmentSummary data={patientDetails.Treatment_Summary} />
                     </Box>
                     <Box mb={3}>
-                      <FollowUpCarePlan followUpCarePlan={patientDetails} />
+                      <FollowUpCarePlan data={patientDetails.Follow_Up_Care_Plan} />
                     </Box>
                     <Box display="flex" justifyContent="flex-end">
                       <Button
@@ -183,9 +173,6 @@ const DoctorView = ({ patients }) => {
                     <Typography variant="h6" className="loading-text">
                       Loading patient details
                       <span className="loading-dots">...</span>
-                    </Typography>
-                    <Typography variant="body2" className="loading-text-secondary">
-                      Please wait while we retrieve the information.
                     </Typography>
                   </Box>
                 )}

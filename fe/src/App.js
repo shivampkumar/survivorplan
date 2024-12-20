@@ -11,7 +11,6 @@ import { Button } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
 import { createTheme } from '@mui/material/styles';
 import { Tabs, Tab, Box, Typography } from '@mui/material';
-import { StaticDataService } from './services/StaticDataService';
 
 const theme = createTheme({
   palette: {
@@ -33,8 +32,6 @@ function App() {
   const [patientDetails, setPatientDetails] = useState(null); // New state for patient details
   const [patients, setPatients] = useState([]); // State to store patient list
   const [loggedInPatient, setLoggedInPatient] = useState(null); // State to store logged-in patient details
-  const [patientId, setPatientId] = useState(0); // Default to first patient
-  const [patientData, setPatientData] = useState(null);
 
   const API_BASE_URL = 'http://20.168.8.23:8080/api';
 
@@ -52,14 +49,6 @@ function App() {
         .catch(error => console.error("Failed to fetch patients", error));
     }
   }, [isLoggedIn, userRole]);
-
-  useEffect(() => {
-    const loadPatientData = async () => {
-      const data = await StaticDataService.getPatientData(patientId);
-      setPatientData(data);
-    };
-    loadPatientData();
-  }, [patientId]);
 
   const handleLogin = async (email, password) => {
     try {
@@ -140,20 +129,6 @@ function App() {
     <div>
       <Header />
       {renderUserView()}
-      <select 
-        value={patientId} 
-        onChange={(e) => setPatientId(Number(e.target.value))}
-      >
-        {StaticDataService.getPatientIds().map(id => (
-          <option key={id} value={id}>Patient {id}</option>
-        ))}
-      </select>
-      {patientData && (
-        <>
-          <TreatmentSummary data={patientData.Treatment_Summary} />
-          <FollowUpCarePlan data={patientData.Follow_Up_Care_Plan} />
-        </>
-      )}
     </div>
   );
 }
