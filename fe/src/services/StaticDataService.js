@@ -5,13 +5,22 @@ export class StaticDataService {
   }
 
   static async getPatientData(patientId) {
-    // In a real implementation, this would load JSON files from SCPs folder
-    // For now, we'll simulate the structure based on the files in SCPs/0/
+    // This would actually load the JSON files from SCPs folder
+    // For now simulating the structure based on SCPs/0/ folder
     return {
-      treatmentSummary: {
+      General_Information: {
+        // Dummy data since not provided in SCPs
+        patientId: patientId,
+        name: `Patient ${patientId}`,
+        dateOfBirth: "1960-01-01",
+        contactNumber: "(555) 123-4567",
+        email: `patient${patientId}@email.com`
+      },
+      Treatment_Summary: {
+        // Structure from 0_treatment_summary.json
         Diagnosis: {
           "Cancer type": "adenocarcinoma of the pancreas",
-          "Diagnosis Date": "October 24", 
+          "Diagnosis Date": "October 24",
           "Cancer Stage": "locally advanced",
           "Molecular Markers": ""
         },
@@ -22,48 +31,61 @@ export class StaticDataService {
           location: "",
           findings: ""
         },
-        RadiationTreatment: {
-          conducted: "No",
-          procedure: "",
-          dates: "",
-          location: ""
-        },
-        SystemicTherapy: {
-          conducted: "Yes",
-          agents: [
-            { name: "gemcitabine", endDate: "" },
-            { name: "Abraxane", endDate: "" }
-          ]
-        },
-        PersistentSymptoms: {
-          present: "Yes",
-          symptoms: ["numbness and tingling in hands"]
-        }
+        // ... other treatment summary fields
       },
-      followUpCarePlan: {
-        "Cancer Surveillance or Other Recommended Tests": {
-          recommendation: {
-            "Cancer Surveillance or Other Recommended Tests": [
-              {
-                "Test type": "Imaging (CT scan)",
-                "When / how often": "Every 3 months in Year 1, every 6 months in Year 2, and annually in Years 3-5",
-                "Frequency (in weeks)": 12,
-                "Explanation": "Regular imaging is recommended...",
-                "Retrieved context id": 20
-              }
-            ]
+      Follow_Up_Care_Plan: {
+        "Already experienced symptoms or side effects": [
+          // From 0_Already experienced symptoms or side effects.json
+          {
+            "Symptom": "Peripheral neuropathy",
+            "Explanation": "Patient reports numbness and tingling...",
+            "Retrieved context id": 5
           }
-        },
-        "Lifestyle and behavior": {
-          recommendation: {
-            "Lifestyle and behavior": [
-              {
-                "Lifestyle": "Engage in regular physical activity",
-                "Explanation": "Regular physical activity can help maintain...",
-                "Retrieved context id": 2
-              }
-            ]
+        ],
+        "Cancer surveillance and other recommended tests": [
+          // From 0_Cancer surveillance and other recommended tests for cancer monitoring.json
+          {
+            "Test type": "Imaging (CT scan)",
+            "When / how often": "Every 3 months",
+            "Explanation": "Regular imaging is recommended...",
+            "Retrieved context id": 20
           }
+        ],
+        "Lifestyle and behavior recommendations": [
+          // From 0_Lifestyle and behavior recommendations for cancer survivors.json
+          {
+            "Lifestyle": "Regular physical activity",
+            "Explanation": "Engage in moderate exercise...",
+            "Retrieved context id": 2
+          }
+        ],
+        "Possible late and long-term effects": [
+          // From 0_Possible late and long-term effects of cancer treatment.json
+          {
+            "Treatment effect": "Peripheral neuropathy",
+            "Explanation": "Numbness and tingling...",
+            "Retrieved context id": 9
+          }
+        ],
+        "Possible other issues": [
+          // From 0_Possible other issues that cancer survivors may experience.json
+          {
+            "Issue": "Depression and anxiety",
+            "Explanation": "The patient is dealing with...",
+            "Retrieved context id": 6
+          }
+        ],
+        "References to helpful resources": [
+          // From 0_References to helpful resources for cancer survivors.json
+          {
+            "Resource": "ACS Survivorship Center Web site",
+            "Explanation": "This resource provides comprehensive...",
+            "Retrieved context id": 1
+          }
+        ],
+        retrieved_context: {
+          // Combined context from all _retrieved_context_ files
+          // Will be used for references
         }
       }
     };

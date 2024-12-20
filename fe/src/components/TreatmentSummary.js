@@ -1,39 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import PatientTextDialog from './PatientTextDialog';
-import './TreatmentSummary.css'; // Ensure this file is updated with styles as needed
-import { StaticDataService } from '../services/StaticDataService';
+import './TreatmentSummary.css';
 import { Typography } from '@mui/material';
 
-const TreatmentSummary = ({ patientId }) => {
-  const [treatmentData, setTreatmentData] = useState(null);
+const TreatmentSummary = ({ data }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [editedSummary, setEditedSummary] = useState(null);
   const [patientDialogOpen, setPatientDialogOpen] = useState(false);
   const [verifiedRows, setVerifiedRows] = useState({});
 
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await StaticDataService.getPatientData(patientId);
-      setTreatmentData(data.treatmentSummary);
-    };
-    loadData();
-  }, [patientId]);
-
-  useEffect(() => {
-    setEditedSummary(treatmentData);
-  }, [treatmentData]);
-
-  const handleChange = (path, value) => {
-    const keys = path.split('.');
-    const lastKey = keys.pop();
-    const lastObj = keys.reduce((obj, key) => obj[key] = obj[key] || {}, editedSummary);
-    lastObj[lastKey] = value;
-    setEditedSummary({ ...editedSummary });
-  };
-
-  const handleEditClick = () => {
-    setIsEditing(!isEditing);
-  };
+  if (!data) return <div>Loading...</div>;
 
   const handleOpenPatientTextDialog = () => {
     setPatientDialogOpen(true);
@@ -44,78 +19,75 @@ const TreatmentSummary = ({ patientId }) => {
       ...prevVerifiedRows,
       [path]: !prevVerifiedRows[path],
     }));
-    // TODO: Update verification status via API
   };
 
-  const renderEditableField = (path, value) => (
-    isEditing ? (
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => handleChange(path, e.target.value)}
-      />
-    ) : (
-      value
-    )
-  );
-
   const renderInfoButton = () => (
-    <button onClick={handleOpenPatientTextDialog}>i</button>
+    <button className="info-button" onClick={handleOpenPatientTextDialog}>
+      i
+    </button>
   );
 
   const renderVerificationRadio = (path) => (
     <input
-      type="radio"
-      checked={!!verifiedRows[path]}
+      type="checkbox"
+      checked={verifiedRows[path] || false}
       onChange={() => handleVerificationChange(path)}
     />
   );
 
-  const generateSectionRows = (section, sectionPath, keys) => {
-    return keys.map((key) => {
-      if (!(key in section)) {
-        return null; // Skip missing keys
-      }
+  const renderSection = (title, data) => {
+    if (!data) return null;
 
-      const value = section[key];
-      const isObject = typeof value === 'object' && !Array.isArray(value) && value !== null;
-      const rowClass = verifiedRows[`${sectionPath}.${key}`] ? 'table-row verified' : 'table-row';
-
+    // Handle array data (like Agents Used in Completed Treatments)
+    if (Array.isArray(data)) {
       return (
-        <div
-          className={rowClass}
-          key={`${sectionPath}.${key}`}
-        >
-          <div className="label">{key}:</div>
-          <div className="value">
-            {isObject ? renderSection(value, `${sectionPath}.${key}`, Object.keys(value)) : renderEditableField(`${sectionPath}.${key}`, value)}
+        <div className="section">
+          <Typography variant="h6" className="section-title">{title}</Typography>
+          <div className="table">
+            {data.map((item, index) => (
+              <div key={index}>
+                {Object.entries(item).map(([key, value]) => (
+                  <div 
+                    className={`table-row ${verifiedRows[`${title}.${key}`] ? 'verified' : 'unverified'}`} 
+                    key={key}
+                  >
+                    <div className="label">{key}:</div>
+                    <div className="value">{value}</div>
+                    <div className="info-button">{renderInfoButton()}</div>
+                    <div className="verification-radio">
+                      {renderVerificationRadio(`${title}.${key}`)}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
-          <div className="info-button">{renderInfoButton()}</div>
-          <div className="verification-radio">{renderVerificationRadio(`${sectionPath}.${key}`)}</div>
-          <PatientTextDialog
-            open={patientDialogOpen}
-            onClose={() => setPatientDialogOpen(false)}
-            patientText={treatmentData.patient_text}
-          />
         </div>
       );
-    }).filter(Boolean);
+    }
+
+    // Handle object data
+    return (
+      <div className="section">
+        <Typography variant="h6" className="section-title">{title}</Typography>
+        <div className="table">
+          {Object.entries(data).map(([key, value]) => (
+            <div 
+              className={`table-row ${verifiedRows[`${title}.${key}`] ? 'verified' : 'unverified'}`} 
+              key={key}
+            >
+              <div className="label">{key}:</div>
+              <div className="value">{value}</div>
+              <div className="info-button">{renderInfoButton()}</div>
+              <div className="verification-radio">
+                {renderVerificationRadio(`${title}.${key}`)}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
   };
-
-  const renderSection = (sectionData, path, keys) => (
-    <div className="section">
-      {keys.map((sectionTitle, index) => (
-        <React.Fragment key={index}>
-          <h3 className="section-title">{sectionTitle}</h3>
-          <div className="table">
-            {generateSectionRows(sectionData[sectionTitle], `${path}.${sectionTitle}`, Object.keys(sectionData[sectionTitle]))}
-          </div>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-
-  if (!treatmentData) return <div>Loading...</div>;
 
   return (
     <div className="card">
@@ -124,76 +96,47 @@ const TreatmentSummary = ({ patientId }) => {
           Treatment Summary
         </Typography>
 
-        <div className="section">
-          <Typography variant="h6" className="section-title">Diagnosis</Typography>
-          <div className="table">
-            {Object.entries(treatmentData.Diagnosis).map(([key, value]) => (
-              <div className="table-row" key={key}>
-                <div className="label">{key}</div>
-                <div className="value">{value || 'N/A'}</div>
-              </div>
-            ))}
-          </div>
-        </div>
+        {/* Render Diagnosis Section */}
+        {renderSection("Diagnosis", data.Diagnosis)}
 
-        <div className="section">
-          <Typography variant="h6" className="section-title">Treatment Details</Typography>
-          <div className="table">
-            <div className="table-row">
-              <div className="label">Surgery Conducted</div>
-              <div className="value">{treatmentData.Surgery.conducted}</div>
-            </div>
-            {treatmentData.Surgery.conducted === 'Yes' && (
-              <>
-                <div className="table-row">
-                  <div className="label">Surgery Procedure</div>
-                  <div className="value">{treatmentData.Surgery.procedure || 'N/A'}</div>
-                </div>
-                {/* ... other surgery details */}
-              </>
-            )}
-            
-            <div className="table-row">
-              <div className="label">Radiation Treatment</div>
-              <div className="value">{treatmentData.RadiationTreatment.conducted}</div>
-            </div>
-            {/* ... radiation details if conducted */}
+        {/* Render Surgery Information */}
+        {renderSection("Surgery Information", data["Surgery Information"])}
 
-            <div className="table-row">
-              <div className="label">Systemic Therapy</div>
-              <div className="value">{treatmentData.SystemicTherapy.conducted}</div>
-            </div>
-            {treatmentData.SystemicTherapy.conducted === 'Yes' && 
-              treatmentData.SystemicTherapy.agents.map((agent, index) => (
-                <div className="table-row" key={index}>
-                  <div className="label">Agent {index + 1}</div>
-                  <div className="value">{agent.name} {agent.endDate ? `(End: ${agent.endDate})` : ''}</div>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+        {/* Render Radiation Treatment Information */}
+        {renderSection("Radiation Treatment Information", data["Radiation Treatment Information"])}
 
-        {/* Persistent Symptoms section */}
-        {treatmentData.PersistentSymptoms.present === 'Yes' && (
+        {/* Render Systemic Therapy Information */}
+        {renderSection("Agents Used in Completed Treatments", data["Agents Used in Completed Treatments"])}
+
+        {/* Render Symptoms Section */}
+        {renderSection("Symptoms or Side Effects", data["Symptoms or Side Effects"])}
+
+        {/* Render Ongoing Treatment Information */}
+        {renderSection("Ongoing Treatment Information", data["Ongoing Treatment Information"])}
+
+        {/* Additional Comments Section */}
+        {data["Additional Comments"] && (
           <div className="section">
-            <Typography variant="h6" className="section-title">Persistent Symptoms</Typography>
+            <Typography variant="h6" className="section-title">Additional Comments</Typography>
             <div className="table">
-              {treatmentData.PersistentSymptoms.symptoms.map((symptom, index) => (
-                <div className="table-row" key={index}>
-                  <div className="label">Symptom {index + 1}</div>
-                  <div className="value">{symptom}</div>
-                </div>
-              ))}
+              <div className="table-row">
+                <div className="value">{data["Additional Comments"]}</div>
+              </div>
             </div>
           </div>
         )}
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-          <button className="edit-button" onClick={handleEditClick}>
+          <button className="edit-button" onClick={() => setIsEditing(!isEditing)}>
             {isEditing ? 'Save' : 'Edit'}
           </button>
         </div>
+
+        <PatientTextDialog
+          open={patientDialogOpen}
+          onClose={() => setPatientDialogOpen(false)}
+          patientText={data["Additional Comments"]}
+        />
       </div>
     </div>
   );

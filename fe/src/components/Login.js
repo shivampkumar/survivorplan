@@ -2,13 +2,13 @@ import React, { useState } from 'react';
 import { TextField, Button, Container, Typography, Box } from '@mui/material';
 import { LockOpen as LockOpenIcon, Email as EmailIcon } from '@mui/icons-material';
 
-function Login({ onLogin }) {
+const Login = ({ onLogin }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    onLogin(email, password);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    onLogin({ role: 'user', patientId: 0 });
   };
 
   return (
@@ -45,6 +45,6 @@ function Login({ onLogin }) {
       </Box>
     </Container>
   );
-}
+};
 
 export default Login;

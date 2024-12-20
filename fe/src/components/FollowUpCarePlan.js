@@ -1,35 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Card, CardContent, Grid, Table, TableBody, IconButton, TableCell, TableHead, TableRow, Typography, TextField, Tooltip, Checkbox } from '@mui/material';
 import ReferencesDialog from './ReferencesDialog';
-import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import InfoIcon from '@mui/icons-material/Info';
 import './FollowUpCarePlan.css';
-import { StaticDataService } from '../services/StaticDataService';
 
-const FollowUpCarePlan = ({ patientId }) => {
-  const [followUpData, setFollowUpData] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
-  const [editedPlan, setEditedPlan] = useState(null);
+const FollowUpCarePlan = ({ data }) => {
   const [openDialog, setOpenDialog] = useState(false);
   const [currentReferences, setCurrentReferences] = useState([]);
   const [verifiedRows, setVerifiedRows] = useState({});
-  const [dateValues, setDateValues] = useState({}); 
 
-  useEffect(() => {
-    const loadData = async () => {
-      const data = await StaticDataService.getPatientData(patientId);
-      setFollowUpData(data.followUpCarePlan);
-    };
-    loadData();
-  }, [patientId]);
+  if (!data) return <div>Loading...</div>;
 
-  const handleOpenDialog = (fileNames, pageLabels, sectionKey) => {
-    const sectionContext = followUpData[sectionKey]?.context || [];
-    const references = sectionContext.filter(contextItem =>
-      fileNames.includes(contextItem.metadata.file_name) && 
-      pageLabels.map(String).includes(contextItem.metadata.page_label.toString())
-    );
+  const handleOpenDialog = (contextId) => {
+    // Get context from retrieved_context using contextId
+    const references = data.retrieved_context ? [data.retrieved_context[contextId]] : [];
     setCurrentReferences(references);
     setOpenDialog(true);
   };
@@ -45,135 +29,176 @@ const FollowUpCarePlan = ({ patientId }) => {
     }));
   };
 
-  const handleEditClick = () => {
-    setIsEditing(!isEditing);
-  };
-
-  const getRandomDate = (start, end) => {
-    const date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-    return date;
-  };
-  
-  const getRandomLastVisitDate = () => {
-    const startDate = new Date('2023-01-01');
-    const endDate = new Date('2024-07-31');
-    return getRandomDate(startDate, endDate);
-  };
-  
-  const getRandomNextVisitDate = () => {
-    const startDate = new Date('2024-08-31');
-    const endDate = new Date('2025-12-31');
-    return getRandomDate(startDate, endDate);
-  };
-
-  const handleChange = (path, value) => {
-    const keys = path.split('.');
-    const lastKey = keys.pop();
-    const lastObj = keys.reduce((obj, key) => obj[key] = obj[key] || {}, editedPlan);
-    lastObj[lastKey] = value;
-    setEditedPlan({ ...editedPlan });
-  };
-
-  const handleDateChange = (path, newValue) => {
-    setDateValues((prev) => ({
-      ...prev,
-      [path]: newValue,
-    }));
-  };
-
-  const renderEditableField = (path, value) => (
-    isEditing ? (
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => handleChange(path, e.target.value)}
-      />
-    ) : (
-      value
-    )
-  );
-
-  const renderInfoButton = (item, sectionKey) => (
-    <Button onClick={() => handleOpenDialog(item["File names"], item["Page labels"], sectionKey)}>i</Button>
-  );
-
-
-
-  const renderVerificationRadio = (path) => (
-    <input
-      type="radio"
-      checked={!!verifiedRows[path]}
-      onChange={() => handleVerificationChange(path)}
-    />
-  );
-
   const renderSectionRows = (items, sectionKey) => {
+    if (!items || !Array.isArray(items)) return null;
+
+    const getTableCells = (item) => {
+      switch (sectionKey) {
+        case "Cancer surveillance and other recommended tests":
+          return (
+            <>
+              <TableCell>{item["Test type"]}</TableCell>
+              <TableCell>{item["When / how often"]}</TableCell>
+              <TableCell>{item["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`${sectionKey}.${item["Test type"]}`] || false}
+                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Test type"]}`)}
+                />
+              </TableCell>
+            </>
+          );
+
+        case "Lifestyle and behavior recommendations":
+          return (
+            <>
+              <TableCell>{item["Lifestyle"]}</TableCell>
+              <TableCell>{item["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`${sectionKey}.${item["Lifestyle"]}`] || false}
+                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Lifestyle"]}`)}
+                />
+              </TableCell>
+            </>
+          );
+
+        case "Possible late and long-term effects":
+          return (
+            <>
+              <TableCell>{item["Treatment effect"]}</TableCell>
+              <TableCell>{item["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`${sectionKey}.${item["Treatment effect"]}`] || false}
+                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Treatment effect"]}`)}
+                />
+              </TableCell>
+            </>
+          );
+
+        case "References to helpful resources":
+          return (
+            <>
+              <TableCell>{item["Resource"]}</TableCell>
+              <TableCell>{item["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`${sectionKey}.${item["Resource"]}`] || false}
+                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Resource"]}`)}
+                />
+              </TableCell>
+            </>
+          );
+
+        default:
+          return (
+            <>
+              <TableCell>{item["Issue"] || item["Symptom"]}</TableCell>
+              <TableCell>{item["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`${sectionKey}.${item["Issue"] || item["Symptom"]}`] || false}
+                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Issue"] || item["Symptom"]}`)}
+                />
+              </TableCell>
+            </>
+          );
+      }
+    };
+
     return items.map((item, index) => (
       <TableRow key={index}>
-        {sectionKey === 'Cancer Surveillance or Other Recommended Tests' ? (
-          <>
-            <TableCell>{item['Test type']}</TableCell>
-            <TableCell>{item['When / how often']}</TableCell>
-            <TableCell>{item['Explanation']}</TableCell>
-            <TableCell>Context ID: {item['Retrieved context id']}</TableCell>
-            <TableCell>
-              <Checkbox />
-            </TableCell>
-          </>
-        ) : (
-          <>
-            <TableCell>{item['Lifestyle'] || item['Issue'] || item['Resource']}</TableCell>
-            <TableCell>{item['Explanation']}</TableCell>
-            <TableCell>Context ID: {item['Retrieved context id']}</TableCell>
-            <TableCell>
-              <Checkbox />
-            </TableCell>
-          </>
-        )}
+        {getTableCells(item)}
       </TableRow>
     ));
   };
 
-  if (!followUpData) return <div>Loading...</div>;
+  const getTableHeaders = (sectionKey) => {
+    switch (sectionKey) {
+      case "Cancer surveillance and other recommended tests":
+        return (
+          <TableRow>
+            <TableCell>Test Type</TableCell>
+            <TableCell>When/How Often</TableCell>
+            <TableCell>Explanation</TableCell>
+            <TableCell>References</TableCell>
+            <TableCell>Validate</TableCell>
+          </TableRow>
+        );
+      default:
+        return (
+          <TableRow>
+            <TableCell>Description</TableCell>
+            <TableCell>Explanation</TableCell>
+            <TableCell>References</TableCell>
+            <TableCell>Validate</TableCell>
+          </TableRow>
+        );
+    }
+  };
 
   return (
     <div className="follow-up-care-plan-container">
       <Typography variant="h4" className="follow-up-care-plan-title">
         Follow-up Care Plan
       </Typography>
-      
-      {Object.entries(followUpData).map(([sectionKey, section]) => (
-        <Card key={sectionKey} className="section-card">
-          <CardContent>
-            <Typography variant="h6">{sectionKey}</Typography>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  {sectionKey === 'Cancer Surveillance or Other Recommended Tests' ? (
-                    <>
-                      <TableCell>Test Type</TableCell>
-                      <TableCell>When/How Often</TableCell>
-                      <TableCell>Explanation</TableCell>
-                      <TableCell>References</TableCell>
-                      <TableCell>Validate</TableCell>
-                    </>
-                  ) : (
-                    <>
-                      <TableCell>Description</TableCell>
-                      <TableCell>Explanation</TableCell>
-                      <TableCell>References</TableCell>
-                      <TableCell>Validate</TableCell>
-                    </>
-                  )}
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {renderSectionRows(section.recommendation[sectionKey], sectionKey)}
-              </TableBody>
-            </Table>
-          </CardContent>
-        </Card>
-      ))}
+
+      <Grid container spacing={2}>
+        {Object.entries(data).map(([sectionKey, sectionData]) => {
+          // Skip the retrieved_context section as it's used for references
+          if (sectionKey === 'retrieved_context') return null;
+
+          return (
+            <Grid item xs={12} key={sectionKey}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h6">{sectionKey}</Typography>
+                  <Table>
+                    <TableHead>
+                      {getTableHeaders(sectionKey)}
+                    </TableHead>
+                    <TableBody>
+                      {renderSectionRows(sectionData, sectionKey)}
+                    </TableBody>
+                  </Table>
+                </CardContent>
+              </Card>
+            </Grid>
+          );
+        })}
+      </Grid>
+
+      <ReferencesDialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        references={currentReferences}
+      />
     </div>
   );
 };
