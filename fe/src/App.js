@@ -3,6 +3,8 @@ import Login from './components/Login';
 import Register from './components/Register';
 import DoctorView from './components/DoctorView';
 import PatientView from './components/PatientView';
+import TreatmentSummary from './components/TreatmentSummary';
+import FollowUpCarePlan from './components/FollowUpCarePlan';
 import axios from 'axios';
 import Header from './components/Header';
 import { Button } from '@mui/material';
@@ -146,8 +148,12 @@ function App() {
           <option key={id} value={id}>Patient {id}</option>
         ))}
       </select>
-      <TreatmentSummary data={patientData?.treatmentSummary} />
-      <FollowUpCarePlan data={patientData?.followUpCarePlan} />
+      {patientData && (
+        <>
+          <TreatmentSummary data={patientData.Treatment_Summary} />
+          <FollowUpCarePlan data={patientData.Follow_Up_Care_Plan} />
+        </>
+      )}
     </div>
   );
 }
