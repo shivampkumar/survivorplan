@@ -54,8 +54,10 @@ function App() {
     try {
       const response = await axios.post(`${API_BASE_URL}/login`, { email, password });
       console.log(response.data);
-      setUserRole(response.data.role); // Set user role from response
 
+      //setUserRole(response.data.role); // Set user role from response
+      // hardcode for now
+      setUserRole('doctor');
       // If the role is 'patient', fetch and set patient details
       if (response.data.role === 'patient') {
         // Assuming the response includes patientID for patients
