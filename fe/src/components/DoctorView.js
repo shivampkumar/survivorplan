@@ -1,21 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import PatientInfo from './PatientInfo';
 import TreatmentSummary from './TreatmentSummary';
 import FollowUpCarePlan from './FollowUpCarePlan';
 import PatientSidebar from './PatientSidebar';
-import { Box, Divider, Tab, Tabs, Typography, Button, Menu, MenuItem } from '@mui/material'; // Import necessary MUI components
+import { Box, Divider, Tab, Tabs, Typography, Button, Menu, MenuItem } from '@mui/material';
 import DoctorHome from './DoctorHome';
 import { StaticDataService } from '../services/StaticDataService';
-import './LoadingAnimation.css'; // Import the CSS for the loading animation
+import './LoadingAnimation.css';
 
 const DoctorView = ({ patients }) => {
   const [selectedTab, setSelectedTab] = useState(0);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
-  const [taskId, setTaskId] = useState(null);
-  const [taskStatus, setTaskStatus] = useState(null);
-  const pollingRef = useRef(null);
-
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleChangeTab = (event, newValue) => {
@@ -32,35 +28,35 @@ const DoctorView = ({ patients }) => {
     }
   }, [selectedPatient]);
 
-  const pollTaskStatus = (taskId) => {
-    const pollInterval = 2000;
+  // const pollTaskStatus = (taskId) => {
+  //   const pollInterval = 2000;
 
-    const checkStatus = () => {
-      axios.get(`${API_BASE_URL}/status/${taskId}`)
-        .then(response => {
-          const taskState = response.data.state;
+  //   const checkStatus = () => {
+  //     axios.get(`${API_BASE_URL}/status/${taskId}`)
+  //       .then(response => {
+  //         const taskState = response.data.state;
 
-          if (taskState === 'SUCCESS') {
-            setPatientDetails(response.data.result);
-            alert('Plan generated successfully');
-            clearInterval(pollingRef.current);
-          } else if (taskState === 'FAILURE') {
-            alert('Failed to generate plan');
-            clearInterval(pollingRef.current);
-          } else {
-            setTaskStatus(taskState);
-          }
-        })
-        .catch(error => {
-          console.error("Failed to check task status", error);
-        });
-    };
+  //         if (taskState === 'SUCCESS') {
+  //           setPatientDetails(response.data.result);
+  //           alert('Plan generated successfully');
+  //           clearInterval(pollingRef.current);
+  //         } else if (taskState === 'FAILURE') {
+  //           alert('Failed to generate plan');
+  //           clearInterval(pollingRef.current);
+  //         } else {
+  //           setTaskStatus(taskState);
+  //         }
+  //       })
+  //       .catch(error => {
+  //         console.error("Failed to check task status", error);
+  //       });
+  //   };
 
-    if (pollingRef.current) {
-      clearInterval(pollingRef.current);
-    }
-    pollingRef.current = setInterval(checkStatus, pollInterval);
-  };
+  //   if (pollingRef.current) {
+  //     clearInterval(pollingRef.current);
+  //   }
+  //   pollingRef.current = setInterval(checkStatus, pollInterval);
+  // };
 
   const onSelectPatient = (patient) => {
     setSelectedPatient(patient);
@@ -77,35 +73,15 @@ const DoctorView = ({ patients }) => {
 
   const downloadPdf = () => {
     if (!selectedPatient) return;
-
-    axios.get(`${API_BASE_URL}/generate_pdf/${selectedPatient.patientID}`, { responseType: 'blob' })
-      .then(response => {
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement('a');
-        link.href = url;
-        link.setAttribute('download', `CarePlan_${selectedPatient.patientID}.pdf`);
-        document.body.appendChild(link);
-        link.click();
-      })
-      .catch(error => {
-        console.error("Failed to generate PDF", error);
-      });
-
+    // For now, just show an alert since we're using static data
+    alert('PDF download functionality disabled in static mode');
     handleMenuClose();
   };
 
   const exportToEpic = () => {
     if (!selectedPatient) return;
-
-    axios.post(`${API_BASE_URL}/export_to_epic`, { patientID: selectedPatient.patientID })
-      .then(response => {
-        alert('Patient data exported to EPIC successfully');
-      })
-      .catch(error => {
-        console.error("Failed to export patient data to EPIC", error);
-        alert('Failed to export data to EPIC');
-      });
-
+    // For now, just show an alert since we're using static data
+    alert('EPIC export functionality disabled in static mode');
     handleMenuClose();
   };
 
