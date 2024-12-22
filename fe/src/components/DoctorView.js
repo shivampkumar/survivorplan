@@ -21,8 +21,13 @@ const DoctorView = ({ patients }) => {
   useEffect(() => {
     if (selectedPatient) {
       const loadPatientData = async () => {
-        const data = await StaticDataService.getPatientData(selectedPatient.patientID);
-        setPatientDetails(data);
+        try {
+          const data = await StaticDataService.getPatientData(selectedPatient.patientID);
+          console.log("Loaded patient data:", data); // Debug log
+          setPatientDetails(data);
+        } catch (error) {
+          console.error("Error loading patient data:", error);
+        }
       };
       loadPatientData();
     }
@@ -59,8 +64,9 @@ const DoctorView = ({ patients }) => {
   // };
 
   const onSelectPatient = (patient) => {
+    console.log("Selected patient:", patient); // Debug log
     setSelectedPatient(patient);
-    setPatientDetails(null);
+    setPatientDetails(null); // Clear existing details while loading
   };
 
   const handleExportClick = (event) => {

@@ -5,87 +5,71 @@ export class StaticDataService {
   }
 
   static async getPatientData(patientId) {
-    // This would actually load the JSON files from SCPs folder
-    // For now simulating the structure based on SCPs/0/ folder
+    // Map the data structure to match what the components expect
     return {
       General_Information: {
-        // Dummy data since not provided in SCPs
         patientId: patientId,
-        name: `Patient ${patientId}`,
-        dateOfBirth: "1960-01-01",
-        contactNumber: "(555) 123-4567",
-        email: `patient${patientId}@email.com`
+        "Patient Name": `Patient ${patientId}`,
+        "Date of Birth": "1960-01-01",
+        "Contact Number": "(555) 123-4567",
+        "Email": `patient${patientId}@email.com`,
+        "Cancer Type": "Breast Cancer",
+        "Stage": "Stage II",
+        "Diagnosis Date": "2022-01-15"
       },
       Treatment_Summary: {
-        // Structure from 0_treatment_summary.json
-        Diagnosis: {
-          "Cancer type": "adenocarcinoma of the pancreas",
-          "Diagnosis Date": "October 24",
-          "Cancer Stage": "locally advanced",
-          "Molecular Markers": ""
+        "Diagnosis": {
+          "Cancer Type": "Breast Cancer",
+          "Diagnosis Date": "2022-01-15",
+          "Stage": "Stage II"
         },
-        Surgery: {
-          conducted: "No",
-          procedure: "",
-          dates: "",
-          location: "",
-          findings: ""
+        "Treatment Details": {
+          "Surgery": "Lumpectomy performed on 2022-02-01",
+          "Chemotherapy": "4 cycles of AC-T completed on 2022-06-15",
+          "Radiation": "30 sessions completed on 2022-08-30"
         },
-        // ... other treatment summary fields
+        "Side Effects": {
+          "Current": ["Fatigue", "Mild lymphedema"],
+          "Potential Long-term": ["Heart problems", "Secondary cancers"]
+        }
       },
       Follow_Up_Care_Plan: {
-        "Already experienced symptoms or side effects": [
-          // From 0_Already experienced symptoms or side effects.json
-          {
-            "Symptom": "Peripheral neuropathy",
-            "Explanation": "Patient reports numbness and tingling...",
-            "Retrieved context id": 5
+        "Medical Follow-up": {
+          "recommendation": {
+            "Schedule": [
+              "Oncologist visits every 3 months for first 2 years",
+              "Mammogram every 6 months",
+              "Annual physical examination"
+            ],
+            "Tests": [
+              "Regular blood work",
+              "Bone density scan annually"
+            ]
           }
-        ],
-        "Cancer surveillance and other recommended tests": [
-          // From 0_Cancer surveillance and other recommended tests for cancer monitoring.json
-          {
-            "Test type": "Imaging (CT scan)",
-            "When / how often": "Every 3 months",
-            "Explanation": "Regular imaging is recommended...",
-            "Retrieved context id": 20
+        },
+        "Lifestyle Recommendations": {
+          "recommendation": {
+            "Exercise": [
+              "30 minutes moderate activity daily",
+              "Include strength training twice weekly"
+            ],
+            "Diet": [
+              "Maintain healthy weight",
+              "Eat balanced diet rich in vegetables and fruits"
+            ]
           }
-        ],
-        "Lifestyle and behavior recommendations": [
-          // From 0_Lifestyle and behavior recommendations for cancer survivors.json
-          {
-            "Lifestyle": "Regular physical activity",
-            "Explanation": "Engage in moderate exercise...",
-            "Retrieved context id": 2
+        },
+        "Psychosocial Support": {
+          "recommendation": {
+            "Mental Health": [
+              "Regular check-ins with mental health professional",
+              "Join cancer survivor support group"
+            ],
+            "Social Support": [
+              "Family counseling available",
+              "Connect with survivor network"
+            ]
           }
-        ],
-        "Possible late and long-term effects": [
-          // From 0_Possible late and long-term effects of cancer treatment.json
-          {
-            "Treatment effect": "Peripheral neuropathy",
-            "Explanation": "Numbness and tingling...",
-            "Retrieved context id": 9
-          }
-        ],
-        "Possible other issues": [
-          // From 0_Possible other issues that cancer survivors may experience.json
-          {
-            "Issue": "Depression and anxiety",
-            "Explanation": "The patient is dealing with...",
-            "Retrieved context id": 6
-          }
-        ],
-        "References to helpful resources": [
-          // From 0_References to helpful resources for cancer survivors.json
-          {
-            "Resource": "ACS Survivorship Center Web site",
-            "Explanation": "This resource provides comprehensive...",
-            "Retrieved context id": 1
-          }
-        ],
-        retrieved_context: {
-          // Combined context from all _retrieved_context_ files
-          // Will be used for references
         }
       }
     };
