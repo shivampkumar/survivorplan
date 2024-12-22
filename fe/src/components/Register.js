@@ -9,7 +9,17 @@ function Register({ onRegister }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    onRegister(email, password, role);
+    if (!email || !password) {
+      alert('Please enter both email and password');
+      return;
+    }
+    try {
+      await onRegister(email, password, role);
+      alert('Registration successful! You can now login.');
+    } catch (error) {
+      console.error('Registration error:', error);
+      alert(error.response?.data?.message || 'Registration failed');
+    }
   };
 
   return (

@@ -140,13 +140,30 @@ def get_patientsFH():
 @app.route('/api/login', methods=['POST', 'OPTIONS'])
 @cross_origin()
 def login():
-    user_data = request.json
-    user = users.find_one({'email': user_data['email']})
+    try:
+        user_data = request.json
+        print("Login attempt for email:", user_data['email'])  # Debug log
+        
+        user = users.find_one({'email': user_data['email']})
+        if not user:
+            print("User not found")  # Debug log
+            return jsonify({'message': 'Invalid credentials'}), 401
 
-    if user and bcrypt.check_password_hash(user['password'], user_data['password']):
-        return jsonify({'message': 'Login successful', 'role': user['role'], 'patientID' : 'p20952'}), 200
-    else:
-        return jsonify({'message': 'Invalid credentials'}), 401
+        password_matches = bcrypt.check_password_hash(user['password'], user_data['password'])
+        print("Password check result:", password_matches)  # Debug log
+
+        if password_matches:
+            return jsonify({
+                'success': True,
+                'message': 'Login successful',
+                'role': user['role']
+            }), 200
+        else:
+            return jsonify({'message': 'Invalid credentials'}), 401
+
+    except Exception as e:
+        print("Login error:", str(e))  # Debug log
+        return jsonify({'message': 'Server error during login'}), 500
     
 @celery.task(name="app.generate_patient_data_task")
 def generate_patient_data_task(patient_id):

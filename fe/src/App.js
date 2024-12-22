@@ -52,23 +52,26 @@ function App() {
 
   const handleLogin = async (email, password) => {
     try {
-      const response = await axios.post(`${API_BASE_URL}/login`, { email, password });
-      console.log(response.data);
-
-      //setUserRole(response.data.role); // Set user role from response
-      // hardcode for now
-      setUserRole('doctor');
-      // If the role is 'patient', fetch and set patient details
-      if (response.data.role === 'patient') {
-        // Assuming the response includes patientID for patients
-        const patientID = response.data.patientID;
-        fetchAndSetPatientDetails(patientID);
+      const response = await axios.post(`${API_BASE_URL}/login`, { 
+        email: email, 
+        password: password 
+      });
+      
+      console.log("Login response:", response.data);  // Debug log
+      
+      if (response.data.success) {
+        setUserRole(response.data.role);
+        setIsLoggedIn(true);
+        
+        if (response.data.role === 'patient' && response.data.patientID) {
+          fetchAndSetPatientDetails(response.data.patientID);
+        }
+      } else {
+        throw new Error(response.data.message || 'Login failed');
       }
-
-      setIsLoggedIn(true);
     } catch (error) {
-      console.error(error);
-      alert('Login failed');
+      console.error("Login error:", error);
+      alert(error.response?.data?.message || 'Invalid credentials');
     }
   };
 

@@ -8,7 +8,7 @@ const Login = ({ onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onLogin({ role: 'user', patientId: 0 });
+    onLogin(email, password);
   };
 
   return (
