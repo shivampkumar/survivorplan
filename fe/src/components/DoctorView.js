@@ -8,65 +8,49 @@ import DoctorHome from './DoctorHome';
 import { StaticDataService } from '../services/StaticDataService';
 import './LoadingAnimation.css';
 
-const DoctorView = ({ patients }) => {
-  const [selectedTab, setSelectedTab] = useState(0);
+const DoctorView = () => {
+  const [patients, setPatients] = useState([]);
   const [selectedPatient, setSelectedPatient] = useState(null);
   const [patientDetails, setPatientDetails] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [selectedTab, setSelectedTab] = useState(0);
   const [anchorEl, setAnchorEl] = useState(null);
+
+  useEffect(() => {
+    const loadPatients = async () => {
+      try {
+        const allPatients = await StaticDataService.getAllPatients();
+        setPatients(allPatients);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error loading patients:', error);
+        setLoading(false);
+      }
+    };
+    loadPatients();
+  }, []);
+
+  useEffect(() => {
+    const loadPatientDetails = async () => {
+      if (selectedPatient !== null) {
+        try {
+          const details = await StaticDataService.getPatientData(selectedPatient);
+          setPatientDetails(details);
+        } catch (error) {
+          console.error('Error loading patient details:', error);
+        }
+      }
+    };
+    loadPatientDetails();
+  }, [selectedPatient]);
 
   const handleChangeTab = (event, newValue) => {
     setSelectedTab(newValue);
   };
 
-  useEffect(() => {
-    if (selectedPatient) {
-      const loadPatientData = async () => {
-        try {
-          const data = await StaticDataService.getPatientData(selectedPatient.patientID);
-          console.log("Loaded patient data:", data); // Debug log
-          setPatientDetails(data);
-        } catch (error) {
-          console.error("Error loading patient data:", error);
-        }
-      };
-      loadPatientData();
-    }
-  }, [selectedPatient]);
-
-  // const pollTaskStatus = (taskId) => {
-  //   const pollInterval = 2000;
-
-  //   const checkStatus = () => {
-  //     axios.get(`${API_BASE_URL}/status/${taskId}`)
-  //       .then(response => {
-  //         const taskState = response.data.state;
-
-  //         if (taskState === 'SUCCESS') {
-  //           setPatientDetails(response.data.result);
-  //           alert('Plan generated successfully');
-  //           clearInterval(pollingRef.current);
-  //         } else if (taskState === 'FAILURE') {
-  //           alert('Failed to generate plan');
-  //           clearInterval(pollingRef.current);
-  //         } else {
-  //           setTaskStatus(taskState);
-  //         }
-  //       })
-  //       .catch(error => {
-  //         console.error("Failed to check task status", error);
-  //       });
-  //   };
-
-  //   if (pollingRef.current) {
-  //     clearInterval(pollingRef.current);
-  //   }
-  //   pollingRef.current = setInterval(checkStatus, pollInterval);
-  // };
-
-  const onSelectPatient = (patient) => {
-    console.log("Selected patient:", patient); // Debug log
-    setSelectedPatient(patient);
-    setPatientDetails(null); // Clear existing details while loading
+  const handlePatientSelect = (patientId) => {
+    console.log('Selected patient:', patientId);
+    setSelectedPatient(patientId);
   };
 
   const handleExportClick = (event) => {
@@ -91,6 +75,10 @@ const DoctorView = ({ patients }) => {
     handleMenuClose();
   };
 
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: '#1E1E1E', color: '#FFFFFF', minHeight: '100vh' }}>
       <Box sx={{ borderBottom: 1, borderColor: '#282828' }}>
@@ -111,11 +99,9 @@ const DoctorView = ({ patients }) => {
       {selectedTab === 1 && (
         <Box display="flex" width="100%">
           <PatientSidebar 
-            patients={Array.from({ length: 40 }, (_, i) => ({ 
-              patientID: i, 
-              name: `Patient ${i}` 
-            }))} 
-            onSelectPatient={onSelectPatient} 
+            patients={patients}
+            onSelectPatient={handlePatientSelect}
+            selectedPatientId={selectedPatient}
           />
           <Divider orientation="vertical" flexItem sx={{ backgroundColor: '#282828' }} />
           <Box flex={1} padding="20px" backgroundColor="#282828">

@@ -10,10 +10,10 @@ const PatientSidebar = ({ patients, onSelectPatient, selectedPatientId }) => {
   return (
     <div style={{ width: '250px', borderRight: '1px solid #282828', backgroundColor: '#1E1E1E', color: '#FFFFFF' }}>
       <List>
-        {patients.map((patient) => (
+        {Array.isArray(patients) && patients.map((patient) => (
           <ListItem
             button
-            key={patient.patientId}
+            key={`patient-${patient.patientId}`}
             onClick={() => onSelectPatient(patient.patientId)}
             selected={patient.patientId === selectedPatientId}
             sx={{

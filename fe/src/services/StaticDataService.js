@@ -3,6 +3,27 @@ export class StaticDataService {
     return Array.from({ length: 40 }, (_, i) => i);
   }
 
+  static async getAllPatients() {
+    try {
+      const patientIds = this.getPatientIds();
+      const patients = await Promise.all(
+        patientIds.map(async (id) => {
+          const treatmentSummary = await import(`./SCPs/${id}/${id}_treatment_summary.json`);
+          const patientInfo = this.generatePatientInfo(id);
+          return {
+            patientId: id,
+            "Patient Name": patientInfo.patientName,
+            "Cancer Type": treatmentSummary.Diagnosis?.[0]?.["Cancer Type"] || "Unknown"
+          };
+        })
+      );
+      return patients;
+    } catch (error) {
+      console.error('Error loading patients:', error);
+      return [];
+    }
+  }
+
   static generatePatientInfo(patientId) {
     return {
       patientName: `Patient_${patientId}`,
