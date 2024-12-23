@@ -1,0 +1,24 @@
+```json
+{"Lifestyle and behavior recommendations for cancer survivors":[
+    {"Lifestyle":"Engage in regular physical activity",
+    "Explanation":"Regular physical activity can help improve prognosis, reduce cancer-related symptoms, and decrease the risk of mortality. The patient should aim for at least 150 minutes of moderate or 75 minutes of vigorous aerobic exercise per week, and include strength training exercises at least 2 days per week. This is particularly important given the patient's history of pancreatic adenocarcinoma and ongoing symptoms such as dyspnea and chest tightness.",
+    "Retrieved context id":"2"},
+    
+    {"Lifestyle":"Adopt a healthy dietary pattern",
+    "Explanation":"A dietary pattern high in vegetables, fruits, whole grains, and legumes, and low in saturated fats can help improve health outcomes and reduce the risk of mortality. This is important for the patient to manage their overall health and potentially mitigate cancer-related symptoms.",
+    "Retrieved context id":"11"},
+    
+    {"Lifestyle":"Maintain a healthy weight",
+    "Explanation":"Achieving and maintaining a healthy weight is crucial for reducing the risk of comorbidities and improving prognosis. The patient should limit consumption of high-calorie foods and beverages and increase physical activity to promote and maintain weight loss.",
+    "Retrieved context id":"6"},
+    
+    {"Lifestyle":"Limit alcohol consumption",
+    "Explanation":"Limiting alcohol intake is recommended to reduce the risk of cancer recurrence and improve overall health. The patient should aim to limit alcohol consumption to no more than one drink per day.",
+    "Retrieved context id":"22"},
+    
+    {"Lifestyle":"Smoking cessation",
+    "Explanation":"If the patient is a smoker, quitting smoking is crucial to reduce the risk of lung cancer and other health complications. Smoking cessation counseling and resources should be provided to support the patient in quitting smoking.",
+    "Retrieved context id":"3"}
+    ]
+}
+```

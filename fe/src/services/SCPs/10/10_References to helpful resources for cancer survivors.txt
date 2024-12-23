@@ -1,0 +1,36 @@
+```json
+{"References to helpful resources for cancer survivors":[
+    {"Resource":"ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+    "Explanation":"This resource provides comprehensive information and support for cancer survivors, which can be beneficial for the patient as they navigate their follow-up care and survivorship. The patient has been newly diagnosed with metastatic pancreatic cancer and may benefit from the resources and support provided by the ACS Survivorship Center.",
+    "Retrieved context id":0},
+    
+    {"Resource":"ASCO survivor and caregiver site (cancer.net)",
+    "Explanation":"This site offers valuable information and resources for cancer survivors and their caregivers, which can help the patient and their family understand and manage the challenges of living with cancer. Given the patient's diagnosis and the need for ongoing support, this resource is highly relevant.",
+    "Retrieved context id":0},
+    
+    {"Resource":"NCCN patient and caregiver resources (nccn.org/patients)",
+    "Explanation":"The NCCN provides guidelines and resources specifically designed for patients and caregivers, which can help the patient understand their treatment options, manage symptoms, and improve their quality of life during follow-up care.",
+    "Retrieved context id":0},
+    
+    {"Resource":"Patient navigation services",
+    "Explanation":"Patient navigation services can help guide the patient through the complex cancer care continuum, ensuring they receive appropriate care and support. This is particularly important for the patient given their advanced stage of pancreatic cancer and the need for coordinated care.",
+    "Retrieved context id":1},
+    
+    {"Resource":"Peer support groups",
+    "Explanation":"Peer support groups provide emotional support and empowerment to cancer patients, which can be beneficial for the patient as they cope with their diagnosis and treatment. Engaging with others who have similar experiences can offer comfort and practical advice.",
+    "Retrieved context id":1},
+    
+    {"Resource":"Financial navigators or social workers",
+    "Explanation":"Given the patient's need to review financial responsibilities related to their clinical trial participation, financial navigators or social workers can provide essential assistance and guidance in managing financial aspects of cancer care.",
+    "Retrieved context id":6},
+    
+    {"Resource":"Professionally led support groups and informational lectures",
+    "Explanation":"These resources can provide the patient with valuable information and support, helping them manage their symptoms and improve their overall well-being during follow-up care. Access to expert-led groups and lectures can enhance their understanding of their condition and treatment options.",
+    "Retrieved context id":8},
+    
+    {"Resource":"Nutrition/dietary support services",
+    "Explanation":"Given the patient's significant history of weight loss, access to nutrition and dietary support services can help them manage their nutritional needs and improve their overall health during follow-up care.",
+    "Retrieved context id":25}
+    ]
+}
+```

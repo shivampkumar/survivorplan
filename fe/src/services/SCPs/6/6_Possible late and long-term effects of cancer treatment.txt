@@ -1,0 +1,46 @@
+```json
+{
+    "Possible late and long-term effects of cancer treatment": [
+        {
+            "Treatment effect": "Peripheral neuropathy",
+            "Explanation": "The patient has been treated with Abraxane (nanoparticle albumin-bound paclitaxel), which is known to cause peripheral neuropathy as a long-term effect. This is supported by the retrieved context indicating that paclitaxel can lead to peripheral neuropathy.",
+            "Retrieved context id": 11
+        },
+        {
+            "Treatment effect": "Cognitive impairment",
+            "Explanation": "Chemotherapy, including agents like gemcitabine and Abraxane, can lead to cognitive impairment as a long-term effect. This is supported by the retrieved context indicating that chemotherapy can cause cognitive impairment.",
+            "Retrieved context id": 17
+        },
+        {
+            "Treatment effect": "Increased risk of cardiovascular disease",
+            "Explanation": "Chemotherapy can increase the risk of cardiovascular disease. This is supported by the retrieved context indicating that chemotherapy is associated with an increased risk of cardiovascular disease.",
+            "Retrieved context id": 16
+        },
+        {
+            "Treatment effect": "Fatigue",
+            "Explanation": "Fatigue is a common long-term effect of chemotherapy. This is supported by the retrieved context indicating that fatigue is a significant issue among cancer survivors.",
+            "Retrieved context id": 12
+        },
+        {
+            "Treatment effect": "Osteoporosis/osteopenia",
+            "Explanation": "Chemotherapy can lead to osteoporosis or osteopenia as a long-term effect. This is supported by the retrieved context indicating that chemotherapy can result in osteoporosis/osteopenia.",
+            "Retrieved context id": 9
+        },
+        {
+            "Treatment effect": "Increased risk of infection",
+            "Explanation": "The patient has experienced neutropenia, a side effect of gemcitabine and Abraxane, which increases the risk of infection. This is supported by the retrieved context indicating that chemotherapy can increase the risk of infection.",
+            "Retrieved context id": 0
+        },
+        {
+            "Treatment effect": "Infertility",
+            "Explanation": "Chemotherapy can cause infertility as a long-term effect. This is supported by the retrieved context indicating that chemotherapy can lead to infertility.",
+            "Retrieved context id": 19
+        },
+        {
+            "Treatment effect": "Chronic pain",
+            "Explanation": "The patient uses oxycodone for chronic back and shoulder pain, which may persist as a long-term effect. This is supported by the retrieved context indicating that chronic pain is a common long-term effect of cancer treatment.",
+            "Retrieved context id": 26
+        }
+    ]
+}
+```

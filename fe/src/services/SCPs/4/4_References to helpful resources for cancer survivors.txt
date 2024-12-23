@@ -1,0 +1,44 @@
+{
+    "References to helpful resources for cancer survivors": [
+        {
+            "Resource": "ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+            "Explanation": "This resource provides comprehensive information and support for cancer survivors, which can help the patient manage ongoing symptoms and improve their quality of life. The patient has persistent symptoms such as hyperbilirubinemia, thrombocytopenia, and abdominal pain, and this site can offer valuable guidance.",
+            "Retrieved context id": 1
+        },
+        {
+            "Resource": "ASCO survivor and caregiver site (cancer.net)",
+            "Explanation": "This site offers resources for cancer survivors and their caregivers, which can help the patient and their family navigate post-treatment challenges and access support services. Given the patient's complex medical history and ongoing symptoms, this resource can provide necessary support and information.",
+            "Retrieved context id": 1
+        },
+        {
+            "Resource": "NCCN patient and caregiver resources (nccn.org/patients)",
+            "Explanation": "The NCCN provides guidelines and resources specifically for patients and caregivers, which can help the patient understand their condition and manage side effects. This is particularly relevant for the patient who has experienced multiple side effects from treatment.",
+            "Retrieved context id": 1
+        },
+        {
+            "Resource": "Journey Forward (journeyforward.org)",
+            "Explanation": "Journey Forward offers tools to help cancer survivors and their healthcare providers create survivorship care plans. This can be beneficial for the patient to ensure all aspects of their follow-up care are addressed, including managing side effects and monitoring for recurrence.",
+            "Retrieved context id": 1
+        },
+        {
+            "Resource": "Patient navigation services",
+            "Explanation": "Patient navigation services can help the patient coordinate their care, manage appointments, and access necessary resources. This is particularly important for the patient given their complex medical history and need for ongoing management of symptoms.",
+            "Retrieved context id": 0
+        },
+        {
+            "Resource": "Peer support groups",
+            "Explanation": "Peer support groups can provide emotional support and empowerment to the patient, helping them cope with the psychological impact of their diagnosis and treatment. This is important for the patient's overall well-being during follow-up care.",
+            "Retrieved context id": 0
+        },
+        {
+            "Resource": "Cancer.net",
+            "Explanation": "Cancer.net provides patient information and resources to help cancer survivors understand their condition, manage symptoms, and access support services. This can be particularly useful for the patient in managing their ongoing symptoms and improving their quality of life.",
+            "Retrieved context id": 13
+        },
+        {
+            "Resource": "The GW Cancer Institute’s Cancer Survivorship E-Learning Series for Primary Care Providers",
+            "Explanation": "This resource offers continuing education for primary care providers on cancer survivorship, which can help the patient's healthcare team stay informed about best practices in survivorship care. This can improve the patient's overall care and management of their condition.",
+            "Retrieved context id": 18
+        }
+    ]
+}

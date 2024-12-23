@@ -1,0 +1,34 @@
+```json
+{
+    "Cancer surveillance and other recommended tests for cancer monitoring": [
+        {
+            "Test type": "Cancer-related history and physical examination",
+            "When / how often": "Every 3 to 6 months for the first 3 years after primary therapy",
+            "Frequency (in weeks)": 12,
+            "Explanation": "A detailed cancer-related history and physical examination should be conducted every 3 to 6 months for the first 3 years after primary therapy to monitor for signs of recurrence.",
+            "Retrieved context id": 0
+        },
+        {
+            "Test type": "Cancer-related history and physical examination",
+            "When / how often": "Every 6 to 12 months for the next 2 years",
+            "Frequency (in weeks)": 26,
+            "Explanation": "A detailed cancer-related history and physical examination should be conducted every 6 to 12 months for the next 2 years to monitor for signs of recurrence.",
+            "Retrieved context id": 0
+        },
+        {
+            "Test type": "Cancer-related history and physical examination",
+            "When / how often": "Annually thereafter",
+            "Frequency (in weeks)": 52,
+            "Explanation": "A detailed cancer-related history and physical examination should be conducted annually thereafter to monitor for signs of recurrence.",
+            "Retrieved context id": 0
+        },
+        {
+            "Test type": "Mammography",
+            "When / how often": "Annually",
+            "Frequency (in weeks)": 52,
+            "Explanation": "Women who have received a unilateral mastectomy should be referred for annual mammography on the intact breast.",
+            "Retrieved context id": 2
+        }
+    ]
+}
+```

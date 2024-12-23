@@ -1,0 +1,44 @@
+{
+    "References to helpful resources for cancer survivors": [
+        {
+            "Resource": "ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+            "Explanation": "This resource provides comprehensive information and support for cancer survivors, which can help Mr. ***** manage his ongoing symptoms and improve his quality of life. The patient has experienced minimal relief from dietary modifications and probiotics, and this resource can offer additional support and information.",
+            "Retrieved context id": 1
+        },
+        {
+            "Resource": "ASCO survivor and caregiver site (cancer.net)",
+            "Explanation": "This site offers valuable information for cancer survivors and their caregivers, which can help Mr. ***** navigate his follow-up care and manage his symptoms. Given his active lifestyle and modest anxiety, this resource can provide guidance on maintaining his health and well-being.",
+            "Retrieved context id": 1
+        },
+        {
+            "Resource": "NCCN patient and caregiver resources (nccn.org/patients)",
+            "Explanation": "The NCCN resources provide guidelines and support for cancer survivors, which can help Mr. ***** understand his condition better and find ways to manage his symptoms effectively. This is particularly useful given his ongoing abdominal discomfort and weight loss.",
+            "Retrieved context id": 1
+        },
+        {
+            "Resource": "Patient navigation services",
+            "Explanation": "Patient navigation services can help Mr. ***** coordinate his care and access necessary resources, especially since he has not undergone surgery, radiation, or systemic therapy. These services can guide him through the complexities of his follow-up care.",
+            "Retrieved context id": 0
+        },
+        {
+            "Resource": "Peer support groups",
+            "Explanation": "Peer support groups can provide emotional support and empowerment for Mr. ***** as he deals with his metastatic pancreatic adenocarcinoma. These groups can help him connect with others who have similar experiences and offer mutual support.",
+            "Retrieved context id": 0
+        },
+        {
+            "Resource": "Cancer center nutritionist",
+            "Explanation": "Mr. ***** has already been referred to a cancer center nutritionist, which is a valuable resource for managing his symptoms related to diet and nutrition. This can help him address his abdominal discomfort, bloating, and weight loss.",
+            "Retrieved context id": 13
+        },
+        {
+            "Resource": "Supportive care services",
+            "Explanation": "Supportive care services, including professionally led groups and informational lectures, can provide Mr. ***** with additional support and information to manage his symptoms and improve his quality of life.",
+            "Retrieved context id": 13
+        },
+        {
+            "Resource": "Resources for managing anxiety",
+            "Explanation": "Given Mr. *****'s modest anxiety, resources for managing anxiety, including contact information for providers who can offer further evaluation and treatment, can be beneficial for his mental health and overall well-being.",
+            "Retrieved context id": 12
+        }
+    ]
+}

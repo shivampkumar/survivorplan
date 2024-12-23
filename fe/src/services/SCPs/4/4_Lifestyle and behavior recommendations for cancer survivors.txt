@@ -1,0 +1,32 @@
+```json
+{"Lifestyle and behavior recommendations for cancer survivors":[
+    {"Lifestyle":"Engage in regular physical activity",
+    "Explanation":"Regular physical activity can help improve prognosis, reduce the risk of recurrence, and ameliorate cancer-related symptoms. The patient has experienced weight loss, and physical activity can help maintain a healthy weight and improve overall health.",
+    "Retrieved context id":2},
+    
+    {"Lifestyle":"Maintain a healthy diet high in vegetables, fruits, whole grains, and legumes, and low in saturated fats",
+    "Explanation":"A healthy diet can help manage weight, improve prognosis, and reduce the risk of comorbidities. The patient has experienced weight loss and abdominal pain, and a balanced diet can support nutritional needs and overall health.",
+    "Retrieved context id":17},
+    
+    {"Lifestyle":"Avoid smoking and seek smoking cessation resources if necessary",
+    "Explanation":"Smoking cessation is crucial for reducing the risk of second cancers and improving overall health. Although the patient's smoking status is not mentioned, it is important to avoid smoking to reduce health risks.",
+    "Retrieved context id":6},
+    
+    {"Lifestyle":"Limit alcohol consumption",
+    "Explanation":"Limiting alcohol intake can reduce the risk of comorbidities and improve overall health. This recommendation is part of maintaining a healthy lifestyle for cancer survivors.",
+    "Retrieved context id":18},
+    
+    {"Lifestyle":"Manage comorbidities such as prediabetes",
+    "Explanation":"Managing comorbidities like prediabetes is important for overall health and can reduce the risk of complications. The patient has a history of prediabetes and will complete labs to rule out diabetes.",
+    "Retrieved context id":4},
+    
+    {"Lifestyle":"Receive regular follow-up care for non-cancer conditions and general health concerns",
+    "Explanation":"Regular follow-up care is important for managing comorbidities and maintaining overall health. The patient should continue to monitor and manage conditions like prediabetes and thrombi.",
+    "Retrieved context id":9},
+    
+    {"Lifestyle":"Consider supplementation with calcium and vitamin D",
+    "Explanation":"Supplementation with calcium and vitamin D can help reduce the morbidity associated with bone loss, which is important for overall health. This is particularly relevant for cancer survivors to maintain bone health.",
+    "Retrieved context id":5}
+    ]
+}
+```

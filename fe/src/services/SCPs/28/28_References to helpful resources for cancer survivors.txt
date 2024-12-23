@@ -1,0 +1,44 @@
+```json
+{"References to helpful resources for cancer survivors":[
+    {"Resource":"ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+    "Explanation":"The ACS Survivorship Center provides comprehensive resources for cancer survivors, including information on managing side effects, support services, and healthy living. This is particularly relevant for the patient who has experienced severe side effects and needs ongoing support.",
+    "Retrieved context id":1},
+    
+    {"Resource":"Journey Forward (journeyforward.org)",
+    "Explanation":"Journey Forward offers tools for creating survivorship care plans, which can help the patient manage her follow-up care and monitor for any recurrence. This is important given her history of recurrence and ongoing symptoms.",
+    "Retrieved context id":1},
+    
+    {"Resource":"ASCO survivor and caregiver site (cancer.net)",
+    "Explanation":"The ASCO site provides valuable information on managing side effects, emotional support, and connecting with other survivors. This can help the patient cope with her chronic pain and emotional well-being.",
+    "Retrieved context id":1},
+    
+    {"Resource":"NCCN patient and caregiver resources (nccn.org/patients)",
+    "Explanation":"NCCN provides guidelines and resources for patients and caregivers, which can help the patient understand her treatment options and manage her health post-treatment.",
+    "Retrieved context id":1},
+    
+    {"Resource":"Patient navigation services",
+    "Explanation":"Patient navigation services can help the patient coordinate her care, access resources, and manage her follow-up appointments, which is crucial given her complex treatment history and recurrence.",
+    "Retrieved context id":7},
+    
+    {"Resource":"Peer support groups",
+    "Explanation":"Peer support groups provide emotional support and empowerment, which can be beneficial for the patient as she copes with her chronic pain and emotional challenges.",
+    "Retrieved context id":7},
+    
+    {"Resource":"CA Patient Page",
+    "Explanation":"The CA Patient Page helps patients understand how to use guidelines to talk to their doctor about surveillance, symptom management, and healthy behaviors, which is important for the patient's ongoing care and management of side effects.",
+    "Retrieved context id":12},
+    
+    {"Resource":"The GW Cancer Institute’s Cancer Survivorship E-Learning Series for Primary Care Providers",
+    "Explanation":"This resource offers continuing education for primary care providers on cancer survivorship, which can help the patient's healthcare team stay informed about best practices in survivorship care.",
+    "Retrieved context id":12},
+    
+    {"Resource":"Local resources, support, and advice for maintaining an active lifestyle",
+    "Explanation":"Maintaining an active lifestyle can help manage chronic pain and improve overall well-being. Local resources and support can provide the patient with guidance and motivation to stay active.",
+    "Retrieved context id":13},
+    
+    {"Resource":"ASCO Guidelines on the management of fatigue",
+    "Explanation":"Fatigue is a common issue for cancer survivors. ASCO provides detailed guidelines on managing fatigue, which can help the patient improve her energy levels and quality of life.",
+    "Retrieved context id":26}
+    ]
+}
+```

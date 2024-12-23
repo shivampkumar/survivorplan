@@ -1,0 +1,42 @@
+{"References to helpful resources for cancer survivors":[
+    {"Resource":"ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+    "Explanation":"The ACS Survivorship Center provides comprehensive resources for cancer survivors, which can help the patient manage their health and well-being during follow-up care. This is particularly relevant given the patient's ongoing symptoms and need for support post-treatment.",
+    "Retrieved context id":0},
+    
+    {"Resource":"Journey Forward (journeyforward.org)",
+    "Explanation":"Journey Forward offers tools and resources to help cancer survivors manage their care and health post-treatment. This can be beneficial for the patient to track their symptoms and follow-up care needs.",
+    "Retrieved context id":0},
+    
+    {"Resource":"ASCO survivor and caregiver site (cancer.net)",
+    "Explanation":"The ASCO site provides valuable information and resources for cancer survivors and their caregivers, which can help the patient understand their condition and manage their symptoms effectively.",
+    "Retrieved context id":0},
+    
+    {"Resource":"NCCN patient and caregiver resources (nccn.org/patients)",
+    "Explanation":"NCCN provides guidelines and resources for patients and caregivers, which can help the patient navigate their post-treatment care and manage any ongoing symptoms or side effects.",
+    "Retrieved context id":0},
+    
+    {"Resource":"Patient navigation services",
+    "Explanation":"Patient navigation services can help guide the patient through the cancer care continuum, ensuring they receive appropriate follow-up care and support for managing their symptoms and side effects.",
+    "Retrieved context id":1},
+    
+    {"Resource":"Peer support groups",
+    "Explanation":"Peer support groups can provide emotional support and empowerment to the patient, helping them cope with the psychological impact of their cancer diagnosis and treatment.",
+    "Retrieved context id":1},
+    
+    {"Resource":"CA Patient Page",
+    "Explanation":"The CA Patient Page offers information on surveillance, screening, symptom management, healthy behaviors, and care coordination, which can be useful for the patient in managing their health post-treatment.",
+    "Retrieved context id":9},
+    
+    {"Resource":"Cancer Treatment and Survivorship Care Plans (cancer.net/survivorship/follow-care-after-cancer-treatment/asco-cancer-treatment-and-survivorship-care-plans)",
+    "Explanation":"These care plans can help the patient understand their follow-up care needs and manage their health effectively post-treatment.",
+    "Retrieved context id":10},
+    
+    {"Resource":"Supportive care services like professionally led groups, informational lectures, and volunteer organizations",
+    "Explanation":"These services can provide the patient with additional support and information to manage their symptoms and improve their quality of life post-treatment.",
+    "Retrieved context id":11},
+    
+    {"Resource":"Financial support information, including accommodations, transportation, and health/drug benefits",
+    "Explanation":"Providing the patient with information on financial support can help alleviate any financial burdens associated with their treatment and follow-up care.",
+    "Retrieved context id":11}
+    ]
+}

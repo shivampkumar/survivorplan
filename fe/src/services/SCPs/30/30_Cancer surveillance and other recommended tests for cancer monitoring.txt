@@ -1,0 +1,18 @@
+{
+  "Cancer surveillance and other recommended tests for cancer monitoring": [
+    {
+      "Test type": "Mammography",
+      "When / how often": "Annually",
+      "Frequency (in weeks)": 52,
+      "Explanation": "Annual mammography is recommended for women who have had lumpectomies to monitor for recurrence or new primary breast cancer.",
+      "Retrieved context id": 2
+    },
+    {
+      "Test type": "Cancer-related history and physical examination",
+      "When / how often": "Every 3-6 months for the first 3 years, every 6-12 months for the next 2 years, and annually thereafter",
+      "Frequency (in weeks)": 13,
+      "Explanation": "Regular physical examinations and detailed cancer-related history are essential for early detection of recurrence and monitoring of the patient's overall health.",
+      "Retrieved context id": 1
+    }
+  ]
+}

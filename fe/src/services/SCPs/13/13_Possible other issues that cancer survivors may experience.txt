@@ -1,0 +1,28 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Psychosocial distress (depression, anxiety)",
+    "Explanation":"The patient is dealing with metastatic pancreatic adenocarcinoma, which is a severe and life-threatening condition. The retrieved context indicates that cancer survivors, especially those with advanced or metastatic cancer, often experience psychological distress, including depression and anxiety. This is supported by the patient's significant weight loss, sluggish appetite, and pain, which can contribute to emotional distress.",
+    "Retrieved context id":13},
+    
+    {"Issue":"Fear of recurrence",
+    "Explanation":"Given the advanced stage of the patient's cancer, fear of recurrence is a common issue among cancer survivors. The retrieved context highlights that fear of recurrence is prevalent among cancer survivors and affects their mental health and quality of life.",
+    "Retrieved context id":29},
+    
+    {"Issue":"Financial challenges",
+    "Explanation":"The patient may face financial challenges due to the high costs associated with managing metastatic cancer. The retrieved context indicates that financial toxicity is a significant issue for cancer survivors, particularly those with advanced or metastatic cancer.",
+    "Retrieved context id":14},
+    
+    {"Issue":"Functional changes and physical impairments",
+    "Explanation":"The patient has experienced significant weight loss and sluggish appetite, which can lead to physical impairments and functional changes. The retrieved context mentions that cancer survivors should be provided support to address functional changes and physical impairments.",
+    "Retrieved context id":0},
+    
+    {"Issue":"Relationship and social role difficulties",
+    "Explanation":"The patient's condition and symptoms, such as pain and weight loss, can impact her ability to maintain relationships and social roles. The retrieved context suggests that cancer survivors may face relationship changes and other social role difficulties.",
+    "Retrieved context id":1},
+    
+    {"Issue":"Employment concerns",
+    "Explanation":"The patient may have concerns about her ability to continue working or return to work due to her advanced cancer and associated symptoms. The retrieved context highlights that cancer survivors may face employment concerns.",
+    "Retrieved context id":2}
+    ]
+}
+```

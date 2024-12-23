@@ -1,0 +1,41 @@
+```json
+{
+    "Possible late and long-term effects of cancer treatment": [
+        {
+            "Treatment effect": "Cognitive impairment",
+            "Explanation": "Cognitive dysfunction is a possible late effect of chemotherapy in breast cancer survivors. Although the patient has not yet undergone chemotherapy, if it is included in her future treatment plan, cognitive changes can occur after adjuvant treatment for breast cancer.",
+            "Retrieved context id": 19
+        },
+        {
+            "Treatment effect": "Cardiovascular disease",
+            "Explanation": "Radiation, chemotherapy, and hormonal/endocrine therapy with aromatase inhibitors are associated with an increased risk of cardiovascular disease in breast cancer patients. If the patient receives any of these treatments in the future, she may be at increased risk for cardiovascular issues.",
+            "Retrieved context id": 8
+        },
+        {
+            "Treatment effect": "Osteoporosis/osteopenia",
+            "Explanation": "Chemotherapy and hormonal therapies, such as aromatase inhibitors, can lead to osteoporosis/osteopenia. If the patient receives these treatments, she may be at risk for decreased bone density.",
+            "Retrieved context id": 14
+        },
+        {
+            "Treatment effect": "Lymphedema",
+            "Explanation": "Surgery and radiation therapy can lead to lymphedema, a condition characterized by swelling due to the accumulation of lymph fluid. If the patient undergoes surgery or radiation in the future, she may be at risk for this condition.",
+            "Retrieved context id": 28
+        },
+        {
+            "Treatment effect": "Sexual dysfunction",
+            "Explanation": "Surgery, radiation therapy, and chemotherapy can lead to sexual dysfunction. If the patient receives any of these treatments, she may experience changes in sexual function.",
+            "Retrieved context id": 0
+        },
+        {
+            "Treatment effect": "Fatigue",
+            "Explanation": "Radiation therapy to the breast/chest wall/regional lymph nodes can cause long-term effects such as fatigue. If the patient undergoes radiation therapy, she may experience persistent fatigue.",
+            "Retrieved context id": 7
+        },
+        {
+            "Treatment effect": "Neuropathy",
+            "Explanation": "Chemotherapy can lead to neuropathy, a condition characterized by nerve damage that causes pain, numbness, or weakness. If the patient receives chemotherapy, she may be at risk for developing neuropathy.",
+            "Retrieved context id": 14
+        }
+    ]
+}
+```

@@ -1,0 +1,27 @@
+```json
+{
+    "Cancer surveillance and other recommended tests for cancer monitoring": [
+        {
+            "Test type": "CT scan",
+            "When / how often": "Every 3 months in Year 1, every 6 months in Year 2, and annually in Years 3-5",
+            "Frequency (in weeks)": 12,
+            "Explanation": "Regular imaging is recommended to facilitate consistent clinical practices across patients, irrespective of reception of durvalumab therapy.",
+            "Retrieved context id": 18
+        },
+        {
+            "Test type": "Blood work (CBC)",
+            "When / how often": "Weekly",
+            "Frequency (in weeks)": 1,
+            "Explanation": "The patient is recommended to continue weekly CBCs and transfuse PRBCs as needed for hemoglobin levels below 8.0.",
+            "Retrieved context id": 0
+        },
+        {
+            "Test type": "Bronchoscopic evaluation",
+            "When / how often": "Scheduled for February",
+            "Frequency (in weeks)": null,
+            "Explanation": "The patient is being followed by infectious disease and pulmonology specialists for a chronic lung infectious process, with a bronchoscopic evaluation planned for February.",
+            "Retrieved context id": 0
+        }
+    ]
+}
+```

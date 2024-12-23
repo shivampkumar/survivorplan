@@ -1,74 +1,62 @@
-// Create a new service to handle static data
+import { SCPs } from '../data/SCPs'; // Make sure to import the SCPs data
+
 export class StaticDataService {
   static getPatientIds() {
-    return Array.from({ length: 40 }, (_, i) => i); // Returns [0, 1, 2, ..., 39]
+    return Array.from({ length: 40 }, (_, i) => i); // Keep this as is since we have 40 patients
   }
 
   static async getPatientData(patientId) {
-    // Map the data structure to match what the components expect
+    const scp = SCPs[patientId]; // Get the specific patient's SCP data
+    
+    if (!scp) {
+      throw new Error(`No SCP data found for patient ${patientId}`);
+    }
+
+    // Map the SCP data to match the expected structure
     return {
       General_Information: {
         patientId: patientId,
-        "Patient Name": `Patient ${patientId}`,
-        "Date of Birth": "1960-01-01",
-        "Contact Number": "(555) 123-4567",
-        "Email": `patient${patientId}@email.com`,
-        "Cancer Type": "Breast Cancer",
-        "Stage": "Stage II",
-        "Diagnosis Date": "2022-01-15"
+        "Patient Name": scp.patientName || `Patient ${patientId}`,
+        "Date of Birth": scp.dateOfBirth,
+        "Contact Number": scp.contactNumber,
+        "Email": scp.email,
+        "Cancer Type": scp.cancerType,
+        "Stage": scp.stage,
+        "Diagnosis Date": scp.diagnosisDate
       },
       Treatment_Summary: {
         "Diagnosis": {
-          "Cancer Type": "Breast Cancer",
-          "Diagnosis Date": "2022-01-15",
-          "Stage": "Stage II"
+          "Cancer Type": scp.cancerType,
+          "Diagnosis Date": scp.diagnosisDate,
+          "Stage": scp.stage
         },
         "Treatment Details": {
-          "Surgery": "Lumpectomy performed on 2022-02-01",
-          "Chemotherapy": "4 cycles of AC-T completed on 2022-06-15",
-          "Radiation": "30 sessions completed on 2022-08-30"
+          "Surgery": scp.surgeryDetails,
+          "Chemotherapy": scp.chemotherapyDetails,
+          "Radiation": scp.radiationDetails
         },
         "Side Effects": {
-          "Current": ["Fatigue", "Mild lymphedema"],
-          "Potential Long-term": ["Heart problems", "Secondary cancers"]
+          "Current": scp.currentSideEffects || [],
+          "Potential Long-term": scp.potentialLongTermEffects || []
         }
       },
       Follow_Up_Care_Plan: {
         "Medical Follow-up": {
           "recommendation": {
-            "Schedule": [
-              "Oncologist visits every 3 months for first 2 years",
-              "Mammogram every 6 months",
-              "Annual physical examination"
-            ],
-            "Tests": [
-              "Regular blood work",
-              "Bone density scan annually"
-            ]
+            "Schedule": scp.followUpSchedule || [],
+            "Tests": scp.recommendedTests || []
           }
         },
         "Lifestyle Recommendations": {
           "recommendation": {
-            "Exercise": [
-              "30 minutes moderate activity daily",
-              "Include strength training twice weekly"
-            ],
-            "Diet": [
-              "Maintain healthy weight",
-              "Eat balanced diet rich in vegetables and fruits"
-            ]
+            "Exercise": scp.exerciseRecommendations || [],
+            "Diet": scp.dietRecommendations || []
           }
         },
         "Psychosocial Support": {
           "recommendation": {
-            "Mental Health": [
-              "Regular check-ins with mental health professional",
-              "Join cancer survivor support group"
-            ],
-            "Social Support": [
-              "Family counseling available",
-              "Connect with survivor network"
-            ]
+            "Mental Health": scp.mentalHealthRecommendations || [],
+            "Social Support": scp.socialSupportRecommendations || []
           }
         }
       }

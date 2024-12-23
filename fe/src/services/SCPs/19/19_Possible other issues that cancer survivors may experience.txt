@@ -1,0 +1,28 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Anxiety",
+    "Explanation":"The patient has modest anxiety, which is a common issue among cancer survivors. This is supported by the retrieved context that mentions cancer survivors may experience anxiety and should be assessed for it.",
+    "Retrieved context id":"2"},
+    
+    {"Issue":"Depression",
+    "Explanation":"Cancer survivors, especially those with metastatic cancer, are at risk for depression. The patient has modest anxiety, which can be a precursor to depression. The retrieved context highlights the need to assess for depression in cancer survivors.",
+    "Retrieved context id":"2"},
+    
+    {"Issue":"Fear of recurrence",
+    "Explanation":"Cancer survivors often experience fear of recurrence, which can impact their mental health and quality of life. This is relevant for the patient given his history of metastatic pancreatic adenocarcinoma.",
+    "Retrieved context id":"13"},
+    
+    {"Issue":"Financial challenges",
+    "Explanation":"Patients with advanced or metastatic cancer often face financial challenges. This is supported by the retrieved context that mentions financial toxicity and the need to address financial challenges in cancer survivors.",
+    "Retrieved context id":"20"},
+    
+    {"Issue":"Employment concerns",
+    "Explanation":"Cancer survivors, especially those with advanced or metastatic cancer, may face challenges in returning to work or maintaining their previous work capacity. The patient maintains a very active lifestyle, which includes working out five times a week, indicating that employment concerns could be relevant.",
+    "Retrieved context id":"28"},
+    
+    {"Issue":"Psychosocial distress",
+    "Explanation":"The patient has modest anxiety and a history of metastatic cancer, which puts him at risk for psychosocial distress. The retrieved context mentions that cancer survivors may experience psychosocial distress, including anxiety and depression.",
+    "Retrieved context id":"23"}
+    ]
+}
+```

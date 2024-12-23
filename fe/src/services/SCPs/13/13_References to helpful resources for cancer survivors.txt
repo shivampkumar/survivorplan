@@ -1,0 +1,26 @@
+```json
+{"References to helpful resources for cancer survivors":[
+    {"Resource":"ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+    "Explanation":"This resource provides comprehensive information and support for cancer survivors, which can be beneficial for the patient in managing their ongoing health and well-being. The patient has metastatic pancreatic adenocarcinoma and may benefit from the survivorship resources available here.",
+    "Retrieved context id":1},
+    {"Resource":"ASCO survivor and caregiver site (cancer.net)",
+    "Explanation":"This site offers valuable information for cancer survivors and caregivers, which can help the patient and their family navigate the challenges of living with metastatic pancreatic adenocarcinoma.",
+    "Retrieved context id":1},
+    {"Resource":"NCCN patient and caregiver resources (nccn.org/patients)",
+    "Explanation":"The NCCN provides guidelines and resources specifically designed for patients and caregivers, which can help the patient understand their condition and manage their symptoms effectively.",
+    "Retrieved context id":1},
+    {"Resource":"Patient navigation services",
+    "Explanation":"Patient navigation services can help guide the patient through the complex cancer care continuum, ensuring they receive appropriate care and support, especially given the patient's advanced stage of cancer and the need for coordinated care.",
+    "Retrieved context id":0},
+    {"Resource":"Peer support groups",
+    "Explanation":"Peer support groups can provide emotional support and empowerment to the patient, helping them cope with the psychological and social challenges of living with metastatic pancreatic adenocarcinoma.",
+    "Retrieved context id":0},
+    {"Resource":"Professionally led support groups and informational lectures",
+    "Explanation":"These resources can offer the patient additional support and education about their condition, treatment options, and ways to manage symptoms and side effects.",
+    "Retrieved context id":22},
+    {"Resource":"Financial navigators or social workers",
+    "Explanation":"Access to financial and legal assistance can help the patient manage the financial burden of cancer treatment and ensure they receive necessary support.",
+    "Retrieved context id":7}
+    ]
+}
+```

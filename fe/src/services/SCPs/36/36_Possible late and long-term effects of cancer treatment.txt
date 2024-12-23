@@ -1,0 +1,56 @@
+```json
+{
+    "Possible late and long-term effects of cancer treatment": [
+        {
+            "Treatment effect": "Cognitive impairment",
+            "Explanation": "Chemotherapy can lead to cognitive impairment, which is a possible late effect of treatment. This is supported by the patient's planned chemotherapy with TC x 6 and the retrieved context indicating cognitive changes can occur after adjuvant treatment for breast cancer.",
+            "Retrieved context id": 14
+        },
+        {
+            "Treatment effect": "Osteoporosis/osteopenia",
+            "Explanation": "Chemotherapy can lead to osteoporosis or osteopenia. The patient is undergoing chemotherapy with TC x 6, which is known to increase the risk of these conditions.",
+            "Retrieved context id": 8
+        },
+        {
+            "Treatment effect": "Fatigue",
+            "Explanation": "Chemotherapy can result in long-term fatigue. The patient is undergoing chemotherapy with TC x 6, which is associated with this side effect.",
+            "Retrieved context id": 8
+        },
+        {
+            "Treatment effect": "Increased risk of cardiovascular disease",
+            "Explanation": "Chemotherapy is associated with an increased risk of cardiovascular disease. The patient is undergoing chemotherapy with TC x 6, which can contribute to this risk.",
+            "Retrieved context id": 10
+        },
+        {
+            "Treatment effect": "Neuropathy",
+            "Explanation": "Chemotherapy can lead to peripheral neuropathy, causing pain, tingling, and numbness in the extremities. The patient is undergoing chemotherapy with TC x 6, which is known to cause this condition.",
+            "Retrieved context id": 15
+        },
+        {
+            "Treatment effect": "Hair loss",
+            "Explanation": "Chemotherapy can cause hair loss, which is a common side effect. The patient has concerns about hair loss during chemotherapy, and scalp cooling has been discussed.",
+            "Retrieved context id": 1
+        },
+        {
+            "Treatment effect": "Body image issues",
+            "Explanation": "Surgery can lead to body image issues. The patient underwent a left lumpectomy and re-excision, which can contribute to concerns about cosmesis.",
+            "Retrieved context id": 9
+        },
+        {
+            "Treatment effect": "Lymphedema",
+            "Explanation": "Surgery can lead to lymphedema. The patient underwent a left lumpectomy and sentinel lymph node biopsy, which can increase the risk of this condition.",
+            "Retrieved context id": 9
+        },
+        {
+            "Treatment effect": "Pain",
+            "Explanation": "Surgery can lead to long-term pain. The patient experiences mild, intermittent left breast pain post-surgery, which can persist as a long-term effect.",
+            "Retrieved context id": 9
+        },
+        {
+            "Treatment effect": "Sexual dysfunction",
+            "Explanation": "Surgery and chemotherapy can lead to sexual dysfunction. The patient underwent surgery and is undergoing chemotherapy, both of which can contribute to this condition.",
+            "Retrieved context id": 9
+        }
+    ]
+}
+```

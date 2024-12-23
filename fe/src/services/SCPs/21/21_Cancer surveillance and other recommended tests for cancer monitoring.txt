@@ -1,0 +1,32 @@
+{
+  "Cancer surveillance and other recommended tests for cancer monitoring": [
+    {
+      "Test type": "Cancer-related history and physical examination",
+      "When / how often": "Every 3 to 6 months for the first 3 years, every 6 to 12 months for the next 2 years, and annually thereafter",
+      "Frequency (in weeks)": 12,
+      "Explanation": "A detailed cancer-related history and physical examination should be conducted regularly to monitor for signs of recurrence.",
+      "Retrieved context id": 1
+    },
+    {
+      "Test type": "Mammography",
+      "When / how often": "Annually",
+      "Frequency (in weeks)": 52,
+      "Explanation": "Annual mammography is recommended for the intact contralateral breast to monitor for new primary breast cancer.",
+      "Retrieved context id": 2
+    },
+    {
+      "Test type": "DEXA scan",
+      "When / how often": "Every 2 years",
+      "Frequency (in weeks)": 104,
+      "Explanation": "Postmenopausal breast cancer survivors should have periodic DEXA scans to monitor bone density, especially if they are on aromatase inhibitors or have osteoporosis.",
+      "Retrieved context id": 19
+    },
+    {
+      "Test type": "Annual gynecologic assessment",
+      "When / how often": "Annually",
+      "Frequency (in weeks)": 52,
+      "Explanation": "Postmenopausal women on selective estrogen receptor modulator therapies should receive an annual gynecologic assessment to monitor for endometrial cancer.",
+      "Retrieved context id": 6
+    }
+  ]
+}

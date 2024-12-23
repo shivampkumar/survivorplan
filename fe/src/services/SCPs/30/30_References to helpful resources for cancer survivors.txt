@@ -1,0 +1,44 @@
+{
+    "References to helpful resources for cancer survivors": [
+        {
+            "Resource": "ACS Survivorship Center Web site",
+            "Explanation": "The ACS Survivorship Center Web site provides comprehensive resources for cancer survivors, including information on treatment, side effects, and support services. This is particularly relevant for Ms. ***** as she is experiencing residual soreness and perimenopausal symptoms, and may benefit from additional support and information.",
+            "Retrieved context id": 2
+        },
+        {
+            "Resource": "ASCO survivor and caregiver site",
+            "Explanation": "The ASCO survivor and caregiver site offers valuable information and support for cancer survivors and their caregivers. Given Ms. *****'s ongoing symptoms and the need for follow-up care, this resource can provide guidance on managing her health and well-being.",
+            "Retrieved context id": 2
+        },
+        {
+            "Resource": "NCCN patient and caregiver resources",
+            "Explanation": "The NCCN patient and caregiver resources provide detailed guidelines and support for cancer survivors. This can help Ms. ***** navigate her follow-up care and manage any ongoing symptoms or side effects.",
+            "Retrieved context id": 2
+        },
+        {
+            "Resource": "Journey Forward",
+            "Explanation": "Journey Forward offers tools and resources to help cancer survivors create a survivorship care plan. This can be beneficial for Ms. ***** as she plans her follow-up care and monitors her health post-treatment.",
+            "Retrieved context id": 2
+        },
+        {
+            "Resource": "CA Patient Page",
+            "Explanation": "The CA Patient Page helps patients understand how to use guidelines to talk to their doctor about surveillance, screening, symptom management, healthy behaviors, and care coordination. This can empower Ms. ***** to actively participate in her follow-up care and address any concerns with her healthcare provider.",
+            "Retrieved context id": 8
+        },
+        {
+            "Resource": "The GW Cancer Institute’s Cancer Survivorship E-Learning Series for Primary Care Providers",
+            "Explanation": "This free online continuing education program for primary care clinicians can help ensure that Ms. *****'s primary care provider is well-informed about the latest guidelines and best practices for managing breast cancer survivorship.",
+            "Retrieved context id": 8
+        },
+        {
+            "Resource": "National Cancer Survivorship Resource Center",
+            "Explanation": "The National Cancer Survivorship Resource Center offers resources and clinical follow-up care guidelines for cancer survivors. This can help Ms. ***** access the support and information she needs for her ongoing health and well-being.",
+            "Retrieved context id": 12
+        },
+        {
+            "Resource": "Patient navigation services and peer support groups",
+            "Explanation": "Patient navigation services and peer support groups can provide Ms. ***** with guidance and emotional support as she navigates her follow-up care. These services can help her manage her health and connect with others who have similar experiences.",
+            "Retrieved context id": 18
+        }
+    ]
+}

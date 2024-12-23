@@ -1,0 +1,32 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Psychosocial distress",
+    "Explanation":"The patient is dealing with advanced pancreatic adenocarcinoma and has experienced significant complications, including a partial bowel obstruction and peritoneal carcinomatosis. These severe health issues can lead to psychosocial distress, including anxiety and depression.",
+    "Retrieved context id":6},
+    
+    {"Issue":"Financial challenges",
+    "Explanation":"The patient has undergone multiple procedures and treatments, which can lead to significant financial burden. Advanced cancer survivors often face financial toxicity, which can deter them from accessing care.",
+    "Retrieved context id":12},
+    
+    {"Issue":"Fear of recurrence",
+    "Explanation":"Given the advanced stage of the patient's cancer and the ongoing complications, the patient may experience fear of recurrence and end-of-life concerns.",
+    "Retrieved context id":28},
+    
+    {"Issue":"Physical impairments",
+    "Explanation":"The patient has experienced significant physical complications, including a malignant duodenal obstruction and moderate ascites. These issues can lead to functional changes and physical impairments.",
+    "Retrieved context id":2},
+    
+    {"Issue":"Need for palliative care",
+    "Explanation":"The patient's condition has progressed despite interventions, and discussions have been initiated regarding transitioning to palliative care. This highlights the need for comprehensive care programs involving palliative care clinicians.",
+    "Retrieved context id":14},
+    
+    {"Issue":"Spiritual distress",
+    "Explanation":"Patients with advanced cancer often have increased spiritual support needs. The progression of the patient's condition and the transition to palliative care may lead to spiritual pain and distress if these needs are unmet.",
+    "Retrieved context id":25},
+    
+    {"Issue":"Caregiver burden",
+    "Explanation":"The patient's caregivers, who are often older adults, may face their own health problems while providing care. This highlights the importance of addressing the psychosocial and physical unmet needs of caregivers as part of survivorship care.",
+    "Retrieved context id":18}
+    ]
+}
+```

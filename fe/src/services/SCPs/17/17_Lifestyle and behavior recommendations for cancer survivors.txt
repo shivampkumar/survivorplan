@@ -1,0 +1,28 @@
+```json
+{"Lifestyle and behavior recommendations for cancer survivors":[
+    {"Lifestyle":"Engage in regular physical activity",
+    "Explanation":"Regular physical activity can help reduce fatigue, improve physical and emotional well-being, and reduce the risk of cancer recurrence. This is particularly important for the patient who is experiencing fatigue and balance issues. Tailored exercise programs can also help mitigate fall risks.",
+    "Retrieved context id":19},
+    
+    {"Lifestyle":"Maintain a healthy weight",
+    "Explanation":"Achieving and maintaining a healthy weight can reduce the risk of second cancers, comorbidities, and recurrence. The patient should limit high-calorie foods and beverages and increase physical activity to promote weight loss and overall health.",
+    "Retrieved context id":10},
+    
+    {"Lifestyle":"Follow a balanced diet high in vegetables, fruits, whole grains, and legumes",
+    "Explanation":"A diet rich in vegetables, fruits, whole grains, and legumes, and low in saturated fats can improve prognosis and overall health. This dietary pattern can help manage the patient's comorbid conditions such as hypertension and chronic asthma.",
+    "Retrieved context id":26},
+    
+    {"Lifestyle":"Avoid smoking and limit alcohol consumption",
+    "Explanation":"Smoking cessation and limiting alcohol intake are crucial for reducing the risk of second cancers and improving overall health. The patient should be counseled on the importance of these behaviors.",
+    "Retrieved context id":4},
+    
+    {"Lifestyle":"Consider supplementation with calcium and vitamin D",
+    "Explanation":"To reduce the morbidity associated with bone loss, especially given the patient's history of falls and balance issues, supplementation with calcium and vitamin D is recommended.",
+    "Retrieved context id":2},
+    
+    {"Lifestyle":"Engage in strength training exercises",
+    "Explanation":"Strength training exercises at least 2 days per week can help improve muscle strength, balance, and overall physical function, which is particularly important for the patient experiencing falls and balance issues.",
+    "Retrieved context id":21}
+    ]
+}
+```

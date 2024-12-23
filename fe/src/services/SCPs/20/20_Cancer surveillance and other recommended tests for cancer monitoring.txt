@@ -1,0 +1,15 @@
+```json
+{"Cancer surveillance and other recommended tests for cancer monitoring":[
+    {"Test type": "Cancer-related history and physical examination",
+    "When / how often": "Every 3 to 6 months for the first 3 years after primary therapy, every 6 to 12 months for the next 2 years, and annually thereafter",
+    "Frequency (in weeks)": 12,
+    "Explanation": "Regular follow-up with a detailed cancer-related history and physical examination is essential for monitoring recurrence and managing ongoing health needs.",
+    "Retrieved context id": 0},
+    {"Test type": "Annual mammography",
+    "When / how often": "Annually",
+    "Frequency (in weeks)": 52,
+    "Explanation": "Annual mammography is recommended for the intact contralateral breast to screen for new primary breast cancer.",
+    "Retrieved context id": 1}
+    ]
+}
+```

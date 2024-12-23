@@ -1,0 +1,44 @@
+{
+  "References to helpful resources for cancer survivors": [
+    {
+      "Resource": "ACS Survivorship Center Web site (cancer.org/survivorshipcenter)",
+      "Explanation": "This resource provides comprehensive information and support for cancer survivors, which can help the patient navigate their post-treatment journey, especially given the complications and ongoing symptoms they are experiencing.",
+      "Retrieved context id": 1
+    },
+    {
+      "Resource": "ASCO survivor and caregiver site (cancer.net)",
+      "Explanation": "This site offers valuable information for both survivors and caregivers, which can be beneficial for the patient and their family as they manage the transition to palliative care and address ongoing health concerns.",
+      "Retrieved context id": 1
+    },
+    {
+      "Resource": "NCCN patient and caregiver resources (nccn.org/patients)",
+      "Explanation": "These resources provide guidelines and support specifically tailored for cancer patients and their caregivers, which can help the patient manage their symptoms and improve their quality of life.",
+      "Retrieved context id": 1
+    },
+    {
+      "Resource": "Patient navigation services",
+      "Explanation": "Patient navigation services can help the patient and their family navigate the complex healthcare system, especially as they transition to palliative care and manage ongoing symptoms and complications.",
+      "Retrieved context id": 0
+    },
+    {
+      "Resource": "Peer support groups",
+      "Explanation": "Peer support groups can provide emotional support and empowerment, which can be particularly beneficial for the patient as they cope with the progression of their disease and the transition to palliative care.",
+      "Retrieved context id": 0
+    },
+    {
+      "Resource": "Specialist palliative care",
+      "Explanation": "Timely referral to specialist palliative care can help manage the patient's symptoms and improve their quality of life as they transition to palliative care.",
+      "Retrieved context id": 10
+    },
+    {
+      "Resource": "Financial navigators or social workers",
+      "Explanation": "Access to financial and legal assistance through financial navigators or social workers can help the patient and their family manage the financial aspects of cancer care, which can be a significant burden.",
+      "Retrieved context id": 7
+    },
+    {
+      "Resource": "Supportive care services",
+      "Explanation": "Supportive care services, such as professionally led groups and informational lectures, can provide additional support and information to help the patient manage their symptoms and improve their well-being.",
+      "Retrieved context id": 21
+    }
+  ]
+}

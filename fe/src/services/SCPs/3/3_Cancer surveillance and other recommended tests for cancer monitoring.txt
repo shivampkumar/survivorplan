@@ -1,0 +1,41 @@
+```json
+{
+  "Cancer surveillance and other recommended tests for cancer monitoring": [
+    {
+      "Test type": "Detailed cancer-related history and physical examination",
+      "When / how often": "Every 3 to 6 months for the first 3 years, every 6 to 12 months for the next 2 years, and annually thereafter",
+      "Frequency (in weeks)": 12,
+      "Explanation": "Regular follow-up care is essential to monitor for signs of disease recurrence and manage any long-term side effects of treatment.",
+      "Retrieved context id": 1
+    },
+    {
+      "Test type": "Colonoscopy",
+      "When / how often": "Every 10 years starting at age 50",
+      "Frequency (in weeks)": 520,
+      "Explanation": "Colonoscopy is recommended for cancer screening in the general population starting at age 50.",
+      "Retrieved context id": 5
+    },
+    {
+      "Test type": "CT colonography",
+      "When / how often": "Every 5 years starting at age 50",
+      "Frequency (in weeks)": 260,
+      "Explanation": "CT colonography is an alternative to colonoscopy for colorectal cancer screening.",
+      "Retrieved context id": 5
+    },
+    {
+      "Test type": "Low-dose CT (LDCT) for lung cancer screening",
+      "When / how often": "Annually for current or former smokers aged 55-74 with at least a 30 pack-year smoking history",
+      "Frequency (in weeks)": 52,
+      "Explanation": "Annual LDCT screening is recommended for high-risk individuals to detect lung cancer early.",
+      "Retrieved context id": 5
+    },
+    {
+      "Test type": "Annual gynecologic assessment",
+      "When / how often": "Annually for postmenopausal women on selective estrogen receptor modulator therapies (SERMs)",
+      "Frequency (in weeks)": 52,
+      "Explanation": "Annual gynecologic assessments are recommended for postmenopausal women on SERMs due to the increased risk of endometrial cancer.",
+      "Retrieved context id": 15
+    }
+  ]
+}
+```

@@ -1,0 +1,40 @@
+```json
+{"Possible late and long-term effects of cancer treatment":[
+    {"Treatment effect": "Peripheral neuropathy",
+    "Explanation": "The patient has experienced minimal non-debilitating peripheral sensory neuropathy, which is a known long-term effect of chemotherapy, particularly with agents like FOLFIRINOX and gemcitabine/nab-paclitaxel.",
+    "Retrieved context id": 15},
+    
+    {"Treatment effect": "Fatigue",
+    "Explanation": "Fatigue is a common long-term effect of chemotherapy, and the patient has reported mild fatigue during treatment with FOLFOX and FOLFIRINOX. This is also a possible side effect of ongoing treatment with gemcitabine/nab-paclitaxel.",
+    "Retrieved context id": 17},
+    
+    {"Treatment effect": "Cognitive impairment",
+    "Explanation": "Chemotherapy can lead to cognitive impairment, which may persist after treatment. The patient has undergone multiple chemotherapy regimens, including FOLFOX and FOLFIRINOX.",
+    "Retrieved context id": 14},
+    
+    {"Treatment effect": "Increased risk of cardiovascular disease",
+    "Explanation": "Chemotherapy, particularly with agents like FOLFIRINOX, can increase the risk of cardiovascular disease. The patient has undergone extensive chemotherapy treatment.",
+    "Retrieved context id": 29},
+    
+    {"Treatment effect": "Osteoporosis/osteopenia",
+    "Explanation": "Chemotherapy can lead to osteoporosis or osteopenia. The patient has undergone multiple chemotherapy regimens, which increases the risk of these conditions.",
+    "Retrieved context id": 8},
+    
+    {"Treatment effect": "Increased risk of secondary cancers",
+    "Explanation": "Chemotherapy can increase the risk of secondary cancers. The patient has undergone extensive chemotherapy treatment, including FOLFOX and FOLFIRINOX.",
+    "Retrieved context id": 8},
+    
+    {"Treatment effect": "Infertility",
+    "Explanation": "Chemotherapy can be gonadotoxic, leading to reduced fertility or early menopause. The patient has undergone multiple chemotherapy regimens, which increases the risk of infertility.",
+    "Retrieved context id": 18},
+    
+    {"Treatment effect": "Liver injury",
+    "Explanation": "Liver injury is a potential side effect of gemcitabine, which the patient is currently receiving as part of the gemcitabine/nab-paclitaxel regimen.",
+    "Retrieved context id": 0},
+    
+    {"Treatment effect": "Infection risk",
+    "Explanation": "Chemotherapy can increase the risk of infections. The patient is currently receiving gemcitabine, which has a known side effect of increasing infection risk.",
+    "Retrieved context id": 0}
+    ]
+}
+```

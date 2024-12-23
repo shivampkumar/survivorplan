@@ -1,0 +1,36 @@
+```json
+{"Possible other issues that cancer survivors may experience":[
+    {"Issue":"Psychosocial distress",
+    "Explanation":"The patient has experienced severe adverse effects from chemotherapy and has a history of chronic conditions such as psoriatic arthritis, chronic asthma, hypertension, and previous MRSA infections. These factors, combined with the cancer diagnosis and treatment, may lead to psychosocial distress, including depression and anxiety.",
+    "Retrieved context id":5},
+    
+    {"Issue":"Fear of recurrence",
+    "Explanation":"Given the patient's history of adenocarcinoma of the tail of the pancreas with positive lymph nodes, there may be a significant fear of cancer recurrence, which is a common issue among cancer survivors.",
+    "Retrieved context id":0},
+    
+    {"Issue":"Cognitive impairment",
+    "Explanation":"Cancer survivors may experience cognitive dysfunction, and the patient's severe adverse effects from chemotherapy and other chronic conditions could contribute to cognitive impairment.",
+    "Retrieved context id":4},
+    
+    {"Issue":"Body image issues",
+    "Explanation":"The patient underwent a distal pancreatectomy and splenectomy, which may lead to body image issues due to surgical scars and changes in physical appearance.",
+    "Retrieved context id":4},
+    
+    {"Issue":"Functional changes and physical impairments",
+    "Explanation":"The patient is currently using a walker to aid with mobility due to frequent falls and balance issues, indicating functional changes and physical impairments.",
+    "Retrieved context id":1},
+    
+    {"Issue":"Financial challenges",
+    "Explanation":"The patient may face financial challenges due to the high costs associated with cancer treatment and the need for ongoing supportive care medications.",
+    "Retrieved context id":13},
+    
+    {"Issue":"Relationship and social role difficulties",
+    "Explanation":"The patient's severe adverse effects from treatment and chronic conditions may impact her relationships and social roles, leading to difficulties in these areas.",
+    "Retrieved context id":2},
+    
+    {"Issue":"Employment concerns",
+    "Explanation":"The patient's severe adverse effects from treatment, including fatigue and mobility issues, may affect her ability to work, leading to employment concerns.",
+    "Retrieved context id":1}
+    ]
+}
+```
