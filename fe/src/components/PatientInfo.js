@@ -8,23 +8,25 @@ import PersonIcon from '@mui/icons-material/Person';
 
 const PatientInfo = ({ patientDetails }) => {
   const [isEditing, setIsEditing] = useState(false);
-  const [details, setDetails] = useState(patientDetails);
+  const [details, setDetails] = useState({
+    "Patient Name": patientDetails["Patient Name"] || "",
+    "Date of Birth": patientDetails["Date of Birth"] || "",
+    "Contact Number": patientDetails["Contact Number"] || "",
+    "Email": patientDetails["Email"] || "",
+    "Cancer Type": patientDetails["Cancer Type"] || "",
+    "Stage": patientDetails["Stage"] || "",
+    "Diagnosis Date": patientDetails["Diagnosis Date"] || "",
+  });
 
-  const personalInfoKeys = ['Patient Name', 'Patient DOB', 'Patient Email', 'Patient Phone Number'];
-  const providerKeys = ['Primary Care Provider', 'Surgeon', 'Radiation Oncologist', 'Medical Oncologist', 'Other Providers'];
-
-  const IconByKey = (key) => {
-    switch (key) {
-      case 'Patient Phone Number':
-        return <PhoneIcon />;
-      case 'Patient Email':
-        return <EmailIcon />;
-      case 'Patient DOB':
-        return <CakeIcon />;
-      default:
-        return <PersonIcon />;
-    }
-  };
+  const infoFields = [
+    { key: "Patient Name", icon: <PersonIcon /> },
+    { key: "Date of Birth", icon: <CakeIcon /> },
+    { key: "Contact Number", icon: <PhoneIcon /> },
+    { key: "Email", icon: <EmailIcon /> },
+    { key: "Cancer Type", icon: <LocalHospitalIcon /> },
+    { key: "Stage", icon: <LocalHospitalIcon /> },
+    { key: "Diagnosis Date", icon: <LocalHospitalIcon /> }
+  ];
 
   const handleEditClick = () => {
     setIsEditing(!isEditing);
@@ -34,64 +36,69 @@ const PatientInfo = ({ patientDetails }) => {
   };
 
   const handleChange = (key, value) => {
-    setDetails((prevDetails) => ({
-      ...prevDetails,
-      [key]: value,
+    setDetails(prev => ({
+      ...prev,
+      [key]: value
     }));
   };
 
   return (
     <Card variant="outlined" sx={{ marginBottom: '20px', backgroundColor: '#282828', color: '#FFFFFF', width: '100%' }}>
       <CardContent>
-        <Typography variant="h5" gutterBottom align="center" sx={{ color: '#FFC107' }}><strong>General Information</strong></Typography>
+        <Typography variant="h5" gutterBottom align="center" sx={{ color: '#FFC107' }}>
+          <strong>General Information</strong>
+        </Typography>
+        
         <Box sx={{ marginBottom: '16px' }}>
-          <Typography variant="h6" gutterBottom>Personal Information</Typography>
-          {personalInfoKeys.map((key) => (
+          {infoFields.map(({ key, icon }) => (
             <Grid container alignItems="center" key={key} sx={{ marginBottom: '8px' }}>
-              <Grid item sx={{ marginRight: '8px' }}>{IconByKey(key)}</Grid>
+              <Grid item sx={{ marginRight: '8px' }}>{icon}</Grid>
               <Grid item sx={{ flexGrow: 1 }}>
                 {isEditing ? (
                   <TextField
-                    value={details[key]}
-                    onChange={(e) => handleChange(key, e.target.value)}
-                    label={key.replace('Patient ', '')}
-                    variant="outlined"
-                    size="small"
-                    fullWidth
-                    sx={{ input: { color: '#FFFFFF' } }}
-                  />
-                ) : (
-                  <Typography variant="body1"><strong>{key.replace('Patient ', '')}:</strong> {details[key]}</Typography>
-                )}
-              </Grid>
-            </Grid>
-          ))}
-        </Box>
-        <Box>
-          <Typography variant="h6" gutterBottom>Health Care Providers</Typography>
-          {providerKeys.map((key) => (
-            <Grid container alignItems="center" key={key} sx={{ marginBottom: '8px' }}>
-              <Grid item sx={{ marginRight: '8px' }}><LocalHospitalIcon /></Grid>
-              <Grid item sx={{ flexGrow: 1 }}>
-                {isEditing ? (
-                  <TextField
-                    value={details[key]}
+                    value={details[key] || ''}
                     onChange={(e) => handleChange(key, e.target.value)}
                     label={key}
                     variant="outlined"
                     size="small"
                     fullWidth
-                    sx={{ input: { color: '#FFFFFF' } }}
+                    sx={{ 
+                      input: { color: '#FFFFFF' },
+                      '& .MuiOutlinedInput-root': {
+                        '& fieldset': {
+                          borderColor: '#FFFFFF3B',
+                        },
+                        '&:hover fieldset': {
+                          borderColor: '#FFFFFF7F',
+                        },
+                      },
+                      '& .MuiInputLabel-root': {
+                        color: '#FFFFFFB3',
+                      }
+                    }}
                   />
                 ) : (
-                  <Typography variant="body1"><strong>{key}:</strong> {details[key]}</Typography>
+                  <Typography variant="body1">
+                    <strong>{key}:</strong> {details[key] || 'N/A'}
+                  </Typography>
                 )}
               </Grid>
             </Grid>
           ))}
         </Box>
+
         <Box sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
-          <Button variant="contained" sx={{ backgroundColor: '#007BFF', color: '#FFFFFF' }} onClick={handleEditClick}>
+          <Button 
+            variant="contained" 
+            sx={{ 
+              backgroundColor: '#007BFF', 
+              color: '#FFFFFF',
+              '&:hover': {
+                backgroundColor: '#0056b3',
+              }
+            }} 
+            onClick={handleEditClick}
+          >
             {isEditing ? 'Save' : 'Edit'}
           </Button>
         </Box>

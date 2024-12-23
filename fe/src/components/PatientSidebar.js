@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, List, ListItem, Typography } from '@mui/material';
 
-const PatientSidebar = ({ patients, onSelectPatient }) => {
+const PatientSidebar = ({ patients, onSelectPatient, selectedPatientId }) => {
   const getRandomColor = () => {
     const colors = ['#00C853', '#2196F3', '#F44336'];
     return colors[Math.floor(Math.random() * colors.length)];
@@ -13,14 +13,18 @@ const PatientSidebar = ({ patients, onSelectPatient }) => {
         {patients.map((patient) => (
           <ListItem
             button
-            key={patient.patientID}
-            onClick={() => onSelectPatient(patient)}
+            key={patient.patientId}
+            onClick={() => onSelectPatient(patient.patientId)}
+            selected={patient.patientId === selectedPatientId}
             sx={{
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
               '&:hover': {
                 backgroundColor: '#282828',
+              },
+              '&.Mui-selected': {
+                backgroundColor: '#424242',
               }
             }}
           >

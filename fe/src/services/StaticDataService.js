@@ -3,6 +3,16 @@ export class StaticDataService {
     return Array.from({ length: 40 }, (_, i) => i);
   }
 
+  static generatePatientInfo(patientId) {
+    return {
+      patientName: `Patient_${patientId}`,
+      dateOfBirth: `1960-01-${String(patientId + 1).padStart(2, '0')}`,
+      gender: patientId % 2 === 0 ? 'Male' : 'Female',
+      contactNumber: `555-000-${String(patientId).padStart(4, '0')}`,
+      email: `patient${patientId}@example.com`
+    };
+  }
+
   static async getPatientData(patientId) {
     try {
       // Load all required JSON files for the patient
@@ -14,66 +24,79 @@ export class StaticDataService {
       const otherIssues = await import(`./SCPs/${patientId}/${patientId}_Possible other issues that cancer survivors may experience.json`);
       const references = await import(`./SCPs/${patientId}/${patientId}_References to helpful resources for cancer survivors.json`);
 
+      // Load reference context files
+      const surveillanceContext = await import(`./SCPs/${patientId}/${patientId}_retrieved_context_Cancer surveillance and other recommended tests for cancer monitoring.json`);
+      const lifestyleContext = await import(`./SCPs/${patientId}/${patientId}_retrieved_context_Lifestyle and behavior recommendations for cancer survivors.json`);
+      const longTermEffectsContext = await import(`./SCPs/${patientId}/${patientId}_retrieved_context_Possible late and long-term effects of cancer treatment.json`);
+      const referencesContext = await import(`./SCPs/${patientId}/${patientId}_retrieved_context_References to helpful resources for cancer survivors.json`);
+
+      const patientInfo = this.generatePatientInfo(patientId);
+
       return {
-        treatmentSummary: {
-          Diagnosis: {
-            "Cancer type": treatmentSummary.Diagnosis?.[0]?.["Cancer Type"] || "",
+        General_Information: {
+          patientId: patientId,
+          "Patient Name": patientInfo.patientName,
+          "Date of Birth": patientInfo.dateOfBirth,
+          "Contact Number": patientInfo.contactNumber,
+          "Email": patientInfo.email,
+          "Cancer Type": treatmentSummary.Diagnosis?.[0]?.["Cancer Type"] || "",
+          "Stage": treatmentSummary.Diagnosis?.[0]?.["Cancer Stage"] || "",
+          "Diagnosis Date": treatmentSummary.Diagnosis?.[0]?.["Diagnosis Date"] || ""
+        },
+        Treatment_Summary: {
+          "Diagnosis": {
+            "Cancer Type": treatmentSummary.Diagnosis?.[0]?.["Cancer Type"] || "",
             "Diagnosis Date": treatmentSummary.Diagnosis?.[0]?.["Diagnosis Date"] || "",
-            "Cancer Stage": treatmentSummary.Diagnosis?.[0]?.["Cancer Stage"] || "",
+            "Stage": treatmentSummary.Diagnosis?.[0]?.["Cancer Stage"] || "",
             "Molecular Markers": treatmentSummary.Diagnosis?.[0]?.["Molecular Markers"] || ""
           },
-          Surgery: {
-            conducted: treatmentSummary["Surgery Conducted (Yes/No)"]?.[0]?.["Surgery Conducted (Yes/No)"] || "No",
-            procedure: treatmentSummary.Surgery_Information?.[0]?.["Surgery Procedure"] || "",
-            dates: treatmentSummary.Surgery_Information?.[0]?.["Surgery Date(s) (year)"] || "",
-            location: treatmentSummary.Surgery_Information?.[0]?.["Surgery Location"] || "",
-            findings: treatmentSummary.Surgery_Information?.[0]?.["Surgery Findings"] || ""
-          },
-          RadiationTreatment: {
-            conducted: treatmentSummary["Radiation Treatment Conducted (Yes/No)"]?.[0]?.["Radiation Treatment Conducted (Yes/No)"] || "No",
-            procedure: treatmentSummary.Radiation_Treatment_Information?.[0]?.["Radiation Treatment Procedure"] || "",
-            dates: treatmentSummary.Radiation_Treatment_Information?.[0]?.["Radiation Treatment Date(s) (year)"] || "",
-            location: treatmentSummary.Radiation_Treatment_Information?.[0]?.["Radiation Treatment Location"] || ""
-          },
-          SystemicTherapy: {
-            conducted: treatmentSummary["Systemic Therapy Conducted (Chemotherapy, hormonal therapy, other)"]?.[0]?.["Systemic Therapy Conducted (Chemotherapy, hormonal therapy, other)"] || "No",
-            agents: treatmentSummary["Agents Used in Completed Treatments"] || []
-          },
-          PersistentSymptoms: {
-            present: "Yes",
-            symptoms: symptoms["Already experienced symptoms or side effects"] || []
+          "Treatment Details": {
+            "Surgery": treatmentSummary["Surgery Conducted (Yes/No)"]?.[0]?.["Surgery Conducted (Yes/No)"] === "Yes"
+              ? treatmentSummary.Surgery_Information?.[0] || {}
+              : { status: "No surgery conducted" },
+            "Chemotherapy": treatmentSummary["Systemic Therapy Conducted (Chemotherapy, hormonal therapy, other)"]?.[0]?.["Systemic Therapy Conducted (Chemotherapy, hormonal therapy, other)"] === "Yes"
+              ? { agents: treatmentSummary["Agents Used in Completed Treatments"] || [] }
+              : { status: "No chemotherapy conducted" },
+            "Radiation": treatmentSummary["Radiation Treatment Conducted (Yes/No)"]?.[0]?.["Radiation Treatment Conducted (Yes/No)"] === "Yes"
+              ? treatmentSummary.Radiation_Treatment_Information?.[0] || {}
+              : { status: "No radiation conducted" }
           }
         },
-        followUpCarePlan: {
-          "Cancer Surveillance or Other Recommended Tests": {
-            recommendation: {
-              "Cancer Surveillance or Other Recommended Tests": 
-                surveillanceTests["Cancer surveillance and other recommended tests for cancer monitoring"] || []
-            }
+        Follow_Up_Care_Plan: {
+          "Already Experienced Symptoms": {
+            symptoms: typeof symptoms["Already experienced symptoms or side effects"] === 'string'
+              ? [{ description: symptoms["Already experienced symptoms or side effects"] }]
+              : symptoms["Already experienced symptoms or side effects"] || []
           },
-          "Lifestyle and behavior": {
-            recommendation: {
-              "Lifestyle and behavior": 
-                lifestyleRecs["Lifestyle and behavior recommendations for cancer survivors"] || []
-            }
+          "Cancer Surveillance": {
+            tests: surveillanceTests["Cancer surveillance and other recommended tests for cancer monitoring"]?.map(test => ({
+              ...test,
+              references: surveillanceContext.retrieved_context[test["Retrieved context id"]]?.text || ""
+            })) || []
+          },
+          "Lifestyle Recommendations": {
+            recommendations: lifestyleRecs["Lifestyle and behavior recommendations for cancer survivors"]?.map(rec => ({
+              ...rec,
+              references: lifestyleContext.retrieved_context[rec["Retrieved context id"]]?.text || ""
+            })) || []
           },
           "Late and Long-term Effects": {
-            recommendation: {
-              "Late and Long-term Effects":
-                longTermEffects["Possible late and long-term effects of cancer treatment"] || []
-            }
+            effects: longTermEffects["Possible late and long-term effects of cancer treatment"]?.map(effect => ({
+              ...effect,
+              references: longTermEffectsContext.retrieved_context[effect["Retrieved context id"]]?.text || ""
+            })) || []
           },
           "Other Issues": {
-            recommendation: {
-              "Other Issues":
-                otherIssues["Possible other issues that cancer survivors may experience"] || []
-            }
+            issues: otherIssues["Possible other issues that cancer survivors may experience"]?.map(issue => ({
+              ...issue,
+              references: longTermEffectsContext.retrieved_context[issue["Retrieved context id"]]?.text || ""
+            })) || []
           },
-          "References": {
-            recommendation: {
-              "References":
-                references["References to helpful resources for cancer survivors"] || []
-            }
+          "Helpful Resources": {
+            resources: references["References to helpful resources for cancer survivors"]?.map(resource => ({
+              ...resource,
+              references: referencesContext.retrieved_context[resource["Retrieved context id"]]?.text || ""
+            })) || []
           }
         }
       };
