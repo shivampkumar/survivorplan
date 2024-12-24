@@ -38,9 +38,9 @@ export class StaticDataService {
     try {
       // Load all required JSON files for the patient
       const treatmentSummary = await import(`./SCPs/${patientId}/${patientId}_treatment_summary.json`);
+      const symptoms = await import(`./SCPs/${patientId}/${patientId}_Already experienced symptoms or side effects.json`);
       const surveillanceTests = await import(`./SCPs/${patientId}/${patientId}_Cancer surveillance and other recommended tests for cancer monitoring.json`);
       const lifestyleRecs = await import(`./SCPs/${patientId}/${patientId}_Lifestyle and behavior recommendations for cancer survivors.json`);
-      const symptoms = await import(`./SCPs/${patientId}/${patientId}_Already experienced symptoms or side effects.json`);
       const longTermEffects = await import(`./SCPs/${patientId}/${patientId}_Possible late and long-term effects of cancer treatment.json`);
       const otherIssues = await import(`./SCPs/${patientId}/${patientId}_Possible other issues that cancer survivors may experience.json`);
       const references = await import(`./SCPs/${patientId}/${patientId}_References to helpful resources for cancer survivors.json`);
@@ -66,70 +66,38 @@ export class StaticDataService {
         },
         Treatment_Summary: treatmentSummary,
         Follow_Up_Care_Plan: {
-          "Medical Follow-up": {
-            "recommendation": {
-              "Schedule": [], // This could be populated from another file if available
-              "Tests": surveillanceTests["Cancer surveillance and other recommended tests for cancer monitoring"]?.map(test => ({
-                ...test,
-                references: surveillanceContext.retrieved_context[test["Retrieved context id"]]?.text || ""
-              })) || []
-            }
+          "Already Experienced Symptoms": {
+            symptoms: symptoms["Already experienced symptoms or side effects of the patient and which drugs might have caused it?"] || []
+          },
+          "Cancer Surveillance": {
+            tests: surveillanceTests["Cancer surveillance and other recommended tests for cancer monitoring"]?.map(test => ({
+              ...test,
+              references: surveillanceContext.retrieved_context[test["Retrieved context id"]]?.text || ""
+            })) || []
           },
           "Lifestyle Recommendations": {
-            "recommendation": {
-              "Exercise": lifestyleRecs["Lifestyle and behavior recommendations for cancer survivors"]
-                ?.filter(rec => rec.Lifestyle.toLowerCase().includes("physical activity") || rec.Lifestyle.toLowerCase().includes("exercise"))
-                .map(rec => ({
-                  ...rec,
-                  references: lifestyleContext.retrieved_context[rec["Retrieved context id"]]?.text || ""
-                })) || [],
-              "Diet": lifestyleRecs["Lifestyle and behavior recommendations for cancer survivors"]
-                ?.filter(rec => rec.Lifestyle.toLowerCase().includes("diet") || rec.Lifestyle.toLowerCase().includes("nutrition"))
-                .map(rec => ({
-                  ...rec,
-                  references: lifestyleContext.retrieved_context[rec["Retrieved context id"]]?.text || ""
-                })) || []
-            }
-          },
-          "Psychosocial Support": {
-            "recommendation": {
-              "Mental Health": lifestyleRecs["Lifestyle and behavior recommendations for cancer survivors"]
-                ?.filter(rec => rec.Lifestyle.toLowerCase().includes("mental") || rec.Lifestyle.toLowerCase().includes("psycho"))
-                .map(rec => ({
-                  ...rec,
-                  references: lifestyleContext.retrieved_context[rec["Retrieved context id"]]?.text || ""
-                })) || [],
-              "Social Support": lifestyleRecs["Lifestyle and behavior recommendations for cancer survivors"]
-                ?.filter(rec => rec.Lifestyle.toLowerCase().includes("social") || rec.Lifestyle.toLowerCase().includes("support"))
-                .map(rec => ({
-                  ...rec,
-                  references: lifestyleContext.retrieved_context[rec["Retrieved context id"]]?.text || ""
-                })) || []
-            }
+            recommendations: lifestyleRecs["Lifestyle and behavior recommendations for cancer survivors"]?.map(rec => ({
+              ...rec,
+              references: lifestyleContext.retrieved_context[rec["Retrieved context id"]]?.text || ""
+            })) || []
           },
           "Late and Long-term Effects": {
-            "recommendation": {
-              "Effects": longTermEffects["Possible late and long-term effects of cancer treatment"]?.map(effect => ({
-                ...effect,
-                references: longTermEffectsContext.retrieved_context[effect["Retrieved context id"]]?.text || ""
-              })) || []
-            }
+            effects: longTermEffects["Possible late and long-term effects of cancer treatment"]?.map(effect => ({
+              ...effect,
+              references: longTermEffectsContext.retrieved_context[effect["Retrieved context id"]]?.text || ""
+            })) || []
           },
           "Other Issues": {
-            "recommendation": {
-              "Issues": otherIssues["Possible other issues that cancer survivors may experience"]?.map(issue => ({
-                ...issue,
-                references: longTermEffectsContext.retrieved_context[issue["Retrieved context id"]]?.text || ""
-              })) || []
-            }
+            issues: otherIssues["Possible other issues that cancer survivors may experience"]?.map(issue => ({
+              ...issue,
+              references: longTermEffectsContext.retrieved_context[issue["Retrieved context id"]]?.text || ""
+            })) || []
           },
           "Helpful Resources": {
-            "recommendation": {
-              "Resources": references["References to helpful resources for cancer survivors"]?.map(resource => ({
-                ...resource,
-                references: referencesContext.retrieved_context[resource["Retrieved context id"]]?.text || ""
-              })) || []
-            }
+            resources: references["References to helpful resources for cancer survivors"]?.map(resource => ({
+              ...resource,
+              references: referencesContext.retrieved_context[resource["Retrieved context id"]]?.text || ""
+            })) || []
           }
         }
       };
