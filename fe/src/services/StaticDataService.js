@@ -53,21 +53,25 @@ export class StaticDataService {
 
       const patientInfo = this.generatePatientInfo(patientId);
 
+      // First ensure General_Information is properly structured
+      const generalInfo = {
+        patientId: patientId,
+        "Patient Name": patientInfo.patientName || "",
+        "Date of Birth": patientInfo.dateOfBirth || "",
+        "Contact Number": patientInfo.contactNumber || "",
+        "Email": patientInfo.email || "",
+        "Cancer Type": treatmentSummary.Diagnosis?.[0]?.["Cancer Type"] || "",
+        "Stage": treatmentSummary.Diagnosis?.[0]?.["Cancer Stage"] || "",
+        "Diagnosis Date": treatmentSummary.Diagnosis?.[0]?.["Diagnosis Date"] || ""
+      };
+
       return {
-        General_Information: {
-          patientId: patientId,
-          "Patient Name": patientInfo.patientName,
-          "Date of Birth": patientInfo.dateOfBirth,
-          "Contact Number": patientInfo.contactNumber,
-          "Email": patientInfo.email,
-          "Cancer Type": treatmentSummary.Diagnosis?.[0]?.["Cancer Type"] || "",
-          "Stage": treatmentSummary.Diagnosis?.[0]?.["Cancer Stage"] || "",
-          "Diagnosis Date": treatmentSummary.Diagnosis?.[0]?.["Diagnosis Date"] || ""
-        },
+        ...generalInfo, // Spread general info at the top level for PatientInfo component
+        General_Information: generalInfo,
         Treatment_Summary: treatmentSummary,
         Follow_Up_Care_Plan: {
           "Already Experienced Symptoms": {
-            symptoms: symptoms["Already experienced symptoms or side effects of the patient and which drugs might have caused it?"] || []
+            symptoms: symptoms["Already experienced symptoms or side effects of the patient and which drugs might have caused it?"] || ""
           },
           "Cancer Surveillance": {
             tests: surveillanceTests["Cancer surveillance and other recommended tests for cancer monitoring"]?.map(test => ({
