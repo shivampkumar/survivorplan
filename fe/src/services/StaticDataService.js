@@ -54,7 +54,7 @@ export class StaticDataService {
       const patientInfo = this.generatePatientInfo(patientId);
 
       return {
-        General_Information: {
+        "General Information": {
           patientId: patientId,
           "Patient Name": patientInfo.patientName,
           "Date of Birth": patientInfo.dateOfBirth,
@@ -64,7 +64,7 @@ export class StaticDataService {
           "Stage": treatmentSummary.Diagnosis?.[0]?.["Cancer Stage"] || "",
           "Diagnosis Date": treatmentSummary.Diagnosis?.[0]?.["Diagnosis Date"] || ""
         },
-        Treatment_Summary: {
+        "Treatment Summary": {
           "Diagnosis": {
             "Cancer Type": treatmentSummary.Diagnosis?.[0]?.["Cancer Type"] || "",
             "Diagnosis Date": treatmentSummary.Diagnosis?.[0]?.["Diagnosis Date"] || "",
@@ -83,7 +83,7 @@ export class StaticDataService {
               : { status: "No radiation conducted" }
           }
         },
-        Follow_Up_Care_Plan: {
+        "Follow Up Care Plan": {
           "Already Experienced Symptoms": {
             symptoms: typeof symptoms["Already experienced symptoms or side effects"] === 'string'
               ? [{ description: symptoms["Already experienced symptoms or side effects"] }]
@@ -119,7 +119,8 @@ export class StaticDataService {
               references: referencesContext.retrieved_context[resource["Retrieved context id"]]?.text || ""
             })) || []
           }
-        }
+        },
+        "Relevant_patient_text": treatmentSummary.patient_text || ""
       };
     } catch (error) {
       console.error(`Error loading data for patient ${patientId}:`, error);
