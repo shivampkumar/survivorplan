@@ -30,7 +30,8 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSymptomsSection = (data) => {
-    const symptoms = data["Already experienced symptoms or side effects of the patient and which drugs might have caused it?"];
+    const symptoms = data["Already Experienced Symptoms"];
+    console.log("wow data", data);
     return (
       <Table>
         <TableHead>
@@ -50,7 +51,8 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSurveillanceSection = (data) => {
-    const tests = data["Cancer surveillance and other recommended tests for cancer monitoring"];
+    const tests = data["Cancer Surveillance"];
+    console.log("wow tests", tests);
     return (
       <Table>
         <TableHead>
@@ -89,7 +91,7 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderLifestyleSection = (data) => {
-    const recommendations = data["Lifestyle and behavior recommendations for cancer survivors"];
+    const recommendations = data["Lifestyle Recommendations"];
     return (
       <Table>
         <TableHead>
@@ -124,7 +126,7 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderEffectsSection = (data) => {
-    const effects = data["Possible late and long-term effects of cancer treatment"];
+    const effects = data["Late and Long-term Effects"];
     return (
       <Table>
         <TableHead>
@@ -159,7 +161,7 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderIssuesSection = (data) => {
-    const issues = data["Possible other issues that cancer survivors may experience"];
+    const issues = data["Other Issues"];
     return (
       <Table>
         <TableHead>
@@ -194,7 +196,7 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderResourcesSection = (data) => {
-    const resources = data["References to helpful resources for cancer survivors"];
+    const resources = data["Helpful Resources"];
     return (
       <Table>
         <TableHead>
