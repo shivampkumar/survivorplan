@@ -82,7 +82,7 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{test["Explanation"]}</TableCell>
               <TableCell>
                 {test.references && (
-                  <IconButton onClick={() => handleOpenDialog(test["references")}>
+                  <IconButton onClick={() => handleOpenDialog(test["Retrieved context id"], "Cancer surveillance and other recommended tests for cancer monitoring")}>
                     <InfoIcon />
                   </IconButton>
                 )}
