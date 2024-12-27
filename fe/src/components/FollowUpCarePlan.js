@@ -11,10 +11,14 @@ const FollowUpCarePlan = ({ data }) => {
 
   if (!data) return <div>Loading...</div>;
 
-  const handleOpenDialog = (contextId, sectionKey) => {
-    const contextKey = `retrieved_context_${sectionKey}`;
-    const references = data[contextKey]?.retrieved_context[contextId] || [];
-    setCurrentReferences(references);
+  const handleOpenDialog = (references) => {
+    setCurrentReferences([{
+      metadata: {
+        file_name: "Reference",
+        page_label: "1"
+      },
+      text: references
+    }]);
     setOpenDialog(true);
   };
 
@@ -54,12 +58,7 @@ const FollowUpCarePlan = ({ data }) => {
 
   const renderSurveillanceSection = (followUpData) => {
     const tests = followUpData["Cancer Surveillance"]?.tests;
-    console.log("Cancer Surveillance tests:", tests);
-
-    if (!tests) {
-      console.log("No tests found");
-      return null;
-    }
+    if (!tests || !Array.isArray(tests)) return null;
 
     return (
       <Table>
@@ -82,7 +81,7 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{test["Explanation"]}</TableCell>
               <TableCell>
                 {test.references && (
-                  <IconButton onClick={() => handleOpenDialog(test["Retrieved context id"], "Cancer surveillance and other recommended tests for cancer monitoring")}>
+                  <IconButton onClick={() => handleOpenDialog(test.references)}>
                     <InfoIcon />
                   </IconButton>
                 )}
@@ -123,7 +122,7 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{rec["Explanation"]}</TableCell>
               <TableCell>
                 {rec.references && (
-                  <IconButton onClick={() => handleOpenDialog(rec["Retrieved context id"], "Lifestyle and behavior recommendations for cancer survivors")}>
+                  <IconButton onClick={() => handleOpenDialog(rec.references)}>
                     <InfoIcon />
                   </IconButton>
                 )}
@@ -162,9 +161,11 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{effect["Treatment effect"]}</TableCell>
               <TableCell>{effect["Explanation"]}</TableCell>
               <TableCell>
-                <IconButton onClick={() => handleOpenDialog(effect["Retrieved context id"], "Possible late and long-term effects of cancer treatment")}>
-                  <InfoIcon />
-                </IconButton>
+                {effect.references && (
+                  <IconButton onClick={() => handleOpenDialog(effect.references)}>
+                    <InfoIcon />
+                  </IconButton>
+                )}
               </TableCell>
               <TableCell>
                 <Checkbox
@@ -200,9 +201,11 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{issue["Issue"]}</TableCell>
               <TableCell>{issue["Explanation"]}</TableCell>
               <TableCell>
-                <IconButton onClick={() => handleOpenDialog(issue["Retrieved context id"], "Possible other issues that cancer survivors may experience")}>
-                  <InfoIcon />
-                </IconButton>
+                {issue.references && (
+                  <IconButton onClick={() => handleOpenDialog(issue.references)}>
+                    <InfoIcon />
+                  </IconButton>
+                )}
               </TableCell>
               <TableCell>
                 <Checkbox
@@ -238,9 +241,11 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{resource["Resource"]}</TableCell>
               <TableCell>{resource["Explanation"]}</TableCell>
               <TableCell>
-                <IconButton onClick={() => handleOpenDialog(resource["Retrieved context id"], "References to helpful resources for cancer survivors")}>
-                  <InfoIcon />
-                </IconButton>
+                {resource.references && (
+                  <IconButton onClick={() => handleOpenDialog(resource.references)}>
+                    <InfoIcon />
+                  </IconButton>
+                )}
               </TableCell>
               <TableCell>
                 <Checkbox
