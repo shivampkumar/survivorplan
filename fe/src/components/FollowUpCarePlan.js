@@ -82,7 +82,7 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{test["Explanation"]}</TableCell>
               <TableCell>
                 {test.references && (
-                  <IconButton onClick={() => handleOpenDialog(test["Retrieved context id"], "Cancer surveillance and other recommended tests for cancer monitoring")}>
+                  <IconButton onClick={() => handleOpenDialog(test["references")}>
                     <InfoIcon />
                   </IconButton>
                 )}
@@ -101,7 +101,7 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderLifestyleSection = (followUpData) => {
-    const lifestyleRecs = followUpData["Lifestyle Recommendations"]?.recommendation || [];
+    const lifestyleRecs = followUpData["Lifestyle Recommendations"]?.recommendations || [];
     const recommendations = [...lifestyleRecs];
     if (!recommendations.length) return null;
 
