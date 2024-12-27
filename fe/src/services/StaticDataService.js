@@ -65,13 +65,6 @@ export class StaticDataService {
         "Diagnosis Date": treatmentSummary.Diagnosis?.[0]?.["Diagnosis Date"] || ""
       };
 
-      console.log("wow symptoms", symptoms);
-      console.log("wow surveillanceTests", surveillanceTests);
-      console.log("wow lifestyleRecs", lifestyleRecs);
-      console.log("wow longTermEffects", longTermEffects);
-      console.log("wow otherIssues", otherIssues);
-      console.log("wow references", references);
-      console.log("wpw surv", symptoms["Already experienced symptoms or side effects of the patient and which drugs might have caused it?"])
       return {
         ...generalInfo, // Spread general info at the top level for PatientInfo component
         General_Information: generalInfo,

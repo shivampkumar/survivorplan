@@ -102,6 +102,7 @@ const FollowUpCarePlan = ({ data }) => {
 
   const renderLifestyleSection = (followUpData) => {
     const lifestyleRecs = followUpData["Lifestyle Recommendations"]?.recommendations || [];
+    console.log("Lifestyle Recommendations", lifestyleRecs);
     const recommendations = [...lifestyleRecs];
     if (!recommendations.length) return null;
 
@@ -142,6 +143,7 @@ const FollowUpCarePlan = ({ data }) => {
 
   const renderEffectsSection = (followUpData) => {
     const effects = followUpData["Late and Long-term Effects"]?.effects;
+    console.log("Late and Long-term Effects", effects);
     if (!effects || !Array.isArray(effects)) return null;
 
     return (
@@ -179,6 +181,7 @@ const FollowUpCarePlan = ({ data }) => {
 
   const renderIssuesSection = (followUpData) => {
     const issues = followUpData["Other Issues"]?.issues;
+    console.log("Other Issues", issues);
     if (!issues || !Array.isArray(issues)) return null;
 
     return (
@@ -216,6 +219,7 @@ const FollowUpCarePlan = ({ data }) => {
 
   const renderResourcesSection = (followUpData) => {
     const resources = followUpData["Helpful Resources"]?.resources;
+    console.log("Helpful Resources", resources);
     if (!resources || !Array.isArray(resources)) return null;
 
     return (
