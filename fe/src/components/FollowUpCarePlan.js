@@ -53,11 +53,11 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSurveillanceSection = (followUpData) => {
-    const tests = followUpData["Cancer Surveillance"]?.recommendation?.tests;
-    console.log("Cancer Surveillance", followUpData["Cancer Surveillance"].tests);
-    if (!Array.isArray(tests)) 
-    {
-      console.log("No tests");
+    const tests = followUpData["Cancer Surveillance"]?.tests;
+    console.log("Cancer Surveillance tests:", tests);
+
+    if (!tests) {
+      console.log("No tests found");
       return null;
     }
 
