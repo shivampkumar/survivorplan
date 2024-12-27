@@ -30,8 +30,9 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSymptomsSection = (data) => {
-    const symptoms = data["Already Experienced Symptoms"];
-    console.log("wow data", data);
+    const symptoms = data["Already Experienced Symptoms"]?.symptoms;
+    if (!symptoms) return null;
+    
     return (
       <Table>
         <TableHead>
@@ -51,8 +52,9 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSurveillanceSection = (data) => {
-    const tests = data["Cancer Surveillance"];
-    console.log("wow tests", tests);
+    const tests = data["Cancer Surveillance"]?.tests;
+    if (!tests || !Array.isArray(tests)) return null;
+
     return (
       <Table>
         <TableHead>
@@ -73,9 +75,11 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{test["Frequency (in weeks)"]}</TableCell>
               <TableCell>{test["Explanation"]}</TableCell>
               <TableCell>
-                <IconButton onClick={() => handleOpenDialog(test["Retrieved context id"], "Cancer surveillance and other recommended tests for cancer monitoring")}>
-                  <InfoIcon />
-                </IconButton>
+                {test.references && (
+                  <IconButton onClick={() => handleOpenDialog(test["Retrieved context id"], "Cancer surveillance and other recommended tests for cancer monitoring")}>
+                    <InfoIcon />
+                  </IconButton>
+                )}
               </TableCell>
               <TableCell>
                 <Checkbox
@@ -91,7 +95,9 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderLifestyleSection = (data) => {
-    const recommendations = data["Lifestyle Recommendations"];
+    const recommendations = data["Lifestyle Recommendations"]?.recommendations;
+    if (!recommendations || !Array.isArray(recommendations)) return null;
+
     return (
       <Table>
         <TableHead>
@@ -108,9 +114,11 @@ const FollowUpCarePlan = ({ data }) => {
               <TableCell>{rec["Lifestyle"]}</TableCell>
               <TableCell>{rec["Explanation"]}</TableCell>
               <TableCell>
-                <IconButton onClick={() => handleOpenDialog(rec["Retrieved context id"], "Lifestyle and behavior recommendations for cancer survivors")}>
-                  <InfoIcon />
-                </IconButton>
+                {rec.references && (
+                  <IconButton onClick={() => handleOpenDialog(rec["Retrieved context id"], "Lifestyle and behavior recommendations for cancer survivors")}>
+                    <InfoIcon />
+                  </IconButton>
+                )}
               </TableCell>
               <TableCell>
                 <Checkbox
@@ -237,62 +245,56 @@ const FollowUpCarePlan = ({ data }) => {
       </Typography>
 
       <Grid container spacing={2}>
-        {/* Symptoms Section */}
         <Grid item xs={12}>
           <Card>
             <CardContent>
               <Typography variant="h6">Already Experienced Symptoms</Typography>
-              {renderSymptomsSection(data)}
+              {renderSymptomsSection(data.Follow_Up_Care_Plan)}
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Surveillance Section */}
         <Grid item xs={12}>
           <Card>
             <CardContent>
               <Typography variant="h6">Cancer Surveillance</Typography>
-              {renderSurveillanceSection(data)}
+              {renderSurveillanceSection(data.Follow_Up_Care_Plan)}
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Lifestyle Section */}
         <Grid item xs={12}>
           <Card>
             <CardContent>
               <Typography variant="h6">Lifestyle Recommendations</Typography>
-              {renderLifestyleSection(data)}
+              {renderLifestyleSection(data.Follow_Up_Care_Plan)}
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Effects Section */}
         <Grid item xs={12}>
           <Card>
             <CardContent>
               <Typography variant="h6">Late and Long-term Effects</Typography>
-              {renderEffectsSection(data)}
+              {renderEffectsSection(data.Follow_Up_Care_Plan)}
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Issues Section */}
         <Grid item xs={12}>
           <Card>
             <CardContent>
               <Typography variant="h6">Other Issues</Typography>
-              {renderIssuesSection(data)}
+              {renderIssuesSection(data.Follow_Up_Care_Plan)}
             </CardContent>
           </Card>
         </Grid>
 
-        {/* Resources Section */}
         <Grid item xs={12}>
           <Card>
             <CardContent>
               <Typography variant="h6">Helpful Resources</Typography>
-              {renderResourcesSection(data)}
+              {renderResourcesSection(data.Follow_Up_Care_Plan)}
             </CardContent>
           </Card>
         </Grid>
