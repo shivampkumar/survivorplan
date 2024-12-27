@@ -30,7 +30,8 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSymptomsSection = (followUpData) => {
-    const symptoms = followUpData["Side Effects"]?.Current;
+    const symptoms = followUpData["Already Experienced Symptoms"]?.symptoms;
+    console.log("Already Experienced Symptoms", followUpData["Already Experienced Symptoms"]);
     if (!symptoms) return null;
     
     return (
@@ -52,8 +53,13 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSurveillanceSection = (followUpData) => {
-    const tests = followUpData["Medical Follow-up"]?.recommendation?.Tests;
-    if (!tests || !Array.isArray(tests)) return null;
+    const tests = followUpData["Cancer Surveillance"]?.recommendation?.tests;
+    console.log("Cancer Surveillance", followUpData["Cancer Surveillance"].tests);
+    if (!Array.isArray(tests)) 
+    {
+      console.log("No tests");
+      return null;
+    }
 
     return (
       <Table>
@@ -95,9 +101,8 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderLifestyleSection = (followUpData) => {
-    const exerciseRecs = followUpData["Lifestyle Recommendations"]?.recommendation?.Exercise || [];
-    const dietRecs = followUpData["Lifestyle Recommendations"]?.recommendation?.Diet || [];
-    const recommendations = [...exerciseRecs, ...dietRecs];
+    const lifestyleRecs = followUpData["Lifestyle Recommendations"]?.recommendation || [];
+    const recommendations = [...lifestyleRecs];
     if (!recommendations.length) return null;
 
     return (
