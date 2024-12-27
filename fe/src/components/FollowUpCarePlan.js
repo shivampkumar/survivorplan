@@ -9,7 +9,7 @@ const FollowUpCarePlan = ({ data }) => {
   const [currentReferences, setCurrentReferences] = useState([]);
   const [verifiedRows, setVerifiedRows] = useState({});
 
-  if (!data) return <div>Loading...</div>;
+  if (!data?.Follow_Up_Care_Plan) return <div>Loading...</div>;
 
   const handleOpenDialog = (contextId, sectionKey) => {
     const contextKey = `retrieved_context_${sectionKey}`;
@@ -29,8 +29,8 @@ const FollowUpCarePlan = ({ data }) => {
     }));
   };
 
-  const renderSymptomsSection = (data) => {
-    const symptoms = data["Already Experienced Symptoms"]?.symptoms;
+  const renderSymptomsSection = (followUpData) => {
+    const symptoms = followUpData["Already Experienced Symptoms"]?.symptoms;
     if (!symptoms) return null;
     
     return (
@@ -51,8 +51,8 @@ const FollowUpCarePlan = ({ data }) => {
     );
   };
 
-  const renderSurveillanceSection = (data) => {
-    const tests = data["Cancer Surveillance"]?.tests;
+  const renderSurveillanceSection = (followUpData) => {
+    const tests = followUpData["Cancer Surveillance"]?.tests;
     if (!tests || !Array.isArray(tests)) return null;
 
     return (
@@ -94,8 +94,8 @@ const FollowUpCarePlan = ({ data }) => {
     );
   };
 
-  const renderLifestyleSection = (data) => {
-    const recommendations = data["Lifestyle Recommendations"]?.recommendations;
+  const renderLifestyleSection = (followUpData) => {
+    const recommendations = followUpData["Lifestyle Recommendations"]?.recommendations;
     if (!recommendations || !Array.isArray(recommendations)) return null;
 
     return (
@@ -133,8 +133,10 @@ const FollowUpCarePlan = ({ data }) => {
     );
   };
 
-  const renderEffectsSection = (data) => {
-    const effects = data["Late and Long-term Effects"];
+  const renderEffectsSection = (followUpData) => {
+    const effects = followUpData["Late and Long-term Effects"]?.effects;
+    if (!effects || !Array.isArray(effects)) return null;
+
     return (
       <Table>
         <TableHead>
@@ -168,8 +170,10 @@ const FollowUpCarePlan = ({ data }) => {
     );
   };
 
-  const renderIssuesSection = (data) => {
-    const issues = data["Other Issues"];
+  const renderIssuesSection = (followUpData) => {
+    const issues = followUpData["Other Issues"]?.issues;
+    if (!issues || !Array.isArray(issues)) return null;
+
     return (
       <Table>
         <TableHead>
@@ -203,8 +207,10 @@ const FollowUpCarePlan = ({ data }) => {
     );
   };
 
-  const renderResourcesSection = (data) => {
-    const resources = data["Helpful Resources"];
+  const renderResourcesSection = (followUpData) => {
+    const resources = followUpData["Helpful Resources"]?.resources;
+    if (!resources || !Array.isArray(resources)) return null;
+
     return (
       <Table>
         <TableHead>
