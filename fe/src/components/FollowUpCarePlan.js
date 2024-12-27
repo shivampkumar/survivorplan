@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Card, CardContent, Grid, Table, TableBody, IconButton, TableCell, TableHead, TableRow, Typography, TextField, Tooltip, Checkbox } from '@mui/material';
+import { Card, CardContent, Grid, Table, TableBody, IconButton, TableCell, TableHead, TableRow, Typography, Checkbox } from '@mui/material';
 import ReferencesDialog from './ReferencesDialog';
 import InfoIcon from '@mui/icons-material/Info';
 import './FollowUpCarePlan.css';
@@ -11,9 +11,9 @@ const FollowUpCarePlan = ({ data }) => {
 
   if (!data) return <div>Loading...</div>;
 
-  const handleOpenDialog = (contextId) => {
-    // Get context from retrieved_context using contextId
-    const references = data.retrieved_context ? [data.retrieved_context[contextId]] : [];
+  const handleOpenDialog = (contextId, sectionKey) => {
+    const contextKey = `retrieved_context_${sectionKey}`;
+    const references = data[contextKey]?.retrieved_context[contextId] || [];
     setCurrentReferences(references);
     setOpenDialog(true);
   };
@@ -23,144 +23,209 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const handleVerificationChange = (path) => {
-    setVerifiedRows((prevVerifiedRows) => ({
-      ...prevVerifiedRows,
-      [path]: !prevVerifiedRows[path],
+    setVerifiedRows(prev => ({
+      ...prev,
+      [path]: !prev[path]
     }));
   };
 
-  const renderSectionRows = (items, sectionKey) => {
-    if (!items || !Array.isArray(items)) return null;
-
-    const getTableCells = (item) => {
-      switch (sectionKey) {
-        case "Cancer surveillance and other recommended tests":
-          return (
-            <>
-              <TableCell>{item["Test type"]}</TableCell>
-              <TableCell>{item["When / how often"]}</TableCell>
-              <TableCell>{item["Explanation"]}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
-                  <InfoIcon />
-                </IconButton>
-              </TableCell>
-              <TableCell>
-                <Checkbox
-                  checked={verifiedRows[`${sectionKey}.${item["Test type"]}`] || false}
-                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Test type"]}`)}
-                />
-              </TableCell>
-            </>
-          );
-
-        case "Lifestyle and behavior recommendations":
-          return (
-            <>
-              <TableCell>{item["Lifestyle"]}</TableCell>
-              <TableCell>{item["Explanation"]}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
-                  <InfoIcon />
-                </IconButton>
-              </TableCell>
-              <TableCell>
-                <Checkbox
-                  checked={verifiedRows[`${sectionKey}.${item["Lifestyle"]}`] || false}
-                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Lifestyle"]}`)}
-                />
-              </TableCell>
-            </>
-          );
-
-        case "Possible late and long-term effects":
-          return (
-            <>
-              <TableCell>{item["Treatment effect"]}</TableCell>
-              <TableCell>{item["Explanation"]}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
-                  <InfoIcon />
-                </IconButton>
-              </TableCell>
-              <TableCell>
-                <Checkbox
-                  checked={verifiedRows[`${sectionKey}.${item["Treatment effect"]}`] || false}
-                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Treatment effect"]}`)}
-                />
-              </TableCell>
-            </>
-          );
-
-        case "References to helpful resources":
-          return (
-            <>
-              <TableCell>{item["Resource"]}</TableCell>
-              <TableCell>{item["Explanation"]}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
-                  <InfoIcon />
-                </IconButton>
-              </TableCell>
-              <TableCell>
-                <Checkbox
-                  checked={verifiedRows[`${sectionKey}.${item["Resource"]}`] || false}
-                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Resource"]}`)}
-                />
-              </TableCell>
-            </>
-          );
-
-        default:
-          return (
-            <>
-              <TableCell>{item["Issue"] || item["Symptom"]}</TableCell>
-              <TableCell>{item["Explanation"]}</TableCell>
-              <TableCell>
-                <IconButton onClick={() => handleOpenDialog(item["Retrieved context id"])}>
-                  <InfoIcon />
-                </IconButton>
-              </TableCell>
-              <TableCell>
-                <Checkbox
-                  checked={verifiedRows[`${sectionKey}.${item["Issue"] || item["Symptom"]}`] || false}
-                  onChange={() => handleVerificationChange(`${sectionKey}.${item["Issue"] || item["Symptom"]}`)}
-                />
-              </TableCell>
-            </>
-          );
-      }
-    };
-
-    return items.map((item, index) => (
-      <TableRow key={index}>
-        {getTableCells(item)}
-      </TableRow>
-    ));
+  const renderSymptomsSection = (data) => {
+    const symptoms = data["Already experienced symptoms or side effects of the patient and which drugs might have caused it?"];
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Question</TableCell>
+            <TableCell>Answer</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>Already experienced symptoms or side effects?</TableCell>
+            <TableCell>{symptoms}</TableCell>
+          </TableRow>
+        </TableBody>
+      </Table>
+    );
   };
 
-  const getTableHeaders = (sectionKey) => {
-    switch (sectionKey) {
-      case "Cancer surveillance and other recommended tests":
-        return (
+  const renderSurveillanceSection = (data) => {
+    const tests = data["Cancer surveillance and other recommended tests for cancer monitoring"];
+    return (
+      <Table>
+        <TableHead>
           <TableRow>
             <TableCell>Test Type</TableCell>
             <TableCell>When/How Often</TableCell>
+            <TableCell>Frequency (weeks)</TableCell>
             <TableCell>Explanation</TableCell>
             <TableCell>References</TableCell>
-            <TableCell>Validate</TableCell>
+            <TableCell>Verify</TableCell>
           </TableRow>
-        );
-      default:
-        return (
+        </TableHead>
+        <TableBody>
+          {tests.map((test, index) => (
+            <TableRow key={index}>
+              <TableCell>{test["Test type"]}</TableCell>
+              <TableCell>{test["When / how often"]}</TableCell>
+              <TableCell>{test["Frequency (in weeks)"]}</TableCell>
+              <TableCell>{test["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(test["Retrieved context id"], "Cancer surveillance and other recommended tests for cancer monitoring")}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`surveillance-${index}`] || false}
+                  onChange={() => handleVerificationChange(`surveillance-${index}`)}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  };
+
+  const renderLifestyleSection = (data) => {
+    const recommendations = data["Lifestyle and behavior recommendations for cancer survivors"];
+    return (
+      <Table>
+        <TableHead>
           <TableRow>
-            <TableCell>Description</TableCell>
+            <TableCell>Lifestyle</TableCell>
             <TableCell>Explanation</TableCell>
             <TableCell>References</TableCell>
-            <TableCell>Validate</TableCell>
+            <TableCell>Verify</TableCell>
           </TableRow>
-        );
-    }
+        </TableHead>
+        <TableBody>
+          {recommendations.map((rec, index) => (
+            <TableRow key={index}>
+              <TableCell>{rec["Lifestyle"]}</TableCell>
+              <TableCell>{rec["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(rec["Retrieved context id"], "Lifestyle and behavior recommendations for cancer survivors")}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`lifestyle-${index}`] || false}
+                  onChange={() => handleVerificationChange(`lifestyle-${index}`)}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  };
+
+  const renderEffectsSection = (data) => {
+    const effects = data["Possible late and long-term effects of cancer treatment"];
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Treatment Effect</TableCell>
+            <TableCell>Explanation</TableCell>
+            <TableCell>References</TableCell>
+            <TableCell>Verify</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {effects.map((effect, index) => (
+            <TableRow key={index}>
+              <TableCell>{effect["Treatment effect"]}</TableCell>
+              <TableCell>{effect["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(effect["Retrieved context id"], "Possible late and long-term effects of cancer treatment")}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`effects-${index}`] || false}
+                  onChange={() => handleVerificationChange(`effects-${index}`)}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  };
+
+  const renderIssuesSection = (data) => {
+    const issues = data["Possible other issues that cancer survivors may experience"];
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Issue</TableCell>
+            <TableCell>Explanation</TableCell>
+            <TableCell>References</TableCell>
+            <TableCell>Verify</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {issues.map((issue, index) => (
+            <TableRow key={index}>
+              <TableCell>{issue["Issue"]}</TableCell>
+              <TableCell>{issue["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(issue["Retrieved context id"], "Possible other issues that cancer survivors may experience")}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`issues-${index}`] || false}
+                  onChange={() => handleVerificationChange(`issues-${index}`)}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  };
+
+  const renderResourcesSection = (data) => {
+    const resources = data["References to helpful resources for cancer survivors"];
+    return (
+      <Table>
+        <TableHead>
+          <TableRow>
+            <TableCell>Resource</TableCell>
+            <TableCell>Explanation</TableCell>
+            <TableCell>References</TableCell>
+            <TableCell>Verify</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {resources.map((resource, index) => (
+            <TableRow key={index}>
+              <TableCell>{resource["Resource"]}</TableCell>
+              <TableCell>{resource["Explanation"]}</TableCell>
+              <TableCell>
+                <IconButton onClick={() => handleOpenDialog(resource["Retrieved context id"], "References to helpful resources for cancer survivors")}>
+                  <InfoIcon />
+                </IconButton>
+              </TableCell>
+              <TableCell>
+                <Checkbox
+                  checked={verifiedRows[`resources-${index}`] || false}
+                  onChange={() => handleVerificationChange(`resources-${index}`)}
+                />
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
   };
 
   return (
@@ -170,28 +235,65 @@ const FollowUpCarePlan = ({ data }) => {
       </Typography>
 
       <Grid container spacing={2}>
-        {Object.entries(data).map(([sectionKey, sectionData]) => {
-          // Skip the retrieved_context section as it's used for references
-          if (sectionKey === 'retrieved_context') return null;
+        {/* Symptoms Section */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Already Experienced Symptoms</Typography>
+              {renderSymptomsSection(data)}
+            </CardContent>
+          </Card>
+        </Grid>
 
-          return (
-            <Grid item xs={12} key={sectionKey}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h6">{sectionKey}</Typography>
-                  <Table>
-                    <TableHead>
-                      {getTableHeaders(sectionKey)}
-                    </TableHead>
-                    <TableBody>
-                      {renderSectionRows(sectionData, sectionKey)}
-                    </TableBody>
-                  </Table>
-                </CardContent>
-              </Card>
-            </Grid>
-          );
-        })}
+        {/* Surveillance Section */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Cancer Surveillance</Typography>
+              {renderSurveillanceSection(data)}
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Lifestyle Section */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Lifestyle Recommendations</Typography>
+              {renderLifestyleSection(data)}
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Effects Section */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Late and Long-term Effects</Typography>
+              {renderEffectsSection(data)}
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Issues Section */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Other Issues</Typography>
+              {renderIssuesSection(data)}
+            </CardContent>
+          </Card>
+        </Grid>
+
+        {/* Resources Section */}
+        <Grid item xs={12}>
+          <Card>
+            <CardContent>
+              <Typography variant="h6">Helpful Resources</Typography>
+              {renderResourcesSection(data)}
+            </CardContent>
+          </Card>
+        </Grid>
       </Grid>
 
       <ReferencesDialog
