@@ -9,7 +9,7 @@ const FollowUpCarePlan = ({ data }) => {
   const [currentReferences, setCurrentReferences] = useState([]);
   const [verifiedRows, setVerifiedRows] = useState({});
 
-  if (!data?.Follow_Up_Care_Plan) return <div>Loading...</div>;
+  if (!data) return <div>Loading...</div>;
 
   const handleOpenDialog = (contextId, sectionKey) => {
     const contextKey = `retrieved_context_${sectionKey}`;
@@ -30,7 +30,7 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSymptomsSection = (followUpData) => {
-    const symptoms = followUpData["Already Experienced Symptoms"]?.symptoms;
+    const symptoms = followUpData["Side Effects"]?.Current;
     if (!symptoms) return null;
     
     return (
@@ -52,7 +52,7 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderSurveillanceSection = (followUpData) => {
-    const tests = followUpData["Cancer Surveillance"]?.tests;
+    const tests = followUpData["Medical Follow-up"]?.recommendation?.Tests;
     if (!tests || !Array.isArray(tests)) return null;
 
     return (
@@ -95,8 +95,10 @@ const FollowUpCarePlan = ({ data }) => {
   };
 
   const renderLifestyleSection = (followUpData) => {
-    const recommendations = followUpData["Lifestyle Recommendations"]?.recommendations;
-    if (!recommendations || !Array.isArray(recommendations)) return null;
+    const exerciseRecs = followUpData["Lifestyle Recommendations"]?.recommendation?.Exercise || [];
+    const dietRecs = followUpData["Lifestyle Recommendations"]?.recommendation?.Diet || [];
+    const recommendations = [...exerciseRecs, ...dietRecs];
+    if (!recommendations.length) return null;
 
     return (
       <Table>
@@ -255,7 +257,7 @@ const FollowUpCarePlan = ({ data }) => {
           <Card>
             <CardContent>
               <Typography variant="h6">Already Experienced Symptoms</Typography>
-              {renderSymptomsSection(data.Follow_Up_Care_Plan)}
+              {renderSymptomsSection(data)}
             </CardContent>
           </Card>
         </Grid>
@@ -264,7 +266,7 @@ const FollowUpCarePlan = ({ data }) => {
           <Card>
             <CardContent>
               <Typography variant="h6">Cancer Surveillance</Typography>
-              {renderSurveillanceSection(data.Follow_Up_Care_Plan)}
+              {renderSurveillanceSection(data)}
             </CardContent>
           </Card>
         </Grid>
@@ -273,7 +275,7 @@ const FollowUpCarePlan = ({ data }) => {
           <Card>
             <CardContent>
               <Typography variant="h6">Lifestyle Recommendations</Typography>
-              {renderLifestyleSection(data.Follow_Up_Care_Plan)}
+              {renderLifestyleSection(data)}
             </CardContent>
           </Card>
         </Grid>
@@ -282,7 +284,7 @@ const FollowUpCarePlan = ({ data }) => {
           <Card>
             <CardContent>
               <Typography variant="h6">Late and Long-term Effects</Typography>
-              {renderEffectsSection(data.Follow_Up_Care_Plan)}
+              {renderEffectsSection(data)}
             </CardContent>
           </Card>
         </Grid>
@@ -291,7 +293,7 @@ const FollowUpCarePlan = ({ data }) => {
           <Card>
             <CardContent>
               <Typography variant="h6">Other Issues</Typography>
-              {renderIssuesSection(data.Follow_Up_Care_Plan)}
+              {renderIssuesSection(data)}
             </CardContent>
           </Card>
         </Grid>
@@ -300,7 +302,7 @@ const FollowUpCarePlan = ({ data }) => {
           <Card>
             <CardContent>
               <Typography variant="h6">Helpful Resources</Typography>
-              {renderResourcesSection(data.Follow_Up_Care_Plan)}
+              {renderResourcesSection(data)}
             </CardContent>
           </Card>
         </Grid>
